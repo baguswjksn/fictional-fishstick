@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog | bagusmw.me</title>
+
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937;
+  background: #fff;
+}
+
+.page {
+  max-width: 65ch;
+  margin: 0 auto;
+  padding: 3rem 1rem 1rem;
+}
+
+/* Posts */
+.post {
+  margin-bottom: .5rem;
+}
+
+/* Language Selector */
+.lang-selector {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.lang-selector select {
+  padding: .5rem .75rem;
+  border-radius: .375rem;
+  background: #1F2937;
+  color: #F9FAFB;
+  border: 1px solid #4B5563;
+}
+
+.name-link {
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body class="page">
+
+<a style="margin-right: 10px;" href="/" class="name-link">Bagus Wijaksono</a>
+<a style="margin-right: 10px;" href="https://linkedin.com/in/soumith">Blog</a>
+<a style="margin-right: 10px;" href="https://linkedin.com/in/soumith">LinkedIn</a>
+<a style="margin-right: 10px;" href="https://github.com/soumith/">Github</a>
+
+<!-- Posts -->
+<div id="posts-wrapper"></div>
+
+<!-- Language Selector -->
+<div class="lang-selector">
+  <select id="themeLangSelect">
+    <option value="en">English</option>
+    <option value="id">Indonesian</option>
+  </select>
+</div>
+
+<script>
+const posts = {
+  en: [
+    { title: "Solving the Too-Many-Web-Servers Problem", date: "May 1, 2025", link: "too-many-web-servers" },
+    { title: "Dostoevsky's Summary of the Human Race", date: "April 6, 2025", link: "brothers-karamazov" },
+    { title: "Turned Kakeibo Budgeting Simpler", date: "May 1, 2025", link: "kakeibo" },
+    { title: "Why Is Everything So Needlessly Complex?", date: "April 6, 2025", link: "unnecessary-complexity" }
+  ],
+
+  id: [
+    { title: "Solusi untuk Masalah Terlalu Banyak Web Server", date: "May 1, 2025", link: "/musical-octo-train/too-many-web-servers" },
+    { title: "Ringkasan Dostoevsky tentang Umat Manusia", date: "April 6, 2025", link: "/musical-octo-train/brothers-karamazov" },
+    { title: "Menyederhanakan Anggaran Kakeibo", date: "May 1, 2025", link: "kakeibo" }
+  ]
+};
+
+const langSelect = document.getElementById("themeLangSelect");
+const postsWrapper = document.getElementById("posts-wrapper");
+
+function renderPosts(lang = "en") {
+  const list = posts[lang];
+  postsWrapper.innerHTML = list.map(p => `
+    <div class="post">
+      <p class="post-title">
+        <a href="${p.link}">${p.title}</a>
+        <span class="post-date">${p.date}</span>
+      </p>
+    </div>
+  `).join("");
+}
+
+langSelect.addEventListener("change", () => {
+  renderPosts(langSelect.value);
+});
+
+renderPosts("en");
+</script>
+
+</body>
+</html>
