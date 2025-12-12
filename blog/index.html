@@ -53,9 +53,9 @@ body, html {
 <body class="page">
 
 <a style="margin-right: 10px;" href="/" class="name-link">Bagus Wijaksono</a>
-<a style="margin-right: 10px;" href="https://linkedin.com/in/soumith">Blog</a>
-<a style="margin-right: 10px;" href="https://linkedin.com/in/soumith">LinkedIn</a>
-<a style="margin-right: 10px;" href="https://github.com/soumith/">Github</a>
+<a style="margin-right: 10px;" href="blog">Blog</a>
+<a style="margin-right: 10px;" href="https://linkedin.com/in/">LinkedIn</a>
+<a style="margin-right: 10px;" href="https://github.com/">Github</a>
 
 <!-- Posts -->
 <div id="posts-wrapper"></div>
@@ -71,16 +71,16 @@ body, html {
 <script>
 const posts = {
   en: [
-    { title: "Solving the Too-Many-Web-Servers Problem", date: "May 1, 2025", link: "too-many-web-servers" },
-    { title: "Dostoevsky's Summary of the Human Race", date: "April 6, 2025", link: "brothers-karamazov" },
-    { title: "Turned Kakeibo Budgeting Simpler", date: "May 1, 2025", link: "kakeibo" },
-    { title: "Why Is Everything So Needlessly Complex?", date: "April 6, 2025", link: "unnecessary-complexity" }
+    { title: "Solving the Too-Many-Web-Servers Problem", link: "too-many-web-servers" },
+    { title: "Dostoevsky's Summary of the Human Race", link: "brothers-karamazov" },
+    { title: "Turned Kakeibo Budgeting Simpler", link: "kakeibo" },
+    { title: "Why Is Everything So Needlessly Complex?", link: "unnecessary-complexity" }
   ],
 
   id: [
-    { title: "Solusi untuk Masalah Terlalu Banyak Web Server", date: "May 1, 2025", link: "/musical-octo-train/too-many-web-servers" },
-    { title: "Ringkasan Dostoevsky tentang Umat Manusia", date: "April 6, 2025", link: "/musical-octo-train/brothers-karamazov" },
-    { title: "Menyederhanakan Anggaran Kakeibo", date: "May 1, 2025", link: "kakeibo" }
+    { title: "Solusi untuk Masalah Terlalu Banyak Web Server", link: "/musical-octo-train/too-many-web-servers" },
+    { title: "Ringkasan Dostoevsky tentang Umat Manusia", link: "/musical-octo-train/brothers-karamazov" },
+    { title: "Menyederhanakan Anggaran Kakeibo", link: "kakeibo" }
   ]
 };
 
@@ -93,7 +93,6 @@ function renderPosts(lang = "en") {
     <div class="post">
       <p class="post-title">
         <a href="${p.link}">${p.title}</a>
-        <span class="post-date">${p.date}</span>
       </p>
     </div>
   `).join("");
