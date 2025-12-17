@@ -1,64 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bagus Muhammad Wijaksono</title>
-  <!-- SEO -->
-  <meta name="description" content="Software engineer with 2+ years of experience working across *NIX environments.">
-  <meta name="author" content="Bagus Muhammad Wijaksono">
-  <!-- Preload + Favicon -->
-  <link rel="preload" href="i/icon.svg" as="image" type="image/svg+xml">
-  <link rel="icon" href="i/icon.svg" type="image/svg+xml" sizes="any">
-  <!-- Minified Inline CSS -->
-  <style>
-body{line-height:1.5;max-width:650px;margin:50px auto;padding:20px}nav a{margin-right:10px}.lang-selector{position:fixed;bottom:1rem;right:1rem}.lang-selector select{padding:.5rem .75rem;border-radius:.375rem;background:#1F2937;color:#F9FAFB;border:1px solid #4B5563}.name-link{color:#000;text-shadow:1px 1px 2px rgb(0 0 0 / .1);text-decoration:none;font-size:1.5em;font-weight:700}
-  </style>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagus Muhammad Wijaksono</title>
+    <link rel="icon" type="image/svg+xml" href="i/icon.svg" />
+    <style>
+      body {
+        line-height: 1.5;
+        max-width: 650px;
+        margin: 50px auto;
+        padding: 20px;
+      }
 
-<body>
-<header role="banner">
-  <nav role="navigation">
-    <a href="/" class="name-link">Bagus Wijaksono</a> |&nbsp;&nbsp;
-    <a href="/blog">Blog</a>
-    <a href="https://linkedin.com">LinkedIn</a>
-    <a href="https://github.com">GitHub</a>
-  </nav>
-</header>
+      nav a {
+        margin-right: 10px;
+      }
 
-<main role="main">
-  <p>Software engineer with 2+ years of experience, working across multiple programming languages in *NIX environments.</p>
+      .name-link {
+        color: black;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
 
-  <p>Some things about me:</p>
-  <ul>
-    <li>Studied at <strong>Politeknik Negeri Semarang</strong> — Associate Degree in <strong>Informatics Engineering</strong></li>
+      details > summary {
+        list-style: none;
+      }
 
-    <li>
-      <details>
-        <summary>Current work and affiliations. <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span></summary>
-        <p>Currently working as an Operations Engineer on a charging and incentive platform for an Internet Service Provider (under NDA).</p>
-        <p>Previously worked at <strong>Telkom Indonesia</strong> as a Full Stack Web Developer Intern.</p>
-      </details>
-    </li>
-    <li>
-      <details>
-        <summary>Projects and open-source work. <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span></summary>
-        <ul>
-          <li><strong>Project Name</strong> – short description</li>
-          <li><strong>Another Project</strong> – impact, usage, or outcome</li>
-          <li>Link to <a href="#">GitHub repository</a> or demo</li>
-        </ul>
-      </details>
-    </li>
-    <li>Currently exploring my interests in <strong>drawing</strong>, <strong>home labbing</strong>, and <strong>reading books</strong>.</li>
-  </ul>
-  <p>Principles and thoughts:</p>
-  <ul>
-    <li>I value simplicity and fast iteration.</li>
-    <li>I prefer working on real problems with real users.</li>
-  </ul>
-  <p>Side projects:</p>
-  <p>I occasionally work on early projects. Examples include <a href="#">Project A</a>, <a href="#">Project B</a>, and <a href="#">Project C</a>.</p>
-</main>
-</body>
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="name-link">Bagus Wijaksono</a>
+        |&nbsp;&nbsp;
+        <a href="/blog">Blog</a>
+        <a href="https://linkedin.com">LinkedIn</a>
+        <a href="https://github.com">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <p>
+        Software engineer with 2+ years of experience, working across multiple programming languages in *NIX environments.
+      </p>
+
+      <p>Some things about me:</p>
+
+      <ul>
+<li>
+  Associate Degree in <strong>Informatics Engineering</strong>
+</li>
+
+
+        <li>
+          <details>
+            <summary>
+              Current work and affiliations.
+              <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+            </summary>
+
+            <p>
+              Currently working as a Ops Engineer on a charging and incentive platform for a Internet Service Provider (under NDA).
+            </p>
+
+            <p>
+              Previously worked at <strong>Telkom Indonesia</strong> as a Full Stack Web Developer Intern.
+            </p>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              Projects and open-source work.
+              <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+            </summary>
+
+            <ul>
+              <li>
+                <strong>Project Name</strong> – short description
+              </li>
+              <li>
+                <strong>Another Project</strong> – impact, usage, or outcome.
+              </li>
+              <li>
+                Link to <a href="#">GitHub repository</a> or demo.
+              </li>
+            </ul>
+          </details>
+        </li>
+
+        <li>
+          Currently exploring my interests in <strong>drawing</strong>, <strong>home labbing</strong>, and <strong>reading books</strong>.
+        </li>
+      </ul>
+
+      <p>Principles and thoughts:</p>
+
+      <ul>
+        <li>I value simplicity and fast iteration.</li>
+        <li>I prefer working on real problems with real users.</li>
+      </ul>
+
+      <p>Side projects:</p>
+
+      <p>
+        I occasionally work on early projects.
+        Examples include <a href="#">Project A</a>,
+        <a href="#">Project B</a>, and <a href="#">Project C</a>.
+      </p>
+    </main>
+  </body>
 </html>
