@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Why Is Everything So Needlessly Complex?</title>
+
   <link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg" />
+
   <style>
-    /* ---------------- GLOBAL LAYOUT ---------------- */
-    body, html {
+    /* ---------- BASE ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -16,12 +22,6 @@
       background: #ffffff;
     }
 
-    .page {
-      max-width: 65ch;
-      margin: 0 auto;
-      padding: 3rem 1rem 1rem;
-    }
-        
     img {
       width: 100%;
       height: auto;
@@ -31,18 +31,18 @@
       display: none !important;
     }
 
-    /* ---------------- NAVBAR ---------------- */
+    /* ---------- PAGE ---------- */
+    .page {
+      max-width: 65ch;
+      margin: 0 auto;
+      padding: 3rem 1rem 1rem;
+    }
+
+    /* ---------- NAVBAR ---------- */
     .navbar {
       margin-bottom: 2rem;
       display: flex;
       justify-content: center;
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
     }
 
     .nav-menu {
@@ -51,10 +51,10 @@
     }
 
     .nav-item {
-      text-decoration: none;
       font-size: 0.85rem;
       text-transform: uppercase;
       color: #6b7280;
+      text-decoration: none;
       transition: color 0.2s;
     }
 
@@ -62,7 +62,34 @@
       color: #111827;
     }
 
-    /* ---------------- LANGUAGE SELECTOR ---------------- */
+    /* ---------- ARTICLE ---------- */
+    article {
+      margin-top: 1rem;
+    }
+
+    .article-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+    }
+
+    .article-meta {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+
+    .article-tag:hover {
+      text-decoration: underline;
+    }
+
+    .prose {
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    /* ---------- LANGUAGE SELECTOR ---------- */
     .lang-selector {
       position: fixed;
       bottom: 1rem;
@@ -72,112 +99,42 @@
 
     .lang-selector select {
       padding: 0.5rem 0.75rem;
-      border: 1px solid #4B5563;
-      border-radius: 0.375rem;
-      background-color: #1F2937;
-      color: #F9FAFB;
       font-size: 0.875rem;
-      outline: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+      color: #f9fafb;
+      background: #1f2937;
+      border: 1px solid #4b5563;
+      border-radius: 0.375rem;
       cursor: pointer;
-      transition: box-shadow .15s ease;
     }
 
     .lang-selector select:focus {
-      box-shadow: 0 0 0 2px #3B82F6;
-    }
-
-    /* ---------------- ARTICLE PAGE (Tailwind replacements) ---------------- */
-    .prose {
-      line-height: 1.75;
-      font-size: 1rem;
-      color: #1f2937;
-      max-width: 100%;
-    }
-
-    .mb-6 {
-      margin-bottom: 1.5rem;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .text-xs {
-      font-size: 0.75rem;
-    }
-
-    .text-gray-500 {
-      color: #6b7280;
-    }
-
-    .inline-flex {
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .items-center {
-      align-items: center;
-    }
-
-    .px-2_5 {
-      padding-left: 0.625rem;
-      padding-right: 0.625rem;
-    }
-
-    .py-0_5 {
-      padding-top: 0.125rem;
-      padding-bottom: 0.125rem;
-    }
-
-    .rounded-full {
-      border-radius: 9999px;
-    }
-
-    .text-indigo-800 {
-      color: #3730a3;
-    }
-
-    .bg-indigo-100 {
-      background-color: #e0e7ff;
-    }
-
-    .font-medium {
-      font-weight: 500;
-    }
-
-    .no-underline, .no-underline:hover {
-      text-decoration: none;
-    }
-
-    .inline-flex a {
-      color: #3730a3;
+      outline: none;
+      box-shadow: 0 0 0 2px #3b82f6;
     }
   </style>
 </head>
-<body class="page">
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <div id="navbar-menu" class="nav-menu">
+
+<body>
+  <div class="page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-menu">
         <a href="/" class="nav-item">Home</a>
         <a href="/blog" class="nav-item">Blog</a>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- INDONESIAN CONTENT -->
-  <div data-lang="id" class="lang-content">
+    <!-- INDONESIAN -->
+    <article data-lang="id" class="lang-content hidden">
+      <h1 class="article-title">Mengapa Segalanya Terlalu Rumit Tanpa Alasan?</h1>
+      <div class="article-meta">October 26, 2025</div>
 
-      <h1 class="text-center mb-6">Mengapa Segalanya Terlalu Rumit Tanpa Alasan?</h1>
-      <div class="text-center text-xs text-gray-500 mb-6">October 26, 2025</div>
-      <div class="text-center">
-        <div class="inline-flex items-center px-2_5 py-0_5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-          <a class="no-underline" href="#">data-analytics</a>
-        </div>
-      </div>
-	  <div class="prose">
-  <p style="text-align: justify;">
+      <div class="prose">
+ <p style="text-align: justify;">
+     Kalau kamu baru masuk ke dunia ini dan merasa kewalahan dengan segala kerumitannya—percaya, itu bukan salahmu. Kamu tidak bodoh karena merasa bingung. Sebagian dari kompleksitas itu memang dirancang untuk membuatmu merasa seperti itu. 
+	   </p>
+	    <p style="text-align: justify;">
     Sejak hari pertama, tumpukan teknologi yang ada terasa lebih mirip penggalian arkeologi daripada arsitektur. Ada banyak alat dan pipeline yang tumpang tindih, skrip lama yang tak seorang pun berani sentuh, dan solusi “sementara” yang entah bagaimana menjadi permanen. Ini bukan sekadar sistem warisan—ini rekayasa yang terlalu rumit secara sengaja. Orang-orang tampaknya bangga saat sistem mereka tidak bisa dipahami orang lain. Dan jujur saja, saya merasa itu memang sengaja dibuat seperti itu.
   </p>
   <p style="text-align: justify;">
@@ -185,9 +142,6 @@ Setiap kuartal ada fitur baru, tapi tidak ada yang membahas soal penghapusan. Se
   </p>
   <p style="text-align: justify;">
     Lama-lama saya sadar apa yang sebenarnya terjadi: kompleksitas itu memang disengaja. Ini bukan utang teknis biasa—ini strategi menjaga posisi. Kalau kamu membangun sistem yang hanya kamu yang bisa urus, kamu sedang membangun parit untuk melindungi dirimu. Dan makin dalam paritnya, makin sulit orang lain mengambil alih. Secara logika terbalik, masuk akal. Tapi juga sangat beracun.
-  </p>
-  <p style="text-align: justify;">
-    Lebih parahnya lagi, pola pikir ini menular ke karyawan baru. Bukannya bertanya “bagaimana menyederhanakan?”, kita malah dilatih untuk beradaptasi dengan kekacauan. Untuk belajar ‘quirks’-nya. Tapi tidak ada yang bertanya: kenapa quirks-nya bisa sebanyak ini? Kenapa kita tidak membangun sistem yang mudah dipahami, mudah dirawat, dan mudah diwariskan?
   </p>
   <p style="text-align: justify;">
     Ada satu kutipan dari almarhum Terry A. Davis—otak brilian di balik TempleOS—yang terus terngiang di kepala saya:
@@ -205,36 +159,36 @@ Setiap kuartal ada fitur baru, tapi tidak ada yang membahas soal penghapusan. Se
     Sayangnya, insinyur semacam itu langka. Dan sering kali tidak dihargai. Karena hasil kerjanya tampak sederhana—padahal dibaliknya ada pemahaman dan disiplin yang mendalam. Menumpuk lapisan demi lapisan itu mudah. Yang sulit adalah menyisihkan semua yang tidak perlu, dan hanya menyisakan yang penting.
   </p>
   <p style="text-align: justify;">
-    Kalau kamu baru masuk ke dunia ini dan merasa kewalahan dengan segala kerumitannya—percaya, itu bukan salahmu. Kamu tidak bodoh karena merasa bingung. Sebagian dari kompleksitas itu memang dirancang untuk membuatmu merasa seperti itu. Triknya adalah jangan menerimanya sebagai kewajaran. Lawan. Tanyakan kenapa. Tantang sistem yang tidak perlu. Bela kesederhanaan, bahkan kalau orang lain menganggapnya kelemahan.
+Triknya adalah jangan menerimanya sebagai kewajaran. Lawan. Tanyakan kenapa. Tantang sistem yang tidak perlu. Bela kesederhanaan, bahkan kalau orang lain menganggapnya kelemahan.
   </p>
   <p style="text-align: justify;">
     Karena pada akhirnya, kesederhanaan bukan tanda keluguan. Ia adalah kekuatan. Dan kalau lebih banyak dari kita mulai menghargainya, mungkin—hanya mungkin—kita bisa mulai membangun sistem yang layak diwariskan.
   </p>
-    </div>
-  </div>
-
-  <!-- ENGLISH CONTENT -->
-  <div data-lang="en" class="lang-content">
-
-      <h1 class="text-center mb-6">Why Is Everything So Needlessly Complex?</h1>
-      <div class="text-center text-xs text-gray-500 mb-6">October 26, 2025</div>
-      <div class="text-center">
-        <div class="inline-flex items-center px-2_5 py-0_5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-          <a class="no-underline" href="#">data-analytics</a>
-        </div>
       </div>
-	      <div class="prose">
-  <p style="text-align: justify;">
-    From day one, the tech stack felt less like architecture and more like archaeology. There were overlapping tools and pipelines, old scripts nobody dared touch, and a patchwork of “temporary” solutions that had somehow become permanent. It wasn’t just legacy systems. It was intentional over-engineering. People seemed to take pride in the fact that no one else could understand the systems they built. And if I’m being honest, it started to feel like they designed it that way on purpose.
+    </article>
+
+    <!-- ENGLISH -->
+    <article data-lang="en" class="lang-content">
+      <h1 class="article-title">Why Is Everything So Needlessly Complex?</h1>
+      <div class="article-meta">October 26, 2025</div>
+
+      <div class="article-tags">
+        <a class="article-tag" href="#">data-analytics</a>
+      </div>
+
+      <div class="prose">
+<p style="text-align: justify;">
+
+ If you’re entering this world for the first time, and you’re overwhelmed by how complicated everything is—trust me, it’s not you. You’re not dumb for feeling confused. Some of this complexity was designed to make you feel that way. 
+      </p>
+	  <p style="text-align: justify;">
+	From day one, the tech stack felt less like architecture and more like archaeology. There were overlapping tools and pipelines, old scripts nobody dared touch, and a patchwork of “temporary” solutions that had somehow become permanent. It wasn’t just legacy systems. It was intentional over-engineering. People seemed to take pride in the fact that no one else could understand the systems they built. And if I’m being honest, it started to feel like they designed it that way on purpose.
   </p>
   <p style="text-align: justify;">
 	  Every quarter brought new features, but no one ever talked about removing anything. There was this silent, unspoken agreement that complication equals importance. If your code was indecipherable, it made you irreplaceable.
   </p>
   <p style="text-align: justify;">
     Eventually, I started to realize what was really going on: the complexity was the point. It wasn’t just technical debt—it was job security. When you create systems that only you can maintain, you’ve built yourself a moat. And the deeper that moat, the harder it is for someone else to come in and take over. In a twisted way, it makes perfect sense. But it’s also completely toxic.
-  </p>
-  <p style="text-align: justify;">
-    What’s even worse is that this mindset trickles down to new hires. Instead of asking how we can simplify, we’re trained to work around the mess. To adapt. To “learn the quirks.” But nobody stops to ask: Why are there so many quirks in the first place? Why aren’t we building systems that are easy to understand, easy to maintain, and easy to pass on?
   </p>
   <p style="text-align: justify;">
     There’s a quote that stuck with me during all this. It’s from the late Terry A. Davis, a controversial but undeniably brilliant mind behind TempleOS. He said:
@@ -252,12 +206,14 @@ Setiap kuartal ada fitur baru, tapi tidak ada yang membahas soal penghapusan. Se
     Unfortunately, those engineers are rare. And often underappreciated. Because their work looks simple—when in reality, it’s the result of deep understanding and discipline. It’s easy to stack abstraction on abstraction. It takes real skill to remove what’s unnecessary and leave behind only what matters.
   </p>
   <p style="text-align: justify;">
-    If you’re entering this world for the first time, and you’re overwhelmed by how complicated everything is—trust me, it’s not you. You’re not dumb for feeling confused. Some of this complexity was designed to make you feel that way. The trick is not to accept it as the norm. Push back. Ask why. Challenge unnecessary systems. Advocate for simplicity even when others treat it like a weakness.
+The trick is not to accept it as the norm. Push back. Ask why. Challenge unnecessary systems. Advocate for simplicity even when others treat it like a weakness.
   </p>
   <p style="text-align: justify;">
     Because in the end, simplicity isn’t naive. It’s powerful. And if more of us start to value it, maybe—just maybe—we can start building systems worth inheriting.
   </p>
-    </div>
+      </div>
+    </article>
+
   </div>
 
   <!-- LANGUAGE SELECTOR -->
@@ -271,22 +227,17 @@ Setiap kuartal ada fitur baru, tapi tidak ada yang membahas soal penghapusan. Se
   <!-- SCRIPT -->
   <script>
     function updateLanguage(lang) {
-      document.querySelectorAll('.lang-content').forEach(div => {
-        div.classList.toggle('hidden', div.getAttribute('data-lang') !== lang);
+      document.querySelectorAll(".lang-content").forEach(el => {
+        el.classList.toggle("hidden", el.dataset.lang !== lang);
       });
     }
 
-    const langSelect = document.getElementById("themeLangSelect");
+    const select = document.getElementById("themeLangSelect");
+    updateLanguage(select.value);
 
-    // Set initial visibility
-    updateLanguage(langSelect.value);
-
-    // Listen for changes
-    langSelect.addEventListener("change", function () {
-      updateLanguage(this.value);
+    select.addEventListener("change", () => {
+      updateLanguage(select.value);
     });
   </script>
 </body>
 </html>
-
-
