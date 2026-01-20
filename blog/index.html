@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog | bagusmw.me</title>
+    <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
+    <style>
+        body {
+            line-height: 1.5;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        nav {
+            margin-bottom: 10px;
+        }
+
+        .lang-selector {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .lang-selector select {
+            padding: .5rem .75rem;
+            border-radius: .375rem;
+            background: #1F2937;
+            color: #F9FAFB;
+            border: 1px solid #4B5563;
+        }
+
+        .name-link {
+            color: black;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #posts-wrapper .post {
+            margin-bottom: 0px;
+        }
+
+        #posts-wrapper .post-title {
+            margin: 0;
+            padding: 2px 0;
+        }
+    </style>
+</head>
+
+<body class="page">
+
+    <nav>
+        <a style="margin-right: 10px;" href="/" class="name-link">Bagus Muhammad Wijaksono</a>
+        |&nbsp;&nbsp;
+        <a style="margin-right: 10px;" href="/blog">Blog</a>
+        <a style="margin-right: 10px;" href="https://linkedin.com/in/">LinkedIn</a>
+        <a style="margin-right: 10px;" href="https://github.com/">GitHub</a>
+    </nav>
+
+    <div id="posts-wrapper"></div>
+
+    <div class="lang-selector">
+        <select id="themeLangSelect">
+            <option value="en">English</option>
+            <option value="id">Indonesian</option>
+        </select>
+    </div>
+
+    <script defer>
+        const posts = {
+            en: [
+                { title: "2025-05-02 - Dostoevsky's Summary of the Human Race", link: "brothers-karamazov" },
+                { title: "2025-03-12 - Silence Might Be the Smartest Strategy", link: "three-body-problem" },
+                { title: "2025-02-06 - Turned Kakeibo Budgeting Simpler", link: "kakeibo" },
+                { title: "2024-12-13 - Too-Many-Web-Servers Problem", link: "too-many-web-servers" },
+                { title: "2024-12-01 - You Just Need a .db File", link: "sqlite" },
+                { title: "2024-11-05 - Everything So Needlessly Complex", link: "unnecessary-complexity" },
+                { title: "2021-03-20 - A Moral Void in Six Voices", link: "confessions" }
+            ],
+            id: [
+                { title: "2025-05-02 - Ringkasan Dostoevsky tentang Umat Manusia", link: "brothers-karamazov" },
+                { title: "2025-03-12 - Diam Mungkin Strategi Paling Cerdas", link: "three-body-problem" },
+                { title: "2025-02-06 - Menyederhanakan Anggaran Kakeibo", link: "kakeibo" },
+                { title: "2024-12-13 - Masalah Terlalu Banyak Web Server", link: "too-many-web-servers" },
+                { title: "2024-12-01 - Yang kamu butuhin cuma file .db", link: "sqlite" },
+                { title: "2024-11-05 - Segalanya Terlalu Rumit", link: "unnecessary-complexity" },
+                { title: "2021-03-20 - Kehampaan Moral dalam Enam Suara", link: "confessions" }
+            ]
+        };
+
+        const langSelect = document.getElementById("themeLangSelect");
+        const postsWrapper = document.getElementById("posts-wrapper");
+
+        function renderPosts(lang = "en") {
+            const list = posts[lang];
+            postsWrapper.innerHTML = list.map(p => `
+            <div class="post">
+                <p class="post-title">
+                    <a href="${p.link}">${p.title}</a>
+                </p>
+            </div>
+        `).join("");
+        }
+
+        langSelect.addEventListener("change", () => {
+            renderPosts(langSelect.value);
+        });
+
+        renderPosts("en");
+    </script>
+
+</body>
+
+</html>

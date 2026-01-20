@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You Just Need a .db File</title>
+
+  <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
+  <link rel="stylesheet" href="/a/style.css">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-menu">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/blog" class="nav-item">Blog</a>
+      </div>
+    </nav>
+
+    <!-- INDONESIAN -->
+    <article data-lang="id" class="lang-content hidden">
+      <h1 class="article-title">Yang kamu butuhin cuma file .db</h1>
+      <div class="article-meta">Desember 1, 2024</div>
+      <img src="/i/266ad113b88266aa146586c529e0b5b8845a95a232ab3a8391c08bd711187c95.webp" alt="Blog">
+      <div class="prose">
+
+        <p style="text-align: justify;">Baru aja ngabisin 30 menit ngatur users, roles, dan permissions. Untuk apa?
+          Aplikasi
+          jurnal yang hanya akan dipakai sendiri.</p>
+        <p style="text-align: justify;">Kenapa kita suka menyusahkan diri sendiri?</p>
+        <p style="text-align: justify;">Di titik tertentu, ngerasa banyak developer terjebak dalam pola pikir aneh ini —
+          bahwa setiap proyek, sekecil
+          apa pun, harus disiapkan seolah-olah akan IPO kuartal depan. Database di cloud. Lapisan autentikasi.
+          Connection
+          pooling. Load balancer. Semua lengkap — padahal aplikasinya cuma pelacak resep atau alat pengingat untuk
+          menyiram tanaman.</p>
+        <p style="text-align: justify;">Lalu saya teringat SQLite.</p>
+        <p style="text-align: justify;">Kamu tidak perlu “menyalakan” instance SQLite. Tidak perlu membuat pengguna atau
+          mengatur kata sandi. Kamu
+          cukup…
+          membuat sebuah file. Itu saja. Tulis sedikit SQL, dan data-mu hidup dalam file .db itu seperti dunia kecil
+          yang
+          berdiri sendiri. Tanpa daemon. Tanpa socket jaringan. Tanpa firewall. Tanpa stres.</p>
+        <p style="text-align: justify;">Dan yang paling keren? Itu sudah cukup. Lebih dari cukup.</p>
+        <p style="text-align: justify;">Ada kesalahpahaman aneh bahwa SQLite bukan “database sungguhan” — bahwa itu
+          hanya untuk prototipe atau
+          pengembangan lokal. Tapi jujur saja: sebagian besar proyek kita yang dikerjakan sendirian atau untuk internal
+          memang prototipe, dan memang berjalan secara lokal. Jadi kenapa tidak pakai alat yang memang dibuat untuk itu?
+        </p>
+        <p style="text-align: justify;">“Tapi gimana soal concurrency?” selalu saja ada yang bertanya. Dan ya, SQLite
+          memang tidak dirancang untuk
+          10.000
+          penulisan bersamaan per detik. Tapi apakah kamu benar-benar sedang membangun sesuatu yang butuh itu? Sering
+          kali, saya adalah satu-satunya pengguna proyek saya. Kadang-kadang dua atau tiga orang saja. SQLite bisa
+          menangani itu dengan baik. Bacaannya sepenuhnya bisa berjalan bersamaan, dan kalau kamu aktifkan mode WAL,
+          penulisan pun jadi jauh lebih baik dari yang kamu bayangkan.</p>
+        <p style="text-align: justify;">Sejujurnya, untuk kebanyakan hal yang kita buat di akhir pekan atau larut malam
+          — proyek passion, dashboard
+          internal, utilitas kecil — SQLite bukan cuma praktis. Tapi sempurna. Ia ikut dengan aplikasimu, mudah
+          dicadangkan, dan tidak butuh konfigurasi apa pun. Kamu bisa menyimpannya di repo Git dan lupa bahwa dia ada di
+          sana.</p>
+        <p style="text-align: justify;">Jadi sekarang, saat saya memulai proyek, saya tanya ke diri sendiri: apakah saya
+          sedang membangun Slack
+          berikutnya, atau cuma sesuatu yang berguna buat saya sendiri? Kalau jawabannya yang kedua — dan 9 dari 10
+          kali,
+          memang begitu — saya skip semua drama server. Saya ambil SQLite dan langsung mulai kerja.</p>
+        <p style="text-align: justify;">Karena kadang, kamu tidak butuh server database.</p>
+        <p style="text-align: justify;">Kadang, kamu cuma butuh sebuah file .db.</p>
+      </div>
+    </article>
+
+    <!-- ENGLISH -->
+    <article data-lang="en" class="lang-content">
+      <h1 class="article-title">You Just Need a .db File</h1>
+      <div class="article-meta">December 1, 2024</div>
+      <img src="/i/266ad113b88266aa146586c529e0b5b8845a95a232ab3a8391c08bd711187c95.webp" alt="Blog">
+      <div class="prose">
+        <p style="text-align: justify;">I’d just spent 30 minutes setting up users, roles, and permissions. For what? A
+          journaling app that only I
+          was going to use.</p>
+
+        <p style="text-align: justify;">Why do we do this to ourselves?</p>
+
+        <p style="text-align: justify;">At some point, I think many developers fall into this weird trap where every
+          project, no matter how small,
+          has to be set up like it’s going to IPO next quarter. Cloud-hosted databases. Auth layers. Connection pooling.
+          Load balancers. The whole nine yards — even when the actual application is something like a recipe tracker or
+          a tool to remind me to water my plants.</p>
+
+        <p style="text-align: justify;">That’s when I remembered SQLite.</p>
+
+        <p style="text-align: justify;">You don’t “spin up” an SQLite instance. You don’t create users or manage
+          passwords. You just… create a file.
+          That’s it. You write some SQL, and your data lives inside that .db file like a little self-contained world. No
+          daemons. No network sockets. No firewalls. No stress.</p>
+
+        <p style="text-align: justify;">And the best part? It’s enough. More than enough.</p>
+
+        <p style="text-align: justify;">There’s this weird misconception that SQLite isn’t “real” — that it’s only for
+          prototypes or local
+          development. But let’s be honest: most of our solo or internal projects are prototypes, and they do run
+          locally. So why not embrace the tool that’s actually built for that?</p>
+
+        <p style="text-align: justify;">“Yeah, but what about concurrency?” someone always says. And sure, SQLite isn’t
+          built for 10,000 simultaneous
+          writes per second. But are you really building something that needs that? More often than not, I’m the only
+          user of my project. Sometimes two or three people tops. SQLite handles that just fine. Reads are fully
+          concurrent, and if you flip on WAL mode, even writes perform better than you’d expect.</p>
+
+        <p style="text-align: justify;">Honestly, for most of the stuff we build on weekends or late nights — passion
+          projects, internal dashboards,
+          little utilities — SQLite is not just convenient. It’s perfect. It travels with your app, it’s easy to back
+          up, and there’s zero setup. You can drop it into a Git repo and forget it even exists.</p>
+
+        <p style="text-align: justify;">So now, when I start a project, I ask myself: am I building the next Slack, or
+          just something useful for me?
+          If it’s the latter — and 9 times out of 10, it is — I skip the server dance. I grab SQLite and get to work.
+        </p>
+
+        <p style="text-align: justify;">Because sometimes, you don’t need a database server.</p>
+
+        <p style="text-align: justify;">Sometimes, you just need a .db file.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- LANGUAGE SELECTOR -->
+  <div class="lang-selector">
+    <select id="themeLangSelect">
+      <option value="en">English</option>
+      <option value="id">Indonesian</option>
+    </select>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function updateLanguage(lang) {
+      document.querySelectorAll(".lang-content").forEach(el => {
+        el.classList.toggle("hidden", el.dataset.lang !== lang);
+      });
+    }
+
+    const select = document.getElementById("themeLangSelect");
+    updateLanguage(select.value);
+
+    select.addEventListener("change", () => {
+      updateLanguage(select.value);
+    });
+  </script>
+</body>
+
+</html>

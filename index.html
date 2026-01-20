@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagus Muhammad Wijaksono</title>
+    <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
+    <style>
+        body {
+            line-height: 1.5;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        nav a {
+            margin-right: 10px;
+        }
+
+        .name-link {
+            color: black;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary i {
+            cursor: default;
+            /* normal cursor by default */
+        }
+
+        details>summary i:hover {
+            cursor: pointer;
+            /* pointer only when hovered */
+        }
+
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="name-link">Bagus Muhammad Wijaksono</a>
+            |&nbsp;&nbsp;
+            <a href="/blog">Blog</a>
+            <a href="https://linkedin.com">LinkedIn</a>
+            <a href="https://github.com/baguswjksn">GitHub</a>
+        </nav>
+    </header>
+
+    <main>
+        <p>
+            Software engineer with 2+ years of experience in multi-language development on NIX systems, with a strong
+            focus on back-end.
+            Reach me at <a href="mailto:baguswjksn@proton.me">baguswjksn@proton.me</a>.
+        </p>
+        <p>Some things about me:</p>
+        <ul>
+            <li>
+                Associate Degree in Informatics Engineering
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        Current work and affiliations.
+                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+                    </summary>
+                    <p>
+                        Currently supporting operations as a vendor on a charging and incentive platform for an Internet
+                        Service Provider, working closely under the head office operations team (under NDA).
+                    </p>
+
+                    <p>Previously at Telkom Corporate University Center as a Full Stack Web Developer Intern from
+                        September 2023 to December 2023, where I helped build a web application for crowd safety
+                        detection.</p>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        Projects and open-source work.
+                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+                    </summary>
+                    <ul>
+                        <li>
+                            <strong>
+                                <a href="https://github.com/baguswjksn/supreme-octo-barnacle">
+                                    supreme-octo-barnacle
+                                </a>
+                            </strong>
+                            – An income and expense tracking Telegram bot
+                        </li>
+                        <li>
+                            <strong>
+                                <a href="https://github.com/baguswjksn/ubiquitous-lamp">
+                                    ubiquitous-lamp
+                                </a>
+                            </strong>
+                            – library for managing books, quotes, citations, and bookmarks.
+                        </li>
+                        <li>
+                            <strong>
+                                <a href="https://github.com/baguswjksn/crispy-palm-tree">
+                                    crispy-palm-tree
+                                </a>
+                            </strong>
+                            – A stupidly simple, extremely fast, multimedia file server.
+                        </li>
+                    </ul>
+
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        Last 5 years achievements.
+                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+                    </summary>
+                    <ul>
+                        <li>
+                            Graduated with cum laude honors in 2024
+                        </li>
+                        <li>
+                            Secured the position as a Cybersecurity Category Finalist at KMIPN V 2023
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                Currently exploring my interests in drawing, and reading books.
+            </li>
+        </ul>
+        <p>Principles</p>
+        <ul>
+            <li>Simplicity over complexity.</li>
+            <li>Results are what truly matter in the end.</li>
+            <li>Do whatever it takes, even if it means using unorthodox methods.</li>
+        </ul>
+        <p>Creative work:</p>
+        <p>
+            I occasionally draw and post my work on
+            <a href="#">Pixiv</a>.
+        </p>
+        <script>
+            // Select all <summary> elements with an <i> inside
+            document.querySelectorAll('details summary').forEach(summary => {
+                const expandIcon = summary.querySelector('i');
+
+                // Prevent default toggle when clicking the summary
+                summary.addEventListener('click', (e) => {
+                    e.preventDefault(); // stop summary from toggling
+                });
+
+                // Toggle <details> only when the <i> is clicked
+                if (expandIcon) {
+                    expandIcon.addEventListener('click', (e) => {
+                        const details = summary.parentElement;
+                        details.open = !details.open; // manually toggle
+                    });
+                }
+            });
+        </script>
+
+    </main>
+</body>
+
+</html>
