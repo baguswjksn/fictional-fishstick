@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Somehow, This Worked</title>
+
+    <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
+    <link rel="stylesheet" href="/a/style.css">
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="nav-menu">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/blog" class="nav-item">Blog</a>
+            </div>
+        </nav>
+
+        <!-- INDONESIAN -->
+        <article data-lang="id" class="lang-content hidden">
+            <h1 class="article-title">Entah Kenapa, Ini Berhasil</h1>
+            <div class="article-meta">28 Januari, 2026</div>
+
+            <div class="prose">
+                <p style="text-align: justify;">
+                    Bertahun-tahun sering banget lihat memenya — anak 5 tahun yang aneh, berisik, agak bodoh,
+                    dengan ekspresi super serius saat mengucapkan hal-hal yang nggak masuk akal.
+                </p>
+
+                <p style="text-align: justify;">
+                    Manga ini nggak berusaha mengesankan pembacanya. Nggak ada plot yang harus diingat, nggak ada
+                    manipulasi emosi, nggak ada “tunggu sampai chapter 37 baru kerasa seru.” Isinya cuma seorang anak
+                    kecil yang mengalami dunia untuk pertama kalinya — AC, suara jangkrik, toko kelontong — seolah-olah
+                    realitas baru saja selesai di-install. Dan entah kenapa, itu sudah cukup.
+                </p>
+
+                <p style="text-align: justify;">
+                    Yang paling ngejutin gimana disengajanya kesederhanaan itu kerasa. Manga ini nggak
+                    menuntut perhatian. Dia menyerapnya secara perlahan. Kamu nggak baca secara maraton. Kamu
+                    mengalir bersamanya. Halaman demi halaman, kebisingan di kepala berkurang.
+                </p>
+
+                <p style="text-align: justify;">
+                    Yotsuba sendiri berisik, sering salah paham tentang semuanya, dan tetap percaya diri. Dia ngajuin
+                    pertanyaan-pertanyaan bodoh, menarik kesimpulan liar, dan ngubah hal-hal biasa jadi peristiwa
+                    besar. Ini emang lucu, tapi juga membumi. Dia dia ngingetin gimana dunia terlihat sebelum semuanya
+                    berubah menjadi daftar tugas.
+                </p>
+
+                <p style="text-align: justify;">
+                    Beli volume pertamanya ternyata keputusan yang tepat. Bukan karena manga ini mengubah hidupku,
+                    tapi justru karena nggak mencoba. Ini jenis buku yang kamu baca saat lelah, burnout,
+                    atau sudah terlalu penuh memproses informasi. Nggak ada meta. Nggak ada ironi. Hanya momen-momen
+                    kecil yang dieksekusi dengan sangat baik.
+                </p>
+
+                <p style="text-align: justify;">
+                    memang itu yang paling dibutuhkan.
+                </p>
+            </div>
+
+        </article>
+
+        <!-- ENGLISH -->
+        <article data-lang="en" class="lang-content">
+            <h1 class="article-title">Somehow, This Worked</h1>
+            <div class="article-meta">January 28, 2026</div>
+
+            <div class="prose">
+                <p style="text-align: justify;">
+                    I’d seen the memes for years — that weird, loud, slightly stupid 5-year-old kid with dead-serious
+                    expressions saying nonsense.
+                </p>
+                <p style="text-align: justify;">
+                    The manga doesn’t try to impress. There’s no plot to keep track of, no emotional manipulation, no
+                    “wait until chapter 37 when it gets good.” It’s just a kid experiencing the world for the first time
+                    — air conditioners, cicadas, grocery stores — like reality itself just finished installing. And
+                    somehow, that’s enough.
+                </p>
+                <p style="text-align: justify;">
+                    What surprised me most is how intentional the simplicity feels. this manga doesn’t demand attention.
+                    It gently absorbs it. You don’t binge it. You drift through it. Page by page, the noise drops.
+                </p>
+
+                <p style="text-align: justify;">
+                    Yotsuba herself is loud, wrong about everything, and completely confident anyway. She asks dumb
+                    questions, draws wild conclusions, and turns ordinary objects into major events. It’s funny, sure —
+                    but it’s also grounding. It reminds you what the world looks like before it becomes a checklist.
+                </p>
+                <p style="text-align: justify;">
+                    Buying the first volume ended up being a great decision. Not because it changed my life, but because
+                    it didn’t try to. It’s the kind of book you read when you’re tired, burned out, or just done
+                    processing information. No meta. No irony. Just small moments done perfectly.
+                </p>
+                <p style="text-align: justify;">
+                    Sometimes that’s exactly what you need.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="lang-selector">
+        <select id="themeLangSelect">
+            <option value="en">English</option>
+            <option value="id">Indonesian</option>
+        </select>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function updateLanguage(lang) {
+            document.querySelectorAll(".lang-content").forEach(el => {
+                el.classList.toggle("hidden", el.dataset.lang !== lang);
+            });
+        }
+
+        const select = document.getElementById("themeLangSelect");
+        updateLanguage(select.value);
+
+        select.addEventListener("change", () => {
+            updateLanguage(select.value);
+        });
+    </script>
+</body>
+
+</html>
