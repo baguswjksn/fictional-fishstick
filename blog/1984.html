@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Two plus two equals five</title>
+
+    <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
+    <link rel="stylesheet" href="/a/style.css">
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="nav-menu">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/blog" class="nav-item">Blog</a>
+            </div>
+        </nav>
+
+        <!-- INDONESIAN -->
+        <article data-lang="id" class="lang-content hidden">
+            <h1 class="article-title">Dua tambah dua sama dengan lima</h1>
+            <div class="article-meta">6 November, 2025</div>
+
+            <div class="prose">
+                <p style="text-align: justify;">
+                    Baru aja selesai baca 1984 karya George Orwell, buku yang sebenernya aku pinjem secara nggak
+                    sengaja dari temen kerja. Waktu itu cuma nyebut judulnya doang, eh ternyata dia punya bukunya.
+                    Awalnya nggak ada niat kuat buat baca, tapi karena bukunya udah di tangan, ya sekalian aja. Proses
+                    bacanya makan waktu hampir tiga minggu.
+                </p>
+
+                <p style="text-align: justify;">
+                    Sebelum baca, sering denger orang bilang 1984 itu klasik wajib baca dengan pesan mendalam soal
+                    masa depan. Ekspektasiku lumayan tinggi. Kenyataannya, buku ini banyak banget ngejelasin latar
+                    dunia, sistem, dan aturan-aturan di dalamnya secara detail. Jujur aja, di beberapa bagian agak
+                    bingung sama urgensi tokoh utamanya, dan pacing-nya kerasa lambat. tipe buku yang lebih ke maksa
+                    buat mikir.
+                </p>
+
+                <p style="text-align: justify;">
+                    Tapi setelah idenya mulai nyantol, di situ kekuatan 1984 kerasa banget. Buku ini lebih mirip ramalan
+                    daripada fiksi. Konsep kayak manipulasi kebenaran, pengawasan terus-menerus, dan doublethink
+                    digambarin sebagai sesuatu yang harus dilawan, tapi ironisnya banyak yang terasa familiar. Kalau
+                    dibaca dari sudut pandang negara dunia ketiga—termasuk tempat ku tinggal—beberapa hal ekstrem di
+                    novel ini justru udah kejadian, cuma dibungkus dengan istilah yang beda.
+                </p>
+
+                <p style="text-align: justify;">
+                    Itulah yang membuat 1984 tetap relevan sampai sekarang. Orwell mungkin nggak meramalkan masa depan
+                    secara tepat, tapi ia paham gimana kekuasaan dan manusia bekerja. Bukunya memang
+                    tegas—peringatannya jelas: kalau orang berhenti berpikir kritis, realitas bisa dikendalikan sesuka
+                    hati. Meski berat dan kadang membuat nggak nyaman, 1984 tetap layak dibaca.
+                </p>
+            </div>
+
+        </article>
+
+        <!-- ENGLISH -->
+        <article data-lang="en" class="lang-content">
+            <h1 class="article-title">Two plus two equals five</h1>
+            <div class="article-meta">November 6, 2025</div>
+
+            <div class="prose">
+                <p style="text-align: justify;">
+                    Just finished reading 1984 by George Orwell, a book I randomly ended up borrowing from a coworker
+                    after casually mentioning it in conversation. I didn’t even plan to read it at first, but once I had
+                    it in my hands, it felt like one of those books you’re supposed to read at least once in your life.
+                    It took me almost three weeks to finish.
+                </p>
+                <p style="text-align: justify;">
+                    Before reading it, I’d heard people constantly calling 1984 a “must-read classic,” full of deep
+                    warnings about the future. Going in, I expected some kind of mind-blowing revelation. Instead, the
+                    novel spends a lot of time explaining its world, its systems, and its background in extreme detail.
+                    At times, I honestly struggled to understand the urgency of the main character’s actions, and the
+                    pacing felt slow. It’s tries to corner you into thinking.
+                </p>
+                <p style="text-align: justify;">
+                    But once the ideas settle, that’s where the book hits hard. 1984 feels less like fiction and more
+                    like a long, uncomfortable prophecy. Concepts like doublethink, manipulated truth, and constant
+                    surveillance are presented as things we should resist, yet they feel oddly familiar. Reading it from
+                    a third-world country perspective makes the experience even stranger—some of the “extreme” ideas in
+                    the novel already exist in everyday life, just normalized and renamed.
+                </p>
+
+                <p style="text-align: justify;">
+                    That’s what makes 1984 still relevant today. Orwell may not have predicted the future exactly, but
+                    he understood how power and people work. The book is straightforward—its warning is clear: when
+                    people stop thinking critically, reality can be shaped at will. Though heavy and sometimes
+                    uncomfortable, 1984 is still worth reading.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="lang-selector">
+        <select id="themeLangSelect">
+            <option value="en">English</option>
+            <option value="id">Indonesian</option>
+        </select>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function updateLanguage(lang) {
+            document.querySelectorAll(".lang-content").forEach(el => {
+                el.classList.toggle("hidden", el.dataset.lang !== lang);
+            });
+        }
+
+        const select = document.getElementById("themeLangSelect");
+        updateLanguage(select.value);
+
+        select.addEventListener("change", () => {
+            updateLanguage(select.value);
+        });
+    </script>
+</body>
+
+</html>
