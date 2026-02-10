@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Dodo’s Mistake</title>
+
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
+    <link rel="stylesheet" href="https://bagusmw.me/a/style.css">
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="nav-menu">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/blog" class="nav-item">Blog</a>
+            </div>
+        </nav>
+
+        <!-- INDONESIAN -->
+        <article data-lang="id" class="lang-content hidden">
+            <h1 class="article-title">Kesalahan Sang Dodo</h1>
+            <div class="article-meta">11 Februari, 2026</div>
+
+            <div class="prose">
+                <p style="text-align: justify;">
+                    Dalam buku kedua dari trilogi <i>Three-Body Problem</i>, umat manusia dipaksa menghadapi kemungkinan
+                    yang mengerikan:
+                    bahwa kehidupan cerdas tidak menyembunyikan dirinya karena sifatnya yang baik, melainkan karena ia
+                    harus bersembunyi.
+                    “Hutan gelap” menjadi metafora yang mencekam: <span
+                        style="background-color: rgb(255, 255, 200);">setiap peradaban
+                        adalah pemburu, bersenjata dan senyap, menunggu sedikit saja suara yang dapat mengungkapkan
+                        keberadaannya.</span>
+                </p>
+
+                <p style="text-align: justify;">
+                    Bayangkan burung dodo, burung terkenal yang bergerak lamban dan tidak pernah mengembangkan
+                    pertahanan karena tidak
+                    memiliki pemangsa. Selama ribuan tahun, isolasi membuat strategi itu sepenuhnya masuk akal—sampai
+                    akhirnya tidak lagi.
+                    Saat para pelaut Eropa tiba, pertaruhan evolusioner dodo tersingkap: ia tidak bisa melarikan diri,
+                    tidak bisa
+                    melawan, dan tidak mampu beradaptasi dengan cukup cepat.
+                </p>
+
+                <p style="text-align: justify;">
+                    Jika hipotesis hutan gelap itu benar, mungkinkah manusia akan bernasib seperti dodo? akankah kita
+                    bersembunyi jika bisa?
+                    Akankah kita menyerang lebih dulu jika terpaksa?
+                </p>
+
+                <p style="text-align: justify;">
+                    Halaman-halaman terakhir membuat saya mempertanyakan arah evolusi spesies kita sendiri. Apakah kita
+                    berkembang cukup
+                    cepat untuk bertahan hidup di alam semesta di mana keheningan adalah keselamatan? Ataukah kita
+                    seperti dodo—terkutuk
+                    oleh ketiadaan tekanan eksistensial, tidak siap menghadapi bahaya yang belum dapat kita sadari?
+                    Kisah ini membuat
+                    Anda menatap kosmos dengan cara yang berbeda, dengan kesadaran baru bahwa alam semesta bisa
+                    sekaligus indah,
+                    cemerlang, dan mengerikan.
+                </p>
+
+            </div>
+        </article>
+
+        <!-- ENGLISH -->
+        <article data-lang="en" class="lang-content">
+            <h1 class="article-title">The Dodo’s Mistake</h1>
+            <div class="article-meta">February 11, 2026</div>
+            <div class="prose">
+                <p style="text-align: justify;">
+                    In this second book of the <i>Three-Body Problem</i>
+                    trilogy, humanity is forced to confront the terrifying possibility that intelligent life doesn’t
+                    broadcast itself not because it’s benevolent, but because it must hide. The “dark forest” becomes a
+                    chilling metaphor: <span style="background-color: rgb(255, 255, 200);">every civilization is a
+                        hunter, armed and silent, waiting for the slightest noise that could reveal its location.</span>
+                </p>
+
+                <p style="text-align: justify;">
+                    Consider the dodo, that famously unhurried bird which never evolved defenses because it had no
+                    predators. For
+                    thousands of years, isolation made that strategy perfectly reasonable—until it didn’t. The moment
+                    European
+                    sailors arrived, the dodo’s evolutionary gamble was exposed: it could not flee, could not fight, and
+                    could not
+                    adapt quickly enough.
+                </p>
+
+                <p style="text-align: justify;">
+                    If the dark forest hypothesis is true, could humans end up like the dodo? would we hide if we could?
+                    Would we strike first if we had to?
+                </p>
+
+                <p style="text-align: justify;">
+                    The final pages made me question the very trajectory of our species. Are we evolving quickly enough
+                    to survive in a universe where silence is safety? Or are we like the dodo—doomed by the absence of
+                    existential pressure, unprepared for dangers we cannot yet perceive? It leaves you staring at the
+                    cosmos differently, newly aware that the universe can be beautiful, brilliant, and terrifying all at
+                    once.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="lang-selector">
+        <select id="themeLangSelect">
+            <option value="en">English</option>
+            <option value="id">Indonesian</option>
+        </select>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function updateLanguage(lang) {
+            document.querySelectorAll(".lang-content").forEach(el => {
+                el.classList.toggle("hidden", el.dataset.lang !== lang);
+            });
+        }
+
+        const select = document.getElementById("themeLangSelect");
+        updateLanguage(select.value);
+
+        select.addEventListener("change", () => {
+            updateLanguage(select.value);
+        });
+    </script>
+</body>
+
+</html>
