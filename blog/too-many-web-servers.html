@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Web Servers Problem</title>
 
-    <link rel="icon" type="image/svg+xml" href="/i/icon.svg" />
-    <link rel="stylesheet" href="/a/style.css">
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
+    <link rel="stylesheet" href="https://bagusmw.me/a/style.css">
 </head>
-
 <body>
     <div class="page">
-
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="nav-menu">
@@ -20,7 +17,6 @@
                 <a href="/blog" class="nav-item">Blog</a>
             </div>
         </nav>
-
         <!-- INDONESIAN -->
         <article data-lang="id" class="lang-content hidden">
             <h1 class="article-title">Masalah Web Server</h1>
@@ -28,70 +24,42 @@
 
             <div class="prose">
                 <p style="text-align: justify;">Kita punya
-                    banyak sekali server web. Beberapa untuk produksi, lainnya untuk
-                    pra-produksi, dan masing-masing punya keunikan sendiri. Di atas itu semua, sistem
-                    yang berbeda
-                    memerlukan tingkat akses yang berbeda pula—ada yang hanya untuk admin, ada yang untuk tester atau
-                    developer. Yang
-                    membuat makin rumit, URL-URL tersebar di berbagai dokumen internal, pesan chat, dan kadang-kadang di
-                    bookmark
-                    browser. Sungguh kacau.
+                    banyak sekali server web. Beberapa untuk produksi, lainnya untuk pra-produksi, dan masing-masing
+                    punya keunikan sendiri. Di atas itu semua, yang membuat makin rumit,
+                    URL-URL tersebar di berbagai dokumen internal, pesan chat, dan kadang-kadang di
+                    bookmark browser.
                 </p>
+
                 <p style="text-align: justify;">Pada awalnya, saya mencoba menggunakan bookmark untuk mengatur semuanya,
-                    tetapi dengan cepat saya
-                    sadar itu tidak
-                    cukup. Bookmark bergantung pada lingkungan browser—beberapa server internal kami hanya bisa diakses
-                    melalui browser
+                    tetapi dengan cepat saya sadar itu tidak cukup. Bookmark bergantung pada lingkungan browser—beberapa
+                    server internal kami hanya bisa diakses melalui browser
                     aman tertentu. Jika saya membuka tautan yang salah di browser yang salah, saya bisa mendapat error
-                    atau bahkan lebih
-                    parah lagi, sesi tidak bisa dimulai sama sekali. Itu tidak bisa diandalkan. Gesekan terus-menerus,
-                    dan sejujurnya,
-                    membuat proses onboarding sangat menyulitkan.</p>
-                <p style="text-align: justify;">Jadi, saya memutuskan untuk membangun sesuatu yang lebih baik. Saya
-                    membuat sebuah portal akses web
-                    terpadu, sepenuhnya ditulis dalam HTML dan CSS polos—tidak ada yang mewah, hanya
-                    sederhana dan solid. Bayangkan seperti dashboard, tetapi terinspirasi dari estetika minimalis
-                    imageboard
-                    seperti <a href="https://en.wikipedia.org/wiki/4chan">4chan</a>. Saya suka ide memisahkan hal-hal
-                    secara visual dan konseptual
-                    berdasarkan aplikasi
-                    dan tipe operasi, persis seperti bagaimana thread dipecah berdasarkan topik.
-                </p> <img src="/i/e5284689a95bd5a0c2bcb7367de7a8673a7a55b122586a0539d4dfb8fa90dcdf.webp"
-                    alt="4chan Boards">
-                <p style="text-align: justify;">Alih-alih mencari di antara bookmark atau wiki, sekarang saya cukup
-                    membuka satu halaman, klik grup
-                    aplikasi yang
-                    relevan—misalnya, "Layanan Pembayaran – Prod" atau "User API – Preprod"—dan langsung menuju halaman
-                    login, dengan
-                    keyakinan bahwa itu adalah lingkungan yang benar dan browser saya kompatibel. Saya bahkan menandai
-                    lingkungan mana
-                    yang membutuhkan peran akses tertentu, seperti akun admin atau testing. Desainnya sengaja dibuat
-                    minim
-                    rangsangan dan fungsional, yang membantu saya tetap fokus.
+                    atau bahkan lebih parah lagi, sesi tidak bisa dimulai sama sekali.
                 </p>
-                <img src="/i/68ad767d3e44ed77005f52e43af97c72d8f173d6f0fc193d84541c1a018dc1ea.webp" alt="Board">
+
+                <p style="text-align: justify;"><span style="background-color: rgb(255, 255, 200);">Jadi, saya
+                        memutuskan untuk membangun sesuatu yang lebih baik.</span> Saya
+                    membuat sebuah portal akses web
+                    terpadu, sepenuhnya ditulis dalam HTML
+                    sederhana. Bayangkan seperti dashboard, tetapi terinspirasi dari estetika minimalis
+                    imageboard seperti <a href="https://en.wikipedia.org/wiki/4chan">4chan</a>.
+                </p>
+
+                <p style="text-align: justify;">Alih-alih mencari di antara bookmark, sekarang saya cukup
+                    membuka satu halaman, klik grup aplikasi yang relevan—misalnya, "Layanan Pembayaran – Prod" atau
+                    "User API – Preprod"—dan langsung menuju halaman
+                    login.
+                </p>
+                <img src="https://bagusmw.me/i/68ad767d3e44ed77005f52e43af97c72d8f173d6f0fc193d84541c1a018dc1ea.webp"
+                    alt="Board">
                 <p style="text-align: justify;">Sejujurnya, ini juga sesuai dengan cara kerja otak saya. Meski enggan
                     mengakuinya, saya bukan
                     seorang
                     multitasker yang hebat. Semakin banyak beban kognitif yang bisa saya hilangkan, semakin
-                    baik. Saya tidak mau
-                    <em>mengingat</em> nama server, lingkungan, aturan akses, atau browser mana yang harus digunakan.
-                    Saya hanya ingin
-                    menyelesaikan pekerjaan saya.
+                    baik.
                 </p>
-
-                <p style="text-align: justify;">Portal ini berubah menjadi salah satu alat paling membantu dalam alur
-                    kerja harian saya. Apa yang
-                    awalnya merupakan
-                    solusi pribadi, kini menjadi sesuatu yang mulai diminta oleh rekan-rekan kerja. Ini ringan, aman
-                    (karena hanya HTML statis
-                    lokal), dan sangat efektif.</p>
-                <img src="/i/96f5fc85bc9db329806237b8fb1831341f9c212217887de269fc65d535cd5e00.webp" alt="Board">
-                <p style="text-align: justify;">Terkadang, solusi terbaik adalah yang merangkum segala hal ke dalam
-                    bentuk paling esensial.</p>
             </div>
         </article>
-
         <!-- ENGLISH -->
         <article data-lang="en" class="lang-content">
             <h1 class="article-title">Web Servers Problem</h1>
@@ -103,53 +71,38 @@
                     for pre-production, and each had its own quirks. On top of that, different systems
                     required different levels of access—some were admin-only, others for testers or developers. To make
                     it more complicated, the URLs were scattered across internal docs, chat messages, and the occasional
-                    browser bookmark. It was chaos.</p>
+                    browser bookmark.</p>
 
                 <p style="text-align: justify;">At first, I tried using bookmarks to organize the mess, but it quickly
                     became clear that wasn’t
                     enough. Bookmarks rely on the browser environment—some of our internal servers only work with
                     specific secure browsers. If I opened the wrong link in the wrong browser, I’d either get an error
-                    or worse, be told the session couldn’t even start. It just didn’t scale. The friction was constant,
-                    and frankly, it made onboarding painful.</p>
-
-                <p style="text-align: justify;">And so, I decided to build something better. I created a unified
-                    web access portal,
-                    completely written in plain HTML and CSS—nothing fancy, just solid and simple.
-                    Think of it like a dashboard, but inspired by the minimalist aesthetic of imageboards like
-                    <a href="https://en.wikipedia.org/wiki/4chan">4chan</a>. I liked the idea of separating things
-                    visually and conceptually by app
-                    and operation type, just like how threads are broken up by topic.
+                    or worse, be told the session couldn’t even start.
                 </p>
 
-                <img src="/i/e5284689a95bd5a0c2bcb7367de7a8673a7a55b122586a0539d4dfb8fa90dcdf.webp" alt="4chan Boards">
+                <p style="text-align: justify;"><span style="background-color: rgb(255, 255, 200);">And so, I decided to
+                        build something better.</span> I created a unified
+                    web access portal, completely written in plain HTML and CSS—nothing fancy, just solid and simple.
+                    Think of it like a dashboard, but inspired by the minimalist aesthetic of imageboards like
+                    <a href="https://en.wikipedia.org/wiki/4chan">4chan</a>.
+                </p>
 
                 <p style="text-align: justify;">Instead of searching through bookmarks or wikis, I could now go to a
                     single page, click the relevant
-                    app group—say, "Payment Service – Prod" or "User API – Preprod"—and go directly to the login page,
-                    knowing it was the right environment and that my browser was compatible. I even tagged which
-                    environments required certain access roles, like admin or test accounts. The design was
-                    intentionally low-stimulation and functional, which helped me focus.</p>
+                    app group—say, "Payment Service – Prod" or "User API – Preprod"—and go directly to the login page.
+                </p>
 
-                <img src="/i/68ad767d3e44ed77005f52e43af97c72d8f173d6f0fc193d84541c1a018dc1ea.webp" alt="Board">
+                <img src="https://bagusmw.me/i/68ad767d3e44ed77005f52e43af97c72d8f173d6f0fc193d84541c1a018dc1ea.webp"
+                    alt="Board">
 
                 <p style="text-align: justify;">I’ll be honest: this also played to how my brain works. As much as I
-                    hate to admit it, I’m
-                    not a great multitasker. The more cognitive overhead I could offload, the better. I
-                    didn’t want to have to <em>remember</em> server names, environments, access rules, or which browser
-                    to use. I just wanted to do my work.</p>
+                    hate to admit it, I’m not a great multitasker. The more cognitive overhead I could offload, the
+                    better.
+                </p>
 
-                <p style="text-align: justify;">This portal turned into one of the most helpful tools in my daily
-                    workflow. What started as a
-                    personal hack became something teammates began asking for. It’s lightweight, secure (since it’s just
-                    local static HTML), and surprisingly effective.</p>
-                <img src="/i/96f5fc85bc9db329806237b8fb1831341f9c212217887de269fc65d535cd5e00.webp" alt="Board">
-                <p style="text-align: justify;">Sometimes, the best solutions are the ones that strip things down to the
-                    essentials.</p>
             </div>
         </article>
-
     </div>
-
     <!-- LANGUAGE SELECTOR -->
     <div class="lang-selector">
         <select id="themeLangSelect">
@@ -157,7 +110,6 @@
             <option value="id">Indonesian</option>
         </select>
     </div>
-
     <!-- SCRIPT -->
     <script>
         function updateLanguage(lang) {
@@ -174,5 +126,4 @@
         });
     </script>
 </body>
-
 </html>
