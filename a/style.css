@@ -97,3 +97,12 @@
      outline: none;
      box-shadow: 0 0 0 2px #3b82f6;
  }
+ 
+ .highlight {
+     background-color: rgb(255, 255, 212);
+     transition: background-color 0.2s ease;
+ }
+
+ .highlight:hover {
+     background-color: rgb(255, 255, 128);
+ }
