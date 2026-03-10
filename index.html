@@ -6,45 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bagus Muhammad Wijaksono</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
-    <meta name="description" content="Bagus Muhammad Wijaksono — Backend-focused software engineer with 2+ years of experience in multi-language development on NIX systems, specializing in automation and server-side solutions.">
-    <meta property="og:description" content="Backend-focused software engineer specializing in automation and server-side solutions on NIX systems.">
+    <meta name="description"
+        content="Bagus Muhammad Wijaksono — Backend-focused software engineer with 2+ years of experience in multi-language development on NIX systems, specializing in automation and server-side solutions.">
+    <meta property="og:description"
+        content="Backend-focused software engineer specializing in automation and server-side solutions on NIX systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
-        body {
-            line-height: 1.5;
-            max-width: 650px;
-            margin: 50px auto;
-            padding: 20px;
-            font-family: inherit;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
         }
 
-        nav {
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        /* Header row */
+        .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
-        .name-link {
-            color: black;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            font-size: 1.5em;
-            font-weight: bold;
+        .section-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.65em;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.02em;
+            color: #000;
         }
 
+        .section-subtitle {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72em;
+            color: #a09880;
+            margin: 4px 0 28px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Nav icons */
         .nav-icons {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
 
         .nav-icons a {
-            color: #444;
+            color: #666;
             text-decoration: none;
             display: flex;
             align-items: center;
             transition: color 0.2s;
+            position: relative;
         }
 
         .nav-icons a:hover {
@@ -52,117 +85,161 @@
         }
 
         .nav-icons svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
 
-        /* Tooltip */
-        .nav-icons a {
-            position: relative;
+        /* Body text */
+        main p {
+            font-size: 0.97em;
+            color: #000;
+            margin: 0 0 16px;
         }
 
-        .nav-icons a::after {
-            content: attr(aria-label);
-            position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            color: #fff;
-            font-size: 0.7em;
-            padding: 2px 7px;
-            border-radius: 4px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s;
+        main a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px solid #999;
+            transition: color 0.15s, border-color 0.15s;
         }
 
-        .nav-icons a:hover::after {
-            opacity: 1;
+        main a:hover {
+            color: #333;
+            border-bottom-color: #333;
         }
 
-        details > summary {
+        main ul {
+            padding-left: 1.2em;
+            margin: 0 0 16px;
+        }
+
+        main ul li {
+            font-size: 0.97em;
+            margin-bottom: 6px;
+        }
+
+        /* Details / expand */
+        details>summary {
             list-style: none;
-        }
-
-        details > summary i {
             cursor: default;
+            font-size: 0.97em;
         }
 
-        details > summary i:hover {
-            cursor: pointer;
-        }
-
-        details > summary::-webkit-details-marker {
+        details>summary::-webkit-details-marker {
             display: none;
         }
 
-        @media (max-width: 480px) {
-            .name-link {
-                font-size: 1.2em;
-            }
+        details>summary i {
+            font-family: 'DM Mono', monospace;
+            font-style: normal;
+            font-size: 0.78em;
+            color: #666;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
 
-            .nav-icons svg {
-                width: 18px;
-                height: 18px;
-            }
+        details>summary i:hover {
+            color: #000;
+        }
 
-            .nav-icons {
-                gap: 12px;
-            }
+        details>p,
+        details>ul {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72em;
+            color: #666;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin: 28px 0 8px;
+        }
+
+        /* Writing / blog list */
+        .writing-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+        }
+
+        .writing-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 4.5px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.87em;
+        }
+
+        .writing-list li:first-child {
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .writing-list .post-title {
+            color: #000;
+            border-bottom: none;
+            transition: color 0.15s;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .writing-list .post-title:hover {
+            color: #333;
+            border-bottom: none;
+        }
+
+        .writing-list .post-date {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72em;
+            color: #666;
+            white-space: nowrap;
+            flex-shrink: 0;
+            letter-spacing: 0.02em;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="/" class="name-link">Bagus Muhammad Wijaksono</a>
-            <div class="nav-icons">
-                <!-- Blog icon (pencil/book) -->
-                <a href="/blog" aria-label="Blog">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 1.83H5v-.71l9.06-9.06.71.71-8.85 9.06zM20.71 5.63l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83a1 1 0 0 0 0-1.41z"/>
-                    </svg>
-                </a>
-                <!-- LinkedIn icon -->
-                <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <!-- GitHub icon -->
-                <a href="https://github.com/baguswjksn" aria-label="GitHub" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                    </svg>
-                </a>
-            </div>
-        </nav>
-    </header>
 
+    <div class="section-header">
+        <h1>Bagus Muhammad Wijaksono</h1>
+        <div class="nav-icons">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                        d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                </svg>
+            </a>
+
+            <a href="https://github.com/baguswjksn" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                    <path
+                        d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z" />
+                </svg>
+            </a>
+        </div>
+    </div>
     <main>
         <p>
             Backend-focused software engineer with 2+ years of experience in multi-language development on NIX systems,
             specializing in automation and server-side solutions.
-            Reach me at <a href="mailto:baguswijaksono292@gmail.com">here</a>.
+            Reach me <a href="mailto:baguswijaksono292@gmail.com">here</a>.
         </p>
 
-        <p>Some things about me:</p>
+        <p class="label">About</p>
         <ul>
-            <li>
-                Based in Yogyakarta, Indonesia | Available for Remote and Relocation
-            </li>
-            <li>
-                Associate Degree in Informatics Engineering
-            </li>
+            <li>Based in Yogyakarta, Indonesia — available for remote and relocation.</li>
             <li>
                 <details>
                     <summary>
                         Current work and affiliations.
-                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
                     </summary>
                     <p>
                         Currently supporting backend operations for a charging and incentive platform serving a national
@@ -170,136 +247,154 @@
                         Contributing to system stability, operational tooling, and automation in a Linux-based
                         environment.
                     </p>
-
                     <p>Previously a Full Stack Web Developer Intern at Telkom Corporate University Center (Sep–Dec
-                        2023), contributing to the development of a crowd safety detection web application.</p>
+                        2023),
+                        contributing to the development of a crowd safety detection web application.</p>
                 </details>
             </li>
+
             <li>
                 <details>
                     <summary>
-                        Tech Stack
-                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
+                        Tech stack.
+                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
                     </summary>
                     <ul>
                         <li>Languages: PHP, Python, Go, Shell</li>
                         <li>Backend: REST APIs, Telegram Bots</li>
                         <li>Systems: Linux (NIX environments)</li>
-                        <li>Databases: SQLite, MySQL, Oracle database, PostgreSQL</li>
+                        <li>Databases: SQLite, MySQL, Oracle, PostgreSQL</li>
                         <li>Tools: Git, Docker</li>
                     </ul>
                 </details>
             </li>
-
-            <li>
-                <details>
-                    <summary>
-                        Projects and open-source work.
-                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
-                    </summary>
-                    <ul>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/bug-free-potato">
-                                    bug-free-potato
-                                </a>
-                            </strong>
-                            – web-based Linux terminal emulator 
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/supreme-octo-barnacle">
-                                    supreme-octo-barnacle
-                                </a>
-                            </strong>
-                            – An income and expense tracking Telegram bot
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/ubiquitous-lamp">
-                                    ubiquitous-lamp
-                                </a>
-                            </strong>
-                            – library for managing books, quotes, citations, and bookmarks.
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/crispy-palm-tree">
-                                    crispy-palm-tree
-                                </a>
-                            </strong>
-                            – A stupidly simple, extremely fast, multimedia file server.
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/effective-couscous">
-                                    effective-couscous
-                                </a>
-                            </strong>
-                            – Dependency-free Linux monitoring with Telegram alerts
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/scaling-umbrella">
-                                    scaling-umbrella
-                                </a>
-                            </strong>
-                            – Kanban board in under 100 lines
-                        </li>
-                        <li>
-                            <strong>
-                                <a href="https://github.com/baguswjksn/reimagined-guacamole">
-                                    reimagined-guacamole
-                                </a>
-                            </strong>
-                            – Telegram bot library written in Shell
-                        </li>
-                    </ul>
-                </details>
-            </li>
-            <li>
-                <details>
-                    <summary>
-                        Last 5 years achievements.
-                        <span style="color:grey">&nbsp;&nbsp;<i>[expand]</i></span>
-                    </summary>
-                    <ul>
-                        <li>
-                            Cybersecurity Category Finalist — KMIPN V (2023)
-                        </li>
-                    </ul>
-                </details>
-            </li>
+            <li>Associate Degree in Informatics Engineering.</li>
         </ul>
-        <p>Principles</p>
+
+        <p class="label">Projects</p>
         <ul>
-            <li>Simplicity over complexity.</li>
-            <li>Results are what truly matter in the end.</li>
-            <li>Practical solutions over unnecessary orthodoxy.</li>
+            <li>
+                <details>
+                    <summary>
+                        Open-source work.
+                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
+                    </summary>
+                    <ul>
+                        <li><a href="https://github.com/baguswjksn/bug-free-potato">bug-free-potato</a> — web-based
+                            Linux terminal emulator</li>
+                        <li><a href="https://github.com/baguswjksn/supreme-octo-barnacle">supreme-octo-barnacle</a> —
+                            income and expense tracking Telegram bot</li>
+                        <li><a href="https://github.com/baguswjksn/ubiquitous-lamp">ubiquitous-lamp</a> — library for
+                            managing books, quotes, citations, and bookmarks</li>
+                        <li><a href="https://github.com/baguswjksn/crispy-palm-tree">crispy-palm-tree</a> — a stupidly
+                            simple, extremely fast multimedia file server</li>
+                        <li><a href="https://github.com/baguswjksn/effective-couscous">effective-couscous</a> —
+                            dependency-free Linux monitoring with Telegram alerts</li>
+                        <li><a href="https://github.com/baguswjksn/scaling-umbrella">scaling-umbrella</a> — Kanban board
+                            in under 100 lines</li>
+                        <li><a href="https://github.com/baguswjksn/reimagined-guacamole">reimagined-guacamole</a> —
+                            Telegram bot library written in Shell</li>
+                        <li><a href="https://github.com/baguswjksn/scaling-fortnight">scaling-fortnight</a> — Habit
+                            Tracker</li>
+                        <li><a href="https://github.com/baguswjksn/turbo-giggle">turbo-giggle</a> — Eisenhower Matrix
+                        </li>
+                        <li><a href="https://github.com/baguswjksn/congenial-octo-enigma">congenial-octo-enigma</a> —
+                            Timeblocking</li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        Achievements.
+                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
+                    </summary>
+                    <ul>
+                        <li>Cybersecurity Category Finalist — KMIPN V (2023)</li>
+                    </ul>
+                </details>
+            </li>
         </ul>
-        <p>Creative work:</p>
-        <p>
-            I occasionally draw and post my work on
-            <a href="#">Pixiv</a>.
-        </p>
-        <script>
-            document.querySelectorAll('details summary').forEach(summary => {
-                const expandIcon = summary.querySelector('i');
 
-                summary.addEventListener('click', (e) => {
-                    e.preventDefault();
-                });
+        <p class="label">Writing</p>
+        <p style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;margin:0 0 10px;letter-spacing:0.02em;">
+            posts are currently in indonesian only.</p>
+        <ul class="writing-list">
+            <!-- <li>
+                <span class="post-date">2026-02-25</span>
+                <a href="frieren" class="post-title">Frieren: After The End</a>
+            </li>
+            <li>
+                <span class="post-date">2026-02-25</span>
+                <a href="fullmetal-alchemist-brotherhood" class="post-title">Fullmetal Alchemist: Brotherhood</a>
+            </li>
+            <li>
+                <span class="post-date">2026-02-20</span>
+                <a href="girls-last-tour" class="post-title">Girl's Last Tour</a>
+            </li>
+            <li>
+                <span class="post-date">2026-02-11</span>
+                <a href="dark-forest" class="post-title">The Dark Forest</a>
+            </li>
+            <li>
+                <span class="post-date">2026-01-28</span>
+                <a href="yotsuba" class="post-title">Yotsuba&!</a>
+            </li> -->
+            <li>
+                <span class="post-date">2025-11-06</span>
+                <a href="1984" class="post-title">Nineteen Eighty-Four</a>
+            </li>
+            <!-- <li>
+                <span class="post-date">2025-05-02</span>
+                <a href="brothers-karamazov" class="post-title">The Brothers Karamazov</a>
+            </li>
+            <li>
+                <span class="post-date">2025-03-12</span>
+                <a href="three-body-problem" class="post-title">The Three-Body Problem</a>
+            </li>
+            <li>
+                <span class="post-date">2025-02-06</span>
+                <a href="kakeibo" class="post-title">Kakeibo</a>
+            </li>
+            <li>
+                <span class="post-date">2024-12-13</span>
+                <a href="masalah-web-server" class="post-title">Masalah Web Server</a>
+            </li>
+            <li>
+                <span class="post-date">2024-12-01</span>
+                <a href="/1984" class="post-title">You Just Need a .db File</a>
+            </li>
+            <li>
+                <span class="post-date">2024-11-05</span>
+                <a href="kompleksitas-berlebihan" class="post-title">Kompleksitas Berlebihan</a>
+            </li>
+            <li>
+                <span class="post-date">2021-03-20</span>
+                <a href="confessions" class="post-title">Confessions</a>
+            </li> -->
+        </ul>
 
-                if (expandIcon) {
-                    expandIcon.addEventListener('click', (e) => {
-                        const details = summary.parentElement;
-                        details.open = !details.open;
-                    });
-                }
-            });
-        </script>
-
+        <p class="label">Creative</p>
+        <p>I occasionally draw and post my work on <a href="#">Pixiv</a>.</p>
     </main>
+
+    <script>
+        document.querySelectorAll('details summary').forEach(summary => {
+            const expandIcon = summary.querySelector('i');
+
+            summary.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+
+            if (expandIcon) {
+                expandIcon.addEventListener('click', () => {
+                    const details = summary.parentElement;
+                    details.open = !details.open;
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>
