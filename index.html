@@ -201,6 +201,37 @@
             flex-shrink: 0;
             letter-spacing: 0.02em;
         }
+
+        /* Writing expand toggle */
+        .writing-expand-row {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 4.5px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.87em;
+        }
+
+        #writing-expand-btn {
+            font-family: 'DM Mono', monospace;
+            font-style: normal;
+            font-size: 0.78em;
+            color: #666;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: color 0.15s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        #writing-expand-btn:hover {
+            color: #000;
+        }
+
+        .writing-list li.writing-hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -317,38 +348,42 @@
         </ul>
 
         <p class="label">Writing</p>
-        <p style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;margin:0 0 10px;letter-spacing:0.02em;">
-            posts are currently in indonesian only.</p>
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 10px;">
+            <p style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;margin:0;letter-spacing:0.02em;">
+                posts are currently in indonesian only.</p>
+            <button id="writing-expand-btn"
+                style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;background:none;border:none;padding:0;cursor:pointer;letter-spacing:0.04em;transition:color 0.15s;">[expand]</button>
+        </div>
         <ul class="writing-list">
-            <!-- <li>
+            <!-- <li class="writing-hidden">
                 <span class="post-date">2026-02-25</span>
                 <a href="frieren" class="post-title">Frieren: After The End</a>
-            </li>
-            <li>
+            </li> -->
+            <li class="writing-hidden">
                 <span class="post-date">2026-02-25</span>
                 <a href="fullmetal-alchemist-brotherhood" class="post-title">Fullmetal Alchemist: Brotherhood</a>
             </li>
-            <li>
+            <!-- <li class="writing-hidden">
                 <span class="post-date">2026-02-20</span>
                 <a href="girls-last-tour" class="post-title">Girl's Last Tour</a>
             </li>
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2026-02-11</span>
                 <a href="dark-forest" class="post-title">The Dark Forest</a>
             </li>
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2026-01-28</span>
-                <a href="yotsuba" class="post-title">Yotsuba&!</a>
+                <a href="yotsuba" class="post-title">Yotsuba&amp;!</a>
             </li> -->
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2025-11-06</span>
                 <a href="1984" class="post-title">Nineteen Eighty-Four</a>
             </li>
-            <!-- <li>
+            <!-- <li class="writing-hidden">
                 <span class="post-date">2025-05-02</span>
                 <a href="brothers-karamazov" class="post-title">The Brothers Karamazov</a>
             </li>
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2025-03-12</span>
                 <a href="three-body-problem" class="post-title">The Three-Body Problem</a>
             </li>
@@ -363,12 +398,12 @@
             <li>
                 <span class="post-date">2024-12-01</span>
                 <a href="/1984" class="post-title">You Just Need a .db File</a>
-            </li>
+            </li> -->
             <li>
                 <span class="post-date">2024-11-05</span>
                 <a href="kompleksitas-berlebihan" class="post-title">Kompleksitas Berlebihan</a>
             </li>
-            <li>
+            <!-- <li class="writing-hidden">
                 <span class="post-date">2021-03-20</span>
                 <a href="confessions" class="post-title">Confessions</a>
             </li> -->
@@ -378,7 +413,9 @@
         <p>I occasionally draw and post my work on <a href="#">Pixiv</a>.</p>
     </main>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        // Existing details expand logic
         document.querySelectorAll('details summary').forEach(summary => {
             const expandIcon = summary.querySelector('i');
 
@@ -393,8 +430,28 @@
                 });
             }
         });
-    </script>
 
+        // Writing section expand/collapse
+        const expandBtn = document.getElementById('writing-expand-btn');
+        const hiddenPosts = document.querySelectorAll('.writing-list .writing-hidden');
+        let expanded = false;
+
+        expandBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            hiddenPosts.forEach(li => {
+                li.style.display = expanded ? 'flex' : 'none';
+            });
+            expandBtn.textContent = expanded ? '[collapse]' : '[expand]';
+        });
+
+        // Add hover effect to expand button
+        expandBtn.addEventListener('mouseenter', () => {
+            expandBtn.style.color = '#000';
+        });
+        expandBtn.addEventListener('mouseleave', () => {
+            expandBtn.style.color = '#666';
+        });
+    </script>
 </body>
 
 </html>
