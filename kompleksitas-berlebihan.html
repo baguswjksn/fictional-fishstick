@@ -6,85 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kompleksitas Berlebihan</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
-    <link rel="stylesheet" href="a/style.css">
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #1f2937;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+    </style>
 </head>
 
 <body>
     <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>writing</span>
+        </nav>
 
-        <h1 class="article-title">Kompleksitas Berlebihan</h1>
-        <div class="article-meta">5 November, 2024</div>
+        <h1>Kompleksitas Berlebihan</h1>
+        <div class="article-meta">5 November, 2024 · waktu baca 2-3 menit</div>
 
         <div class="prose">
             <p>
-                kamu membuka repositori lama, mencoba memahami
-                alurnya, dan setelah satu jam — kamu masih belum tahu apa yang sebenarnya terjadi. Bukan karena
-                masalahnya rumit. Tapi karena sistemnya dirancang untuk tidak mudah dipahami.
-                Pertanyaannya bukan lagi "kenapa ini bisa sekompleks ini?" Tapi: apakah kompleksitas ini memang
-                disengaja?
-            </p>
-            <hr class="section-divider">
-            <h3>Utang Teknis vs. Kompleksitas Strategis</h3>
-            <p>
-                Kita sering menyalahkan <i>technical debt</i> — keputusan cepat di masa lalu yang menumpuk jadi beban
-                hari ini.
-                Itu wajar, itu manusiawi, dan hampir semua tim punya itu.
+                Kamu membuka repositori lama dan setelah satu jam — kamu masih belum tahu apa yang sebenarnya terjadi.
+                Bukan karena masalahnya rumit, tapi karena sistemnya dirancang untuk tidak mudah dipahami.
             </p>
             <p>
-                Tapi ada sesuatu yang berbeda dari sekadar utang teknis.
+                Kita sering menyalahkan <i>technical debt</i> — keputusan cepat yang menumpuk jadi beban. Itu wajar,
+                hampir semua tim punya itu.
             </p>
             <p>
-                Utang teknis lahir dari keterbatasan: waktu sempit, deadline mepet, tim kecil. Tapi ada jenis
-                kompleksitas lain yang lahir bukan dari keterbatasan — melainkan dari kepentingan. Sistem yang hanya
-                satu orang bisa pahami. Pipeline yang tidak ada dokumentasinya. Kode yang ditulis seolah sengaja
-                menghindari kejelasan.
+                Tapi ada jenis kompleksitas lain yang lahir bukan dari keterbatasan — melainkan dari kepentingan. Sistem
+                yang hanya satu orang bisa pahami. Pipeline tanpa dokumentasi. Kode yang seolah sengaja menghindari
+                kejelasan.
             </p>
-            <p>Perbedaannya halus tapi krusial: <span class="highlight">utang teknis adalah kecelakaan, kompleksitas
-                    strategis adalah pilihan.</span>
+            <p>Perbedaannya krusial: utang teknis adalah kecelakaan, kompleksitas strategis adalah pilihan.
             </p>
-            <hr class="section-divider">
-            <h3>Parit yang Dibangun Sendiri</h3>
-            <p>Di dunia kerja, ada konsep yang disebut <i>job security through obscurity</i> — mengamankan posisi bukan
-                dengan
-                kemampuan yang susah ditiru, tapi dengan membangun sistem yang susah dipahami orang lain.</p>
+            <p>Ini yang disebut <i>job security through obscurity</i> — mengamankan posisi bukan dengan kemampuan yang
+                susah ditiru, tapi dengan sistem yang susah dipahami orang lain. Logikanya sederhana: kalau hanya kamu
+                yang tahu cara kerja sistem X, maka hanya kamu yang bisa memperbaikinya. Dan selama sistem X masih
+                berjalan, posisimu aman.</p>
             <p>
-                Logikanya sederhana: kalau hanya kamu yang tahu cara kerja sistem X, maka hanya kamu yang bisa
-                memperbaiki sistem X. Dan selama sistem X masih berjalan, posisimu aman.
+                Maka kesederhanaan menjadi ancaman. Sistem sederhana itu transparan — dan transparansi berarti siapa pun
+                bisa memahami, bahkan menggantikanmu.
             </p>
-
-            <p>Maka kesederhanaan menjadi ancaman. Sistem yang sederhana itu transparan — dan transparansi berarti siapa
-                pun bisa memahami, mengambil alih, bahkan menggantikanmu. Menumpuk lapisan itu mudah. Yang sulit adalah
-                disiplin untuk tidak menambahkannya — karena itu berarti kamu rela terlihat replaceable.</p>
-
-            <p>
-                Dan inilah yang membuat masalah ini lebih dari sekadar soal kode. Ini soal budaya — tentang apa yang
-                kita kagumi dan apa yang kita beri penghargaan. Selama presentasi arsitektur yang rumit mendapat lebih
-                banyak aplaus daripada solusi yang elegan dan sederhana, insentifnya tidak akan berubah. Selama engineer
-                dievaluasi berdasarkan seberapa banyak yang mereka bangun — bukan seberapa tepat — kompleksitas akan
-                terus diproduksi.
-            </p>
-            <hr class="section-divider">
-            <h3>Penutup</h3>
-
-            <p>
-                Kalau kamu sedang membangun sesuatu hari ini, ada satu pertanyaan yang layak ditanyakan sebelum
-                menambahkan lapisan berikutnya:
-            </p>
-            <p>
-                <i>Apakah ini untuk menyelesaikan masalah — atau untuk memastikan hanya aku yang bisa
-                    menyelesaikannya?</i>
-            </p>
-            <p>
-                Tidak semua orang akan menjawab dengan jujur. Tapi ingat: sistem yang tidak bisa dipahami tanpa kamu ada
-                bukan aset — itu tanggung jawab yang kamu tinggalkan untuk orang lain.
-            </p>
-            <p>
-                Kesederhanaan bukan tanda keterbatasan. Itu tanda bahwa kamu cukup percaya diri untuk tidak butuh
-                bersembunyi di balik kerumitan.
-
+            <p>Selama presentasi arsitektur rumit mendapat lebih banyak aplaus daripada solusi elegan dan sederhana,
+                insentifnya tidak akan berubah. Selama engineer dievaluasi dari seberapa banyak yang mereka bangun —
+                bukan seberapa tepat — kompleksitas akan terus diproduksi.
             </p>
         </div>
-
     </div>
-
 </body>

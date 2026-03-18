@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yang kamu butuhin cuma file .db</title>
+  <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
+  <style>
+    /* ---------- BASE ---------- */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      color: #1f2937;
+    }
+
+    /* ---------- PAGE ---------- */
+    .page {
+      max-width: 100ch;
+      margin: 0 auto;
+      padding: 3rem 1rem 1rem;
+    }
+
+    /* ---------- BREADCRUMB ---------- */
+    .breadcrumb {
+      color: #6b7280;
+      font-size: calc(1.5rem + .25vw);
+      margin-bottom: 3rem;
+    }
+
+    .breadcrumb a {
+      color: #100f0f;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #1f2937;
+    }
+
+    .breadcrumb-separator {
+      margin: 0 0.35rem;
+    }
+
+    /* ---------- ARTICLE ---------- */
+    h1 {
+      font-weight: 500;
+      font-size: calc(2.35em + .55vw);
+      letter-spacing: -0.02em;
+    }
+
+    .article-meta {
+      color: #6b7280;
+      font-size: calc(1.25rem + .25vw);
+    }
+
+    .prose {
+      line-height: 1.75;
+      font-size: calc(1.35rem + .25vw);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="breadcrumb">
+      <a href="/">bagusmw</a>
+      <span class="breadcrumb-separator">/</span>
+      <span>writing</span>
+    </nav>
+
+    <h1 class="article-title">Yang kamu butuhin cuma file .db</h1>
+    <div class="article-meta">1 Desember, 2024 · waktu baca 2-3 menit</div>
+
+    <div class="prose">
+      <p>Baru saja ngabisin 30 menit ngatur users, roles, dan permissions—untuk aplikasi jurnal yang cuma dipakai
+        sendiri.</p>
+      <p>
+        Banyak developer terjebak pola pikir aneh: setiap proyek, sekecil apa pun, harus disiapkan seolah akan IPO
+        besok. Database di cloud, autentikasi berlapis, connection pooling, load balancer—padahal cuma bikin pelacak
+        resep atau pengingat siram tanaman.
+      </p>
+      <p>
+        Lalu saya teringat SQLite.
+      </p>
+      Kamu nggak perlu "menyalakan" instance. Nggak perlu bikin user atau atur password. Cukup buat sebuah file. Tulis
+      sedikit SQL, dan data-mu hidup dalam file .db itu—tanpa daemon, tanpa socket jaringan, tanpa firewall, tanpa
+      stres. </p>
+      <p>
+        Dan yang paling keren? Itu sudah cukup.
+      </p>
+      <p>
+        Ada kesalahpahaman bahwa SQLite bukan "database sungguhan"—cuma buat prototipe atau development lokal. Tapi
+        jujur: sebagian besar proyek kita yang dikerjakan sendiri atau untuk internal memang prototipe dan memang lokal.
+        Jadi kenapa nggak pakai alat yang memang dibuat untuk itu?
+      </p>
+      <p>
+        "Tapi gimana soal <i>concurrency</i>?" Iya, SQLite memang nggak dirancang untuk 10.000 penulisan bersamaan per
+        detik.
+        Tapi apakah kamu benar-benar butuh itu? Sering kali, saya adalah satu-satunya pengguna. Kadang dua atau tiga
+        orang. SQLite bisa menangani itu dengan baik—bacaannya sepenuhnya concurrent, dan dengan mode WAL, penulisan
+        jauh lebih baik dari yang kamu kira.
+      </p>
+      <p>
+        Untuk kebanyakan proyek passion, dashboard internal, atau utilitas kecil, SQLite bukan cuma praktis—tapi
+        sempurna. Dia ikut dengan aplikasimu, mudah dicadangkan, nggak butuh konfigurasi. Bisa disimpan di Git dan kamu
+        lupa dia ada.
+      </p>
+    </div>
+  </div>
+</body>

@@ -5,20 +5,170 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fullmetal Alchemist Brotherhood</title>
-
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
-    <link rel="stylesheet" href="https://bagusmw.me/a/style.css">
-    <script src="https://bagusmw.me/a/script.js" defer></script>
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + 0.25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #1f2937;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + 0.55vw);
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-weight: 500;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + 0.25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + 0.25vw);
+        }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-block:not(.revealed) .spoiler-text sup {
+            visibility: hidden;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+
+        .spoiler-block.revealed .spoiler-text sup a {
+            color: #0055ff;
+        }
+
+        #spoiler-alert {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            border: 1px solid #333;
+            padding: 0.6rem 1.2rem;
+            font-family: monospace;
+            font-size: 0.78rem;
+            transition: opacity 0.4s;
+        }
+
+        #spoiler-alert.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #spoiler-alert span {
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ---------- FOOTNOTE ---------- */
+        .prose .footnote {
+            font-size: 0.78rem;
+            color: #636363;
+            border-top: 1px solid #e2e2e2;
+            margin-top: 2em;
+            padding-top: 1em;
+            line-height: 1.6;
+        }
+
+        .prose .footnote p {
+            margin: 0 0 0.5em;
+        }
+
+        /* ---------- LINKS ---------- */
+        sup a {
+            color: #0055ff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        sup a:hover,
+        .footnote a.backlink:hover {
+            text-decoration: underline;
+        }
+
+        .footnote a.backlink {
+            color: #3366cc;
+            text-decoration: none;
+            margin-right: 0.4em;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 1rem 0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="page">
-        <div id="spoiler-alert">
-            <span>Spoilers Alert</span>
-        </div>
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>writing</span>
+        </nav>
 
-        <h1 class="article-title">Fullmetal Alchemist Brotherhood</h1>
-        <div class="article-meta">25 Februari, 2026</div>
+        <h1>Fullmetal Alchemist Brotherhood</h1>
+        <div class="article-meta">25 Februari, 2026 · waktu baca 8-10 menit</div>
 
         <div class="prose">
             <p>
@@ -62,7 +212,7 @@
                 <p><span class="spoiler-text">Alasan yang diberikan Brotherhood untuk ini adalah salah satu gagasan
                         paling radikal
                         dalam seluruh serial: nggak ada equivalent exchange untuk jiwa
-                            manusia<sup><a href="#fn3"> [3] </a></sup>. Hidup nggak bisa direplikasi dari materi
+                        manusia<sup><a href="#fn3"> [3] </a></sup>. Hidup nggak bisa direplikasi dari materi
                         karena hidup bukan sekadar
                         materi. Jiwa — apapun itu, dari manapun asalnya — ada di luar dunia yang bisa dihitung.
                         Dia nggak punya harga, yang berarti dia nggak bisa dibeli, diperdagangkan, atau
@@ -173,6 +323,22 @@
                 </p>
             </div>
         </div>
-
     </div>
+
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+
+            if (!hasUnrevealedSpoilers()) {
+                bar.classList.add("hidden");
+                setTimeout(() => bar.style.display = "none", 400);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const total = document.querySelectorAll(".spoiler-block").length;
+            if (total === 0) bar.style.display = "none";
+            else updateBarVisibility();
+        });
+    </script>
 </body>
