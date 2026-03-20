@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Confessions</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-block:not(.revealed) .spoiler-text sup {
+            visibility: hidden;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+
+        .spoiler-block.revealed .spoiler-text sup a {
+            color: #0055ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>writing</span>
+        </nav>
+        <h1>Confessions</h1>
+        <div class="article-meta">20 Maret, 2021 · 3 menit</div>
+        <div class="prose">
+            <p>Butuh waktu sekitar dua minggu buat namatin baca <em>Confessions</em> dari Minato Kanae dan mungkin akan
+                lebih lama misal nggak berusaha beradaptasi dengan gaya penceritaannya.</p>
+            <p>Untuk konteks awal, misal kalian nggak pernah denger novel ini, ceritanya tentang tragedi matinya anak
+                seorang guru SMP. Simplenya sih gitu.</p>
+            <p>Novel ini dibagi menjadi enam bab—Orang Suci, Martir, Pencinta, Pencari Kebenaran, Pemuja, dan
+                Penginjil—yang masing-masing disampaikan melalui sudut pandang tokoh yang berbeda. Setiap bab berfungsi
+                sebagai bentuk pengakuan dosa, di mana tokoh menceritakan versinya sendiri atas peristiwa yang sama
+                (dalam hal ini matinya anak seorang guru SMP).</p>
+            <p>Bab pertama disampaikan melalui monolog panjang Moriguchi, seorang guru SMP. Gaya penceritaannya
+                menyerupai pidato satu arah yang menjadi fondasi bagi keseluruhan cerita.</p>
+            <p>Ia berdiri di depan
+                kelas untuk terakhir kalinya sebelum mengundurkan diri, mengungkap
+                bahwa kematian putrinya bukanlah kecelakaan, melainkan pembunuhan yang dilakukan oleh dua murid di kelas
+                tersebut.</p>
+            <p>Bab-bab berikutnya awalnya tampak terpisah dan tidak saling terkait, tapi seperti yang kubilang
+                sebelumnya, narasi novel ini memang begini.</p>
+            <p>Seiring bergantinya sudut pandang dan perbedaan
+                rasionalisasi moral, para tokoh tidak sekadar mengakui perbuatan mereka. Mereka juga mencoba membenarkan
+                tindakan mereka melalui perspektif masing-masing.</p>
+
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">Mizuki Kitahara, ketua kelas yang berpikiran logis, menarasikan dampak
+                        pengakuan Moriguchi terhadap kelas
+                        dalam bab kedua yang berjudul "Martir". Ia mengamati dua pelaku dengan cermat, sembari
+                        mengungkapkan
+                        ketidaksukaannya pada wali kelas baru yang dipanggil Werther.</span>
+                </p>
+            </div>
+
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">Perpindahan perspektif kemudian membawa kita ke dalam buku harian ibu
+                        Naoki Shitamura, salah satu pelaku
+                        pembunuhan. Bab "Pencinta" ini menunjukkan penyangkalan seorang ibu, ketakutan, dan rasa sayang
+                        yang
+                        salah kaprah kepada anaknya yang perlahan menjadi hikikomori akibat ketakutan setelah kejadian
+                        tersebut.
+                    </span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">Naoki sendiri kemudian berbicara dalam bab "Pencari Kebenaran",
+                        mengungkapkan perasaannya secara
+                        batin—kepanikan, penurunan mental, obsesinya pada kebersihan, dan rasa bersalah menjadi kaki
+                        tangan
+                        Shūya dalam pembunuhan tersebut.</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">Bab kelima, "Pemuja", ditulis dari sudut pandang Shūya Watanabe, pelaku
+                        utama yang merupakan seorang
+                        jenius manipulatif. Ia menceritakan obsesinya terhadap ibunya, alasannya melakukan pembunuhan
+                        untuk
+                        mencari perhatian, dan rencana jahatnya selanjutnya.</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">Barulah di bab terakhir, "Penginjil", perspektif Moriguchi kembali
+                        menutup cerita dengan mengungkapkan
+                        hasil akhir dari rencana balas dendamnya yang psikologis terhadap Shūya, menunjukkan bahwa
+                        "pelajaran"
+                        sesungguhnya baru saja dimulai.
+                    </span>
+                </p>
+            </div>
+
+            <p>Salah satu tema sentral yang kuat dalam novel ini adalah pola asuh serta relasi orang tua dan anak.
+                Minato Kanae secara kritis menyoroti bagaimana kasih sayang yang berlebihan, ekspektasi yang tidak
+                realistis, dan kegagalan komunikasi dapat menciptakan tekanan psikologis yang mendalam.</p>
+            <p> Puncak novel
+                ditutup dengan akhir cerita yang mengejutkan dan sarat ironi, memperkuat kesan bahwa kejahatan nggak
+                selalu berujung pada keadilan.</p>
+            <p>Secara keseluruhan, sangat kusarankan kalian baca <em>Confessions</em> karena novel thriller psikologis
+                ini menawarkan eksplorasi karakter yang kompleks melalui struktur naratif yang tidak konvensional.</p>
+        </div>
+    </div>
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+
+            if (!hasUnrevealedSpoilers()) {
+                bar.classList.add("hidden");
+                setTimeout(() => bar.style.display = "none", 400);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const total = document.querySelectorAll(".spoiler-block").length;
+            if (total === 0) bar.style.display = "none";
+            else updateBarVisibility();
+        });
+    </script>
+</body>
