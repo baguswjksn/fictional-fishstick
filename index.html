@@ -10,61 +10,40 @@
         content="Bagus Muhammad Wijaksono — Backend-focused software engineer with 2+ years of experience in multi-language development on NIX systems, specializing in automation and server-side solutions.">
     <meta property="og:description"
         content="Backend-focused software engineer specializing in automation and server-side solutions on NIX systems.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html,
         body {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Lora', Georgia, serif;
-            line-height: 1.6;
-            color: #000;
-            background: #fff;
-            max-width: 660px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.75;
+            background: #FFFCF0;
+            max-width: 100ch;
             margin: 0 auto;
-            padding: 48px 24px 80px;
+            padding: 3rem 1rem 5rem;
         }
 
-        /* Header row */
         .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
-        .section-header h1 {
-            font-family: 'Lora', serif;
-            font-size: 1.65em;
-            font-weight: 600;
+        h1 {
+            font-size: calc(2.35rem + 0.55vw);
+            font-weight: 500;
             margin: 0;
             letter-spacing: -0.02em;
-            color: #000;
         }
 
         .section-subtitle {
             font-family: 'DM Mono', monospace;
-            font-size: 0.72em;
-            color: #a09880;
-            margin: 4px 0 28px;
+            font-size: calc(1.25rem + 0.25vw);
+            color: #6b7280;
+            margin: 0.5rem 0 2rem;
             letter-spacing: 0.02em;
         }
 
-        /* Nav icons */
         .nav-icons {
             display: flex;
             align-items: center;
@@ -72,58 +51,43 @@
         }
 
         .nav-icons a {
-            color: #666;
+            color: #100f0f;
             text-decoration: none;
             display: flex;
             align-items: center;
             transition: color 0.2s;
-            position: relative;
-        }
-
-        .nav-icons a:hover {
-            color: #000;
         }
 
         .nav-icons svg {
-            width: 18px;
-            height: 18px;
+            width: calc(1.25rem + 0.25vw);
+            height: calc(1.25rem + 0.25vw);
             fill: currentColor;
         }
 
-        /* Body text */
         main p {
-            font-size: 0.97em;
-            color: #000;
-            margin: 0 0 16px;
+            font-size: calc(1.35rem + 0.25vw);
+            color: #1f2937;
+            margin: 0 0 1.5rem;
         }
 
         main a {
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1px solid #999;
-            transition: color 0.15s, border-color 0.15s;
-        }
-
-        main a:hover {
-            color: #333;
-            border-bottom-color: #333;
+            color: #100f0f;
         }
 
         main ul {
-            padding-left: 1.2em;
-            margin: 0 0 16px;
+            padding-left: 1.5em;
+            margin: 0 0 1.5rem;
         }
 
         main ul li {
-            font-size: 0.97em;
-            margin-bottom: 6px;
+            font-size: calc(1.35rem + 0.25vw);
+            margin-bottom: 0.75rem;
         }
 
-        /* Details / expand */
         details>summary {
             list-style: none;
             cursor: default;
-            font-size: 0.97em;
+            font-size: calc(1.35rem + 0.25vw);
         }
 
         details>summary::-webkit-details-marker {
@@ -133,100 +97,77 @@
         details>summary i {
             font-family: 'DM Mono', monospace;
             font-style: normal;
-            font-size: 0.78em;
-            color: #666;
-            letter-spacing: 0.04em;
+            font-size: calc(1rem + 0.15vw);
+            color: #6b7280;
             cursor: pointer;
-            transition: color 0.15s;
+            transition: color 0.2s ease;
         }
 
         details>summary i:hover {
-            color: #000;
+            color: #100f0f;
         }
 
-        details>p,
-        details>ul {
-            margin-top: 10px;
-            font-size: 0.95em;
-            color: #333;
+        details>p {
+            margin-top: 1rem;
+            font-size: calc(1.25rem + 0.2vw);
+            color: #374151;
         }
 
         .label {
             font-family: 'DM Mono', monospace;
-            font-size: 0.72em;
-            color: #666;
-            letter-spacing: 0.06em;
+            font-size: calc(0.95rem + 0.15vw);
+            color: #6b7280;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin: 28px 0 8px;
+            margin: 2.5rem 0 1rem;
+            font-weight: 500;
         }
 
-        /* Writing / blog list */
         .writing-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 16px;
+            margin: 0 0 1.5rem;
         }
 
         .writing-list li {
             display: flex;
             align-items: baseline;
-            gap: 16px;
-            padding: 4.5px 0;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 0.87em;
-        }
-
-        .writing-list li:first-child {
-            border-top: 1px solid #e0e0e0;
+            gap: 1.25rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: calc(1.2rem + 0.2vw);
         }
 
         .writing-list .post-title {
-            color: #000;
             border-bottom: none;
-            transition: color 0.15s;
+            transition: color 0.2s ease;
             flex: 1;
             min-width: 0;
         }
 
-        .writing-list .post-title:hover {
-            color: #333;
-            border-bottom: none;
-        }
-
         .writing-list .post-date {
             font-family: 'DM Mono', monospace;
-            font-size: 0.72em;
-            color: #666;
+            font-size: calc(1rem + 0.15vw);
+            color: #6b7280;
             white-space: nowrap;
             flex-shrink: 0;
             letter-spacing: 0.02em;
         }
 
-        /* Writing expand toggle */
-        .writing-expand-row {
-            display: flex;
-            align-items: baseline;
-            gap: 16px;
-            padding: 4.5px 0;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 0.87em;
-        }
-
         #writing-expand-btn {
             font-family: 'DM Mono', monospace;
             font-style: normal;
-            font-size: 0.78em;
-            color: #666;
-            letter-spacing: 0.04em;
+            font-size: calc(1rem + 0.15vw);
+            color: #6b7280;
             cursor: pointer;
-            transition: color 0.15s;
+            transition: color 0.2s ease;
             background: none;
             border: none;
             padding: 0;
         }
 
         #writing-expand-btn:hover {
-            color: #000;
+            color: #100f0f;
         }
 
         .writing-list li.writing-hidden {
@@ -236,18 +177,15 @@
 </head>
 
 <body>
-
     <div class="section-header">
         <h1>Bagus Muhammad Wijaksono</h1>
         <div class="nav-icons">
-            <!-- LinkedIn -->
             <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener">
                 <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path
                         d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
                 </svg>
             </a>
-
             <a href="https://github.com/baguswjksn" aria-label="GitHub" target="_blank" rel="noopener">
                 <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                     <path
@@ -262,10 +200,9 @@
             specializing in automation and server-side solutions.
             Reach me <a href="mailto:baguswijaksono292@gmail.com">here</a>.
         </p>
-
         <p class="label">About</p>
         <ul>
-            <li>Based in Yogyakarta, Indonesia — available for remote and relocation.</li>
+            <li>Yogyakarta, Indonesia — available for relocation.</li>
             <li>
                 <details>
                     <summary>
@@ -283,67 +220,24 @@
                         contributing to the development of a crowd safety detection web application.</p>
                 </details>
             </li>
-
-            <li>
-                <details>
-                    <summary>
-                        Tech stack.
-                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
-                    </summary>
-                    <ul>
-                        <li>Languages: PHP, Python, Go, Shell</li>
-                        <li>Backend: REST APIs, Telegram Bots</li>
-                        <li>Systems: Linux (NIX environments)</li>
-                        <li>Databases: SQLite, MySQL, Oracle, PostgreSQL</li>
-                        <li>Tools: Git, Docker</li>
-                    </ul>
-                </details>
-            </li>
-            <li>Associate Degree in Informatics Engineering.</li>
+            <li>Degree in Informatics Engineering.</li>
         </ul>
-
-        <p class="label">Projects</p>
-        <ul>
-            <li>
-                <details>
-                    <summary>
-                        Open-source work.
-                        <span>&nbsp;&nbsp;<i>[expand]</i></span>
-                    </summary>
-                    <ul>
-                        <li><a href="https://github.com/baguswjksn/bug-free-potato">bug-free-potato</a> — web-based
-                            Linux terminal emulator</li>
-                        <li><a href="https://github.com/baguswjksn/supreme-octo-barnacle">supreme-octo-barnacle</a> —
-                            income and expense tracking Telegram bot</li>
-                        <li><a href="https://github.com/baguswjksn/ubiquitous-lamp">ubiquitous-lamp</a> — library for
-                            managing books, quotes, citations, and bookmarks</li>
-                        <li><a href="https://github.com/baguswjksn/crispy-palm-tree">crispy-palm-tree</a> — a stupidly
-                            simple, extremely fast multimedia file server</li>
-                        <li><a href="https://github.com/baguswjksn/effective-couscous">effective-couscous</a> —
-                            dependency-free Linux monitoring with Telegram alerts</li>
-                        <li><a href="https://github.com/baguswjksn/scaling-umbrella">scaling-umbrella</a> — Kanban board
-                            in under 100 lines</li>
-                        <li><a href="https://github.com/baguswjksn/reimagined-guacamole">reimagined-guacamole</a> —
-                            Telegram bot library written in Shell</li>
-                        <li><a href="https://github.com/baguswjksn/scaling-fortnight">scaling-fortnight</a> — Habit
-                            Tracker</li>
-                        <li><a href="https://github.com/baguswjksn/turbo-giggle">turbo-giggle</a> — Eisenhower Matrix
-                        </li>
-                        <li><a href="https://github.com/baguswjksn/congenial-octo-enigma">congenial-octo-enigma</a> —
-                            Timeblocking</li>
-                    </ul>
-                </details>
-            </li>
-        </ul>
-
         <p class="label">Writing</p>
-        <div style="display:flex;align-items:center;gap:12px;margin:0 0 10px;">
-            <p style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;margin:0;letter-spacing:0.02em;">
+        <div style="display:flex;align-items:center;gap:12px;margin:0 0 0.75rem;">
+            <p
+                style="font-family:'DM Mono',monospace;font-size:calc(1rem + 0.15vw);color:#6b7280;margin:0;letter-spacing:0.02em;">
                 currently in indonesian only.</p>
-            <button id="writing-expand-btn"
-                style="font-family:'DM Mono',monospace;font-size:0.72em;color:#666;background:none;border:none;padding:0;cursor:pointer;letter-spacing:0.04em;transition:color 0.15s;">[expand]</button>
+            <button id="writing-expand-btn">[expand]</button>
         </div>
         <ul class="writing-list">
+            <li class="writing-hidden">
+                <span class="post-date">2026-03-31</span>
+                <a href="frieren" class="post-title">Frieren: After The End</a>
+            </li>
+            <li class="writing-hidden">
+                <span class="post-date">2026-03-24</span>
+                <a href="kenapa-zarathustra" class="post-title">Kenapa Zarathustra?</a>
+            </li>
             <li class="writing-hidden">
                 <span class="post-date">2026-03-23</span>
                 <a href="the-apothecary-diaries" class="post-title">The Apothecary Diaries</a>
@@ -376,11 +270,11 @@
                 <span class="post-date">2024-12-13</span>
                 <a href="masalah-web-server" class="post-title">Masalah Web Server</a>
             </li>
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2024-12-01</span>
                 <a href="sqlite" class="post-title">Yang kamu butuhin cuma file .db</a>
             </li>
-            <li>
+            <li class="writing-hidden">
                 <span class="post-date">2024-11-05</span>
                 <a href="kompleksitas-berlebihan" class="post-title">Kompleksitas Berlebihan</a>
             </li>
@@ -391,10 +285,8 @@
         </ul>
     </main>
     <script>
-        // details expand logic
         document.querySelectorAll('details summary').forEach(summary => {
             const expandIcon = summary.querySelector('i');
-
             summary.addEventListener('click', (e) => {
                 e.preventDefault();
             });
@@ -407,7 +299,6 @@
             }
         });
 
-        // Writing section expand/collapse
         const expandBtn = document.getElementById('writing-expand-btn');
         const hiddenPosts = document.querySelectorAll('.writing-list .writing-hidden');
         let expanded = false;
@@ -418,14 +309,6 @@
                 li.style.display = expanded ? 'flex' : 'none';
             });
             expandBtn.textContent = expanded ? '[collapse]' : '[expand]';
-        });
-
-        // Add hover effect to expand button
-        expandBtn.addEventListener('mouseenter', () => {
-            expandBtn.style.color = '#000';
-        });
-        expandBtn.addEventListener('mouseleave', () => {
-            expandBtn.style.color = '#666';
         });
     </script>
 </body>
