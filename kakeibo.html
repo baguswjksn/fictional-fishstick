@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kakeibo</title>
-  <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/i/icon.svg" />
+  <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
   <style>
     /* ---------- BASE ---------- */
     html,
@@ -66,9 +66,8 @@
     <nav class="breadcrumb">
       <a href="/">bagusmw</a>
       <span class="breadcrumb-separator">/</span>
-      <span>writing</span>
+      <span>essay</span>
     </nav>
-
     <h1 class="article-title">Kakeibo</h1>
     <div class="article-meta">6 Februari, 2025 · 2-3 menit</div>
 
@@ -78,24 +77,19 @@
         — metode tradisional
         Jepang untuk mengatur anggaran dengan penuh kesadaran.
       </p>
-
       <p>Tapi ada satu kekurangan besar: semuanya berbasis kertas.
         Meskipun indah secara teori, format fisik ini cepat terasa merepotkan dalam kehidupan sehari-hari.</p>
-
       <p>Saat itulah saya mendapat ide: bagaimana kalau saya membangun sebuah bot
         Telegram untuk membantu saya
         menjalankan metode Kakeibo dengan cara yang lebih praktis dan mudah diakses?</p>
-
       <p>Untuk membangun bot-nya, saya memilih Go sebagai tulang
         punggung utama dalam menangani
         interaksi dengan Telegram. Go cepat, efisien, dan setelah dikompilasi, sangat mudah dijalankan di berbagai
         lingkungan.Saya menyukai gagasan memiliki satu file biner
         yang langsung bisa dijalankan tanpa runtime atau lingkungan virtual yang rumit.</p>
-
       <p>Untuk penyimpanan data, saya menggunakan SQLite Karena bot ini
         terutama digunakan untuk keperluan pribadi,
         saya tidak memerlukan database server seperti MySQL atau PostgreSQL.</p>
-
       <p>Untuk memproses data dan menghasilkan laporan, saya menulis beberapa skrip
         Python yang membaca data dari
         SQLite dan menghasilkan laporan mingguan atau bulanan. Pemisahan antara logika bot di Go dan logika
