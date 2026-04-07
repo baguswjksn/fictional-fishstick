@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Takopi's Original Sin</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + 0.25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + 0.55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + 0.25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + 0.25vw);
+        }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Takopi's Original Sin</h1>
+        <div class="article-meta">7 April, 2026 · 2-3 menit</div>
+        <div class="prose">
+
+            <p>Sabtu ini aku iseng nonton rekomendasi YouTube — Takopi's Original Sin episode 1. Karena hari ini libur
+                dan nggak ada urusan besok pagi, begadang beberapa jam rasanya nggak masalah.</p>
+            <p>
+                Sebenernya aku udah lumayan kena spoiler soal anime ini. Maklum, udah tujuh bulan sejak tayang mingguan,
+                jadi beberapa key event udah sempat aku dengar duluan. Tapi tetap aja nonton, dan aku cuma bisa bilang:
+                ini bagus — dialog, konflik, karakterisasinya.
+            </p>
+            <p>
+                Yang bikin Takopi menarik itu kontrasnya.
+            </p>
+            <p>Visual-nya ceria, hampir kayak anime anak-anak, tapi temanya
+                gelap banget — bullying, keluarga disfungsional, sampai bagaimana toxic positivity justru bisa jadi
+                racun buat orang-orang yang lagi struggling.</p>
+            <p>
+                Kontras itu bukan gimmick; justru di situ poinya,
+                karena kebaikan yang naif bisa sama merusaknya dengan kejahatan yang disengaja.
+            </p>
+            <p>
+                Tapi ada satu hal yang cukup aku permasalahin: endingnya.
+            </p>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">
+                        Ada momen di mana Marina dan Shizuka tampak "berbaikan" hanya karena melihat gambar Takopi.
+                        Bagiku itu terasa terlalu deus ex machina — tiba-tiba saja konflik yang dibangun panjang itu
+                        selesai dengan cara yang... kurang earned.
+                    </span>
+                </p>
+            </div>
+
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">
+                        Kalau mau happy ending, harusnya ada closure yang
+                        lebih organik. Atau kalau memang mau gelap sampai akhir, ya sekalian berantakan saja — bad
+                        ending yang konsisten lebih memuaskan daripada rekonsiliasi yang terasa dipaksakan.
+                    </span>
+                </p>
+            </div>
+            <p>
+                Tapi di luar itu, Takopi tetap layak tonton. Cukup langka ada anime yang berani membahas tema seberat
+                ini tanpa terasa preachy.
+            </p>
+        </div>
+    </div>
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+
+            if (!hasUnrevealedSpoilers()) {
+                bar.classList.add("hidden");
+                setTimeout(() => bar.style.display = "none", 400);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const total = document.querySelectorAll(".spoiler-block").length;
+            if (total === 0) bar.style.display = "none";
+            else updateBarVisibility();
+        });
+    </script>
+</body>
