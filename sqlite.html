@@ -75,34 +75,44 @@
       <p>Baru saja ngabisin 30 menit ngatur users, roles, dan permissions—untuk aplikasi jurnal yang cuma dipakai
         sendiri.</p>
       <p>
-        Banyak developer terjebak pola pikir aneh: setiap proyek, sekecil apa pun, harus disiapkan seolah akan IPO
-        besok. Database di cloud, autentikasi berlapis, connection pooling, load balancer—padahal cuma bikin pelacak
+        Banyak developer terjebak pola pikir aneh: setiap proyek, sekecil apa pun, harus disiapkan seolah akan IPO besok.
+      </p>
+      <p>
+        Database di cloud, autentikasi berlapis, connection pooling, load balancer—padahal cuma bikin pelacak
         resep atau pengingat siram tanaman.
       </p>
       <p>
-        Lalu saya teringat SQLite.
+        Lalu tiba tiba aja inget sama SQLite.
       </p>
       Kamu nggak perlu "menyalakan" instance. Nggak perlu bikin user atau atur password. Cukup buat sebuah file. Tulis
       sedikit SQL, dan data-mu hidup dalam file .db itu—tanpa daemon, tanpa socket jaringan, tanpa firewall, tanpa
-      stres. </p>
+      stres.</p>
       <p>
         Dan yang paling keren? Itu sudah cukup.
       </p>
       <p>
-        Ada kesalahpahaman bahwa SQLite bukan "database sungguhan"—cuma buat prototipe atau development lokal. Tapi
+        Ada kesalahpahaman bahwa SQLite bukan "database sungguhan"—cuma buat prototipe atau development lokal.
+      </p>
+      <p>
+        Tapi
         jujur: sebagian besar proyek kita yang dikerjakan sendiri atau untuk internal memang prototipe dan memang lokal.
         Jadi kenapa nggak pakai alat yang memang dibuat untuk itu?
       </p>
       <p>
         "Tapi gimana soal <i>concurrency</i>?" Iya, SQLite memang nggak dirancang untuk 10.000 penulisan bersamaan per
         detik.
-        Tapi apakah kamu benar-benar butuh itu? Sering kali, saya adalah satu-satunya pengguna. Kadang dua atau tiga
-        orang. SQLite bisa menangani itu dengan baik—bacaannya sepenuhnya concurrent, dan dengan mode WAL, penulisan
+        Tapi apakah kamu benar-benar butuh itu? Sering kali, saya adalah satu-satunya pengguna.
+      </p>
+      <p>
+        SQLite bisa menangani itu dengan baik—bacaannya sepenuhnya concurrent, dan dengan mode WAL, penulisan
         jauh lebih baik dari yang kamu kira.
       </p>
       <p>
         Untuk kebanyakan proyek passion, dashboard internal, atau utilitas kecil, SQLite bukan cuma praktis—tapi
-        sempurna. Dia ikut dengan aplikasimu, mudah dicadangkan, nggak butuh konfigurasi. Bisa disimpan di Git dan kamu
+        sempurna.
+      </p>
+      <p>
+        Dia ikut dengan aplikasimu, mudah dicadangkan, nggak butuh konfigurasi. Bisa disimpan di Git dan kamu
         lupa dia ada.
       </p>
     </div>
