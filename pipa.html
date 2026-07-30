@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pipa</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+            font-size: 0.85em;
+            background: #F0EBDA;
+            border: 1px solid #E4DCC3;
+            border-radius: 4px;
+            padding: 0.1em 0.4em;
+            color: #92400e;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Pipa</h1>
+        <div class="article-meta">31 Juli, 2026 · 1 menit</div>
+
+        <div class="prose">
+            <p>
+                <code>INSERT INTO</code> ternyata bisa diisi langsung dari hasil <code>SELECT</code>.
+            </p>
+            <p>
+                Bukan
+                <code>VALUES (...)</code> yang kita tulis satu-satu, tapi
+                <code>INSERT INTO table SELECT ... FROM table_lain WHERE ...</code>
+            </p>
+            <p>
+                Satu kalimat pendek, dan data pun pindah seolah
+                nggak ada jarak di antara keduanya.
+            </p>
+            <p>
+                Dengan cara kerja seperti ini, kita nggak perlu mengaduk-aduk baris demi
+                baris di memori.
+            </p>
+            <p>
+                Nggak ada variabel perantara yang nuggu.
+            </p>
+            <p>
+                Data cuma ngalir, lewat saringan
+                <code>WHERE</code>, lewat
+                persimpangan <code>JOIN</code>, lalu sampe di tujuannya sendiri.
+            </p>
+            <p>
+                Mungkin karena ini juga konsep kaya gini dinamain piping.
+            </p>
+            <p>
+                Kita nggak pernah liat data itu ngalir kayak air di pipa,
+                tapi kita tahu dia lagi pindah dari satu titik ke titik lain.
+            </p>
+            <p>
+                Unix pipe juga begitu — <code>cat file | grep | sort</code> — satu proses serahin hasilnya ke proses
+                berikutnya.
+            </p>
+            <p>
+                Konsep sesederhana <code>INSERT INTO ... SELECT</code> ini kerasa bener-bener menarik.
+            </p>
+            <p>
+                 Nggak butuh framework, nggak butuh penjelasan panjang.
+            </p>
+        </div>
+    </div>
+</body>
