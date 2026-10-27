@@ -86,6 +86,38 @@
         .spoiler-block.revealed .spoiler-text sup a {
             color: #0055ff;
         }
+
+        /* ---------- LANGUAGE TOGGLE ---------- */
+        html[lang="id"] [data-lang="ja"],
+        html[lang="ja"] [data-lang="id"] {
+            display: none;
+        }
+
+        html[lang="ja"] body {
+            font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+                "Noto Sans JP", Meiryo, sans-serif;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            padding: 0.5rem 0.9rem;
+            border: 1px solid #100f0f;
+            border-radius: 999px;
+            background: #FFFCF0;
+            color: #100f0f;
+            font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .lang-toggle:hover {
+            background: #100f0f;
+            color: #FFFCF0;
+        }
     </style>
 </head>
 
@@ -96,9 +128,11 @@
             <span class="breadcrumb-separator">/</span>
             <span>essay</span>
         </nav>
-        <h1>Confessions</h1>
-        <div class="article-meta">20 Maret, 2021 · 4-5 menit</div>
-        <div class="prose">
+        <h1 data-lang="id">Confessions</h1>
+        <h1 data-lang="ja">告白</h1>
+        <div class="article-meta" data-lang="id">20 Maret, 2021 · 4-5 menit</div>
+        <div class="article-meta" data-lang="ja">2021年3月20日 · 4〜5分</div>
+        <div class="prose" data-lang="id">
             <p>Butuh waktu sekitar dua minggu buat namatin baca <em>Confessions</em> dari Minato Kanae dan mungkin akan
                 lebih lama misal nggak berusaha beradaptasi dengan gaya penceritaannya.</p>
             <p>Untuk konteks awal, misal kalian nggak pernah denger novel ini, ceritanya tentang tragedi matinya anak
@@ -176,8 +210,59 @@
             <p>Secara keseluruhan, sangat kusarankan kalian baca <em>Confessions</em> karena novel thriller psikologis
                 ini menawarkan eksplorasi karakter yang kompleks melalui struktur naratif yang tidak konvensional.</p>
         </div>
+        <div class="prose" data-lang="ja">
+            <p>湊かなえの『<em>告白</em>』を読み終えるのに二週間ほどかかった。その語り口に慣れようとしなければ、もっと時間がかかっていたかもしれない。</p>
+            <p>この小説を聞いたことがない人のために軽く説明すると、中学校教師の娘が死んだ悲劇の物語だ。簡単に言えば、そんな感じ。</p>
+            <p>小説は「聖職者」「殉教者」「慈愛者」「求道者」「信奉者」「伝道者」の六章で構成され、それぞれ異なる人物の視点で語られる。</p>
+            <p>各章は罪の告白のような役割を果たしていて、登場人物たちは同じ出来事(つまり中学校教師の娘の死)について、それぞれ自分なりの見方を語っていく。</p>
+            <p>第一章は中学校教師・森口の長い独白で語られる。一方的な演説のような語り口が、物語全体の土台となっている。</p>
+            <p>彼女は退職を前に最後の教壇に立ち、娘の死は事故ではなく、このクラスの二人の生徒による殺人だったと明かす。</p>
+            <p>続く章は一見ばらばらで互いに無関係に見えるが、さっきも言ったように、この小説の語りはそういうものなのだ。</p>
+            <p>視点が移り変わり、道徳的な正当化の仕方も異なるなかで、登場人物たちはただ自分の行いを認めるだけではない。それぞれの視点から、自らの行動を正当化しようとするのだ。</p>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">論理的な考え方をする学級委員長の北原美月は、第二章「殉教者」で、森口の告白がクラスに与えた影響を語る。彼女は二人の犯人を注意深く観察しながら、「ウェルテル」と呼ばれる新しい担任への嫌悪感を打ち明ける。</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">視点はその後、犯人の一人である下村直樹の母親の日記へと移る。この「慈愛者」の章では、事件後の恐怖から次第に引きこもりになっていく息子に対する、母親の否認、恐れ、そして歪んだ愛情が描かれる。</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">直樹自身は「求道者」の章で語り手となり、パニック、精神の衰弱、清潔への執着、そして修哉の殺人に加担したことへの罪悪感といった内面を吐露する。</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">第五章「信奉者」は、主犯である渡辺修哉の視点で書かれている。人を操る天才である彼は、母親への執着、注目を集めるために殺人を犯した理由、そして次なる邪悪な計画を語る。</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p> <span class="spoiler-text">そして最終章「伝道者」で再び森口の視点に戻り、修哉に対する心理的な復讐計画の結末を明かして物語を締めくくる。本当の「授業」は、今まさに始まったばかりなのだと示しながら。</span>
+                </p>
+            </div>
+
+            <p>この小説で強く描かれている中心的なテーマの一つは、子育て、そして親子の関係だ。</p>
+            <p>湊かなえは、過剰な愛情、非現実的な期待、そしてコミュニケーションの失敗が、いかに深い心理的な重圧を生み出しうるかを鋭く描き出している。</p>
+            <p>小説のクライマックスは衝撃的で皮肉に満ちた結末で幕を閉じ、悪が必ずしも正義によって裁かれるわけではないという印象を強めている。</p>
+            <p>全体として、『<em>告白</em>』はぜひ読んでほしい。この心理スリラーは、型破りな物語構造を通して、複雑な人物像を探求している。</p>
+        </div>
     </div>
+    <button class="lang-toggle" type="button" onclick="toggleLang()" aria-label="Ganti bahasa">にほんご</button>
     <script>
+        const langToggle = document.querySelector(".lang-toggle");
+
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.title = lang === "ja" ? "告白" : "Confessions";
+            langToggle.textContent = lang === "ja" ? "いんどねしあご" : "にほんご";
+            try { localStorage.setItem("lang", lang); } catch (e) { }
+        }
+
+        function toggleLang() {
+            setLang(document.documentElement.lang === "ja" ? "id" : "ja");
+        }
+
+        try { if (localStorage.getItem("lang") === "ja") setLang("ja"); } catch (e) { }
+
         function revealBlock(blockEl) {
             blockEl.classList.add("revealed");
 
