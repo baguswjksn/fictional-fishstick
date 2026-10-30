@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Convenience Store Woman</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Convenience Store Woman</h1>
+        <div class="article-meta">30 Oktober, 2026 · 3-4 menit</div>
+
+        <div class="prose">
+            <p>
+                Ceritanya tentang Keiko Furukura, perempuan 36 tahun yang sudah 18 tahun kerja paruh waktu di
+                minimarket yang sama.
+            </p>
+            <p>
+                Sejak kecil Keiko sadar dia "beda". Dia nggak paham kenapa orang-orang bereaksi seperti yang mereka
+                lakukan, dan setiap kali dia bertindak sesuai logikanya sendiri, orang di sekitarnya malah panik.
+            </p>
+            <p>
+                Jadi dia belajar diam, dan meniru.
+            </p>
+            <p>
+                Minimarket jadi tempat pertama yang masuk akal buat dia. Ada manual, ada seragam, ada kalimat sapaan
+                yang sudah ditentukan. Selama dia ikut aturan, dia jadi "normal".
+            </p>
+            <p>
+                Cara bicaranya pun dia ambil dari rekan kerja. Gaya berpakaian dari satu orang, nada bicara dari orang
+                lain. Keiko menyusun dirinya sendiri dari potongan-potongan orang di sekitarnya.
+            </p>
+            <p>
+                Masalahnya, di luar minimarket, dunia punya manualnya sendiri: umur segini harus sudah menikah, punya
+                karier tetap, atau minimal punya pacar.
+            </p>
+            <p>
+                Dan Keiko nggak punya satu pun.
+            </p>
+            <p>
+                Pertanyaan "kenapa belum nikah?" dan "kenapa masih kerja part-time?" terus datang dari keluarga, teman
+                lama, bahkan rekan kerja. Bukan karena mereka benar-benar peduli, tapi karena keberadaan Keiko bikin
+                mereka nggak nyaman.
+            </p>
+            <p>
+                Di titik ini muncul Shiraha, pegawai baru yang malas, sinis, dan suka ngomel soal masyarakat yang
+                menurutnya masih hidup seperti zaman Jomon.
+            </p>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p>
+                    <span class="spoiler-text">Keiko kemudian membiarkan Shiraha tinggal di apartemennya, bukan karena
+                        cinta, tapi karena dengan "punya laki-laki di rumah" orang-orang akhirnya berhenti bertanya.
+                        Yang bikin miris, keluarganya justru lega, padahal hubungan itu kosong sama sekali.</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p>
+                    <span class="spoiler-text">Atas desakan Shiraha, Keiko berhenti dari minimarket dan mulai mencari
+                        pekerjaan "yang layak". Tapi dalam perjalanan ke wawancara kerja, dia mampir ke sebuah
+                        minimarket, dan tanpa sadar langsung merapikan rak dan membenahi display. Di situ dia sadar:
+                        dia bukan manusia yang kebetulan kerja di minimarket, dia adalah makhluk minimarket.</span>
+                </p>
+            </div>
+            <p>
+                Yang paling kusuka dari novel ini adalah nadanya. Keiko bercerita dengan datar dan jujur, tanpa
+                mengasihani diri sendiri.
+            </p>
+            <p>
+                Yang terasa aneh malah orang-orang "normal" di sekitarnya, yang dengan santainya
+                ikut campur hidup orang lain demi menjaga semuanya tetap sesuai aturan.
+            </p>
+            <p>
+                Murata seolah bilang bahwa masyarakat itu juga semacam minimarket: ada manualnya, ada standar
+                operasionalnya, dan siapa pun yang nggak sesuai akan "dikoreksi" atau disingkirkan.
+            </p>
+            <p>
+                Bedanya, Keiko memilih manual yang benar-benar cocok buat dirinya.
+            </p>
+        </div>
+    </div>
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+        }
+    </script>
+</body>
