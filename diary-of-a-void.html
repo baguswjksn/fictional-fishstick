@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Diary of a Void</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Aneh dalam arti yang bagus. Shibata, karyawati 34 tahun di Tokyo, lelah dibebani tugas domestik di kantor lalu menciptakan ruang kosong lewat sebuah kebohongan." />
+    <meta property="og:title" content="Diary of a Void" />
+    <meta property="og:description"
+        content="Aneh dalam arti yang bagus. Shibata, karyawati 34 tahun di Tokyo, lelah dibebani tugas domestik di kantor lalu menciptakan ruang kosong lewat sebuah kebohongan." />
     <style>
         /* ---------- BASE ---------- */
         html,
@@ -57,6 +62,30 @@
         .prose {
             line-height: 1.75;
             font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>

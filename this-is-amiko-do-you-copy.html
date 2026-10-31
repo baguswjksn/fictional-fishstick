@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>This Is Amiko, Do You Copy?</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Novel debut Natsuko Imamura tentang Amiko, anak perempuan di Hiroshima yang terus memanggil lewat walkie-talkie mainan saat keluarganya pelan-pelan berantakan." />
+    <meta property="og:title" content="This Is Amiko, Do You Copy?" />
+    <meta property="og:description"
+        content="Novel debut Natsuko Imamura tentang Amiko, anak perempuan di Hiroshima yang terus memanggil lewat walkie-talkie mainan saat keluarganya pelan-pelan berantakan." />
     <style>
         /* ---------- BASE ---------- */
         html,
@@ -57,6 +62,30 @@
         .prose {
             line-height: 1.75;
             font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>

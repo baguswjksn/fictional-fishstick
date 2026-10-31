@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Miss Kobayashi's Dragon Maid</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Kelihatannya anime lucu soal naga yang jadi pembantu, ternyata ngomongin keluarga yang terbentuk dari pilihan dan kehadiran, dengan cara yang ringan banget." />
+    <meta property="og:title" content="Miss Kobayashi's Dragon Maid" />
+    <meta property="og:description"
+        content="Kelihatannya anime lucu soal naga yang jadi pembantu, ternyata ngomongin keluarga yang terbentuk dari pilihan dan kehadiran, dengan cara yang ringan banget." />
     <style>
         /* ---------- BASE ---------- */
         html,
@@ -58,6 +63,50 @@
             line-height: 1.75;
             font-size: calc(1.35rem + .25vw);
         }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -69,19 +118,20 @@
             <span>essay</span>
         </nav>
         <h1>Miss Kobayashi's Dragon Maid</h1>
-        <div class="article-meta">14 April, 2024 · 2-3 menit</div>
+        <div class="article-meta">14 April, 2026 · 4-5 menit</div>
 
         <div class="prose">
             <p>
-                Miss Kobayashi's Dragon Maid, ekspektasinya simpel — anime lucu soal naga yang jadi pembantu, selesai.
+                <i>Miss Kobayashi's Dragon Maid</i>, ekspektasinya simpel: anime lucu soal naga yang jadi pembantu,
+                selesai.
             </p>
             <p>
                 Ternyata anime ini ngomong hal yang cukup berat
                 dengan cara yang ringan banget, nyaris nggak ketahuan.
             </p>
             <p>
-                Senjata utamanya adalah sudut pandang. Tohru, naga yang udah hidup ribuan tahun, nggak punya referensi
-                soal kenapa manusia melakukan hal-hal yang manusia lakukan.
+                Senjata utamanya adalah sudut pandang. Tohru, naga yang udah hidup jauh lebih lama dari manusia, nggak
+                punya referensi soal kenapa manusia melakukan hal-hal yang manusia lakukan.
             </p>
             <p>
                 Dia nanya dengan polos kenapa orang rela
@@ -89,24 +139,54 @@
                 nyadar dia ada benernya.
             </p>
             <p>
-                Season 1 ngebangun argumen panjang soal keluarga — bukan yang di KTP, tapi yang terbentuk dari pilihan
+                Pertanyaan kayak gitu cuma bisa datang dari orang luar. Kita udah terlalu lama hidup di dalam kebiasaan
+                sendiri sampai nggak pernah nanya alasannya. Tohru bikin hal biasa jadi aneh lagi, dan itu sumber
+                komedinya.
+            </p>
+            <p>
+                Tema terbesarnya keluarga yang nggak ada di KTP, yang terbentuk dari pilihan
                 dan kehadiran. Kobayashi, Tohru, Kanna, nggak ada yang "seharusnya" tinggal bareng, tapi mereka saling
                 adaptasi dan saling tunggu.
             </p>
             <p>
-                Season 2 vibenya lebih berat, lebih reflektif. Ilulu masuk sebagai karakter
-                yang ketakutan dan destruktif, dan transformasinya bukan soal dia tiba-tiba jadi baik — tapi soal dia
-                pelan-pelan belajar bahwa nggak semua yang asing itu berbahaya.
+                Keluarga sedarah tetap keluarga walau nggak ada yang usaha. Keluarga pilihan cuma ada selama orangnya
+                mau, jadi tiap hari mereka tetap tinggal, itu keputusan.
+            </p>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p>
+                    <span class="spoiler-text">Ending season 1 mempertemukan dua jenis keluarga itu secara langsung, dan
+                        yang dibela Kobayashi adalah hak Tohru buat memilih.</span>
+                </p>
+            </div>
+            <p>
+                Season 2 suasananya lebih berat. Ilulu masuk sebagai karakter yang ketakutan dan destruktif. Perubahannya
+                pelan: dia nggak tiba-tiba jadi baik, dia cuma belajar bahwa nggak semua yang asing itu berbahaya.
             </p>
             <p>
-                Pada akhirnya Dragon Maid Ini tentang apa yang terjadi waktu makhluk
-                yang secara harfiah nggak butuh siapapun akhirnya memilih untuk butuh.
+                Di sini temanya melebar ke prasangka. Konflik naga dan manusia di seri ini lebih banyak soal dogma:
+                keyakinan yang diwariskan dan dijejalkan, jadi nggak bisa dibantah pakai argumen. Yang bisa
+                melunakkannya cuma hidup bareng dan kenal orangnya satu per satu. Makanya penyelesaiannya ada di meja
+                makan dan toko permen.
             </p>
             <p>
-                Dan dari pilihan kecil itu — yang
-                disampaikan lewat komedi, momen makan bareng, hal-hal rumahan yang sepele — kamu dapet sesuatu yang
-                lumayan susah ditemuin di tempat lain.
+                Butuh orang lain itu risiko. Naga sekuat Tohru nggak perlu nunggu siapa pun pulang kerja, dan Kobayashi
+                sendiri udah terbiasa hidup sendirian. Mengakui butuh berarti bisa kehilangan, apalagi kalau umurmu jauh
+                lebih panjang dari orang yang kamu sayang.
+            </p>
+            <p>
+                Bahkan gag Tohru yang terus nawarin ekornya sendiri buat dimasak bisa dibaca sebagai cara naga bilang
+                sayang.
+            </p>
+            <p>
+                Tohru tadinya nanya kenapa orang rela buang waktu buat sesuatu yang mereka sendiri bilang nggak penting.
+                Sekarang dia yang masak tiap hari dan nunggu Kobayashi pulang kerja, dan nggak ada satu pun dari itu yang
+                dia anggap buang waktu.
             </p>
         </div>
     </div>
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+        }
+    </script>
 </body>

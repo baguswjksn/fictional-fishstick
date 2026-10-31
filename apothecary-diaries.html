@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Apothecary Diaries</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Sebelum bicara soal Maomao, bicara dulu soal dunianya: istana ala dinasti Tiongkok dengan hierarki ketat, sistem selir, dan politik di balik setiap mangkuk teh." />
+    <meta property="og:title" content="The Apothecary Diaries" />
+    <meta property="og:description"
+        content="Sebelum bicara soal Maomao, bicara dulu soal dunianya: istana ala dinasti Tiongkok dengan hierarki ketat, sistem selir, dan politik di balik setiap mangkuk teh." />
     <style>
         /* ---------- BASE ---------- */
         html,
@@ -58,6 +63,50 @@
             line-height: 1.75;
             font-size: calc(1.35rem + .25vw);
         }
+
+        /* ---------- SPOILER ---------- */
+        .spoiler-block {
+            cursor: pointer;
+        }
+
+        .spoiler-text {
+            background-color: #111;
+            color: transparent;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .spoiler-block.revealed .spoiler-text {
+            background-color: transparent;
+            color: inherit;
+            user-select: auto;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -69,67 +118,82 @@
             <span>essay</span>
         </nav>
         <h1>The Apothecary Diaries</h1>
-        <div class="article-meta">23 Maret, 2026 · 3-4 menit</div>
+        <div class="article-meta">23 Maret, 2026 · 4-5 menit</div>
         <div class="prose">
-            <p>Sebelum bicara soal Maomao — sang protagonis — mari bicara soal dunianya dulu.</p>
+            <p>Sebelum bicara soal Maomao, kita bicara soal dunianya dulu.</p>
             <p>
-                Setting-nya terinspirasi dari istana dinasti Tiongkok pada era kekaisaran, dengan hirarki sosial yang
+                Setting-nya terinspirasi dari istana dinasti Tiongkok pada era kekaisaran, dengan hierarki sosial yang
                 ketat, sistem selir (<i>court ladies</i> dan <i>consorts</i>), birokrasi istana, dan politik di balik
                 setiap
                 mangkuk teh.
             </p>
-            <p>Mulai dari cara ritual makan di istana hingga struktur jabatan kasim, detail-detailnya terasa diteliti
-                dengan serius.</p>
+            <p>Mulai dari ritual makan di istana hingga struktur jabatan kasim, detailnya terasa diteliti dengan serius.
+                Animasinya memang indah, tapi yang membuat betah adalah dunia ini punya logika sendiri dan konsisten
+                menjalankannya.</p>
             <p>
-                Yang membuat setting ini menawan bukan kemewahan visualnya (meski animasinya memang indah), melainkan
-                bagaimana dunia itu memiliki logikanya sendiri yang konsisten.
+                Logikanya kejam. Nilai seorang selir ditentukan oleh kemampuannya melahirkan pewaris, jadi kehilangan
+                anak bisa berarti kehilangan posisi. Karena tidak ada yang bisa bertarung terang-terangan, konfliknya
+                lewat makanan, rumor, dan wewangian.
             </p>
             <p>
                 Dan di sinilah Maomao masuk.
             </p>
             <p>
-                Dalam banyak mystery anime, kita tidak pernah bisa memecahkan misteri sebelum protagonis
-                karena informasinya sengaja disembunyikan dari penonton.
+                Dalam banyak mystery anime, kita tidak bisa memecahkan misteri sebelum protagonis
+                karena informasinya sengaja disembunyikan dari penonton. <i>The Apothecary Diaries</i> cukup jujur dalam
+                menyajikan petunjuk, sehingga penonton yang jeli bisa sampai pada kesimpulan bersamaan dengan Maomao.
             </p>
             <p>
-                Maomao tidak mengikuti formula itu — atau setidaknya, tidak dengan cara yang klise.
-            </p>
-            <p><i>The Apothecary Diaries</i> cukup jujur dalam
-                menyajikan petunjuk sehingga penonton yang jeli bisa sampai pada kesimpulan bersamaan dengan Maomao.</p>
-            <p>
-                Terlalu sering kita melihat protagonis "cerdas" yang
-                kecerdasannya hanya ditampilkan lewat dialog orang lain memuji mereka.
+                Protagonis "cerdas" sering hanya ditampilkan lewat dialog orang lain yang memuji mereka. Maomao bisa kita
+                ikuti karena ia bekerja dari gejala, bahan, dan dosis. Kita melihat proses berpikirnya, ikut menebak, dan
+                kadang sampai pada kesimpulan yang sama sebelum ia mengucapkannya.
             </p>
             <p>
-                Maomao cerdas dalam cara yang
-                bisa kita ikuti — kita bisa melihat proses berpikirnya, kita bisa ikut menebak, kita kadang sampai pada
-                kesimpulan yang sama dengannya sebelum ia mengucapkannya.
+                Format <i>mystery-of-the-week</i>-nya tidak terasa repetitif karena setiap kasus selalu terhubung ke
+                politik dunianya.
             </p>
             <p>
-                Satu lagi elemen yang membuat serial ini beda: struktur episode-nya yang sering menggunakan format
-                <i>mystery-of-the-week</i> tidak pernah terasa repetitif, karena setiap misteri selalu berkaitan dengan
-                dinamika sosial dan politik dunianya.
+                Ketika ada selir yang keracunan, pertanyaannya langsung melebar: siapa yang punya kepentingan untuk
+                menyingkirkan siapa, dan bagaimana kekuasaan bergerak di antara perempuan yang terjebak dalam sistem yang
+                sama.
+            </p>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p>
+                    <span class="spoiler-text">Di kasus pertama, bayi kaisar sakit karena bedak timbal. Riasan yang
+                        dipakai di istana ternyata meracuni pewaris yang justru dikejar semua orang.</span>
+                </p>
+            </div>
+            <div class="spoiler-block" onclick="revealBlock(this)">
+                <p>
+                    <span class="spoiler-text">Season 2 membawa pola ini lebih jauh, lewat minyak wangi yang berbahaya
+                        bagi kehamilan dan pengetahuan soal obat penggugur yang beredar di dalam istana. Kandungan selir
+                        jadi medan politik.</span>
+                </p>
+            </div>
+            <p>
+                Maomao bisa membaca semua ini karena posisinya ambigu. Ia tumbuh di distrik lampu merah, lalu diculik dan
+                dijual ke istana sebagai pelayan.
             </p>
             <p>
-                Ketika ada selir yang keracunan, ini bukan hanya tentang menemukan siapa pelakunya — ini tentang siapa
-                yang punya kepentingan untuk menyingkirkan siapa, bagaimana kekuasaan bergerak di antara
-                perempuan-perempuan yang terjebak dalam sistem yang sama.
+                Distrik lampu merah dan istana dalam punya logika yang mirip. Dua-duanya menilai perempuan dari tubuhnya,
+                dan di dua tempat itu perempuan bisa dijual. Maomao masuk istana dalam keadaan sudah paham cara kerja
+                sistem itu.
             </p>
             <p>
-                Ketika ada wabah misterius, ini bukan hanya
-                tentang penyakitnya — ini tentang bagaimana informasi ditutup-tutupi dan mengapa.
+                Ia tidak punya kenaifan ningrat yang baru masuk istana, dan tidak punya kepolosan rakyat jelata. Ia tahu
+                betul bagaimana dunia bekerja, dan karena itu ia lebih tajam membaca apa yang disembunyikan orang.
             </p>
             <p>
-                Maomao adalah alat yang sempurna untuk menjelajahi semua ini karena posisinya yang ambigu dalam
-                    hirarki membuatnya bisa melihat dari banyak sudut.
-            </p>
-            <p>
-                Ia bukan ningrat yang naif baru masuk istana.
-                Ia
-                bukan rakyat jelata yang polos. Ia seseorang yang tahu betul bagaimana dunia bekerja, dan karena itulah
-                ia bisa lebih tajam membaca apa yang tersembunyi di balik permukaan.
+                Senjata Maomao cuma pengetahuan, dan awalnya itu pun ia sembunyikan supaya tidak menarik perhatian.
+                Karena itu terasa berarti ketika di season 2 ia mendorong para pelayan belajar membaca. Di tempat yang
+                menilai perempuan dari tubuhnya, bisa membaca adalah sedikit hal yang benar-benar jadi milik mereka
+                sendiri.
             </p>
         </div>
     </div>
-    </div>
+    <script>
+        function revealBlock(blockEl) {
+            blockEl.classList.add("revealed");
+        }
+    </script>
 </body>
