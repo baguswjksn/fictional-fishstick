@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wikipedia di Xteink X4</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Script Python yang mengubah artikel Wikipedia jadi EPUB yang ringan dan rapi di layar e-ink Xteink X4." />
+    <meta property="og:title" content="Wikipedia di Xteink X4" />
+    <meta property="og:description"
+        content="Script Python yang mengubah artikel Wikipedia jadi EPUB yang ringan dan rapi di layar e-ink Xteink X4." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #F2F0E5;
+            line-height: 1.5;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Wikipedia di Xteink X4</h1>
+        <div class="article-meta">1 November, 2026 · 2 menit</div>
+
+        <div class="prose">
+            <p>
+                Xteink X4 itu e-reader kecil: layar e-ink 4,3 inci, resolusi 480×800, grayscale, dan RAM yang
+                pas-pasan.
+            </p>
+            <p>
+                Aku pengen baca artikel Wikipedia di situ, tapi halaman Wikipedia dibuat buat browser. Tabelnya lebar,
+                navigasinya banyak, dan gambarnya berwarna dalam macam-macam format.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/automatic-pancake" target="_blank"
+                    rel="noopener">wiki2epub</a>, script Python yang mengubah artikel Wikipedia jadi EPUB yang ringan
+                dan rapi di X4.
+            </p>
+            <p>
+                Pakainya cukup kasih URL artikel:
+            </p>
+<pre><code>python -m pip install -r requirements.txt
+python wiki2epub.py https://id.wikipedia.org/wiki/Borobudur</code></pre>
+            <p>
+                Bisa juga pakai judul artikel, atau beberapa URL sekaligus:
+            </p>
+<pre><code>python wiki2epub.py "Alan Turing" --lang en -o turing.epub
+python wiki2epub.py URL1 URL2 URL3 --outdir buku/</code></pre>
+            <p>
+                Script-nya mengambil HTML artikel lewat API Wikipedia, lalu sisanya kerjaan bersih-bersih.
+            </p>
+            <p>
+                Navbox, tautan edit, style, dan skrip dibuang. Tautan ke halaman wiki lain dilepas dan tinggal
+                teksnya, karena nggak bisa dibuka dari perangkat.
+            </p>
+            <p>
+                Infobox, kotak ringkasan di samping artikel itu, diratakan jadi paragraf biasa karena tabel lebar nggak
+                muat di layar 480 piksel. Rumus matematika ditampilkan sebagai teks LaTeX.
+            </p>
+            <p>
+                Artikelnya lalu dipecah jadi satu file XHTML per bagian. File yang kecil berarti RAM lebih hemat dan
+                pindah halaman lebih cepat.
+            </p>
+            <p>
+                Semua gambar diubah jadi JPEG grayscale baseline, maksimal 440×640 piksel. Harus baseline karena
+                progressive JPEG, SVG, dan WebP nggak bisa diandalkan di X4. Kontrasnya juga disesuaikan otomatis, dan
+                ikon yang terlalu kecil dilewati.
+            </p>
+            <p>
+                Terakhir, script-nya bikin sampul 480×800 berisi judul artikel, lalu menulis EPUB 3 dengan fallback NCX
+                buat pembaca EPUB 2.
+            </p>
+            <p>
+                Ini hasilnya buat artikel Borobudur:
+            </p>
+<pre><code>Fetching [id] Borobudur ...
+  14 chapters, 59 images -&gt; Borobudur.epub (2132 KB)</code></pre>
+            <p>
+                HTML mentah dari API ukurannya 386 KB. Setelah dibersihkan, semua babnya tinggal sekitar 100 KB, dan
+                begitu dikemas jadi EPUB tanpa gambar ukurannya 50 KB.
+            </p>
+            <p>
+                Sisanya datang dari 59 gambar tadi. Kalau kalian cuma butuh teksnya, tambahkan <code>--no-images</code>.
+                Angkanya bisa beda kalau artikelnya sudah diedit.
+            </p>
+            <p>
+                Teks Wikipedia berlisensi CC BY-SA 4.0, jadi di akhir tiap EPUB ada catatan sumber lengkap dengan URL
+                dan nomor revisinya.
+            </p>
+            <p>
+                Kodenya ada di <a href="https://github.com/baguswjksn/automatic-pancake" target="_blank"
+                    rel="noopener">GitHub</a>, daftar opsi lengkapnya ada di README.
+            </p>
+            <p>
+                Script ini baru kubuat, jadi beberapa minggu ke depan bakal kucoba pakai dulu. Jangan kaget kalau masih
+                ketemu bug.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
