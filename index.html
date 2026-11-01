@@ -84,8 +84,34 @@
             color: #6b7280;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin: 2.5rem 0 1rem;
+            margin: 0;
             font-weight: 500;
+        }
+
+        .l-h {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .l-h p {
+            flex: 1;
+        }
+
+        .l-h button {
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .l-h button[aria-pressed="true"] {
+            color: #100f0f;
+        }
+
+        .w-l.f li:not([data-f]) {
+            display: none;
         }
 
         .w-l {
@@ -177,9 +203,13 @@
         <p>
             Backend-focused software engineer with <span id="years">3+</span> years of experience in multi-language development on Linux/Unix systems<span data-nosnippet></span>.
         </p>
-        <p class="l">Essay</p>
-        <ul class="w-l">
-            <li>
+        <div class="l-h">
+            <p class="l">Essay</p>
+            <button class="l" aria-pressed="true">Featured</button>
+            <button class="l" aria-pressed="false">All</button>
+        </div>
+        <ul class="w-l f">
+            <li data-f>
                 <span class="p-d">2026-11-01</span>
                 <a href="wikipedia-di-xteink-x4" class="p-t">Wikipedia di Xteink X4</a>
             </li>
@@ -273,6 +303,17 @@
 
         document.getElementById("years").textContent = `${years}+`;
         description.content = description.content.replace(/\d+\+ years/, `${years}+ years`);
+
+        // Featured hides every row without data-f; All shows the whole list
+        const essays = document.querySelector(".w-l");
+        const filters = document.querySelectorAll(".l-h button");
+
+        filters.forEach((button) => {
+            button.addEventListener("click", () => {
+                filters.forEach((filter) => filter.setAttribute("aria-pressed", filter === button));
+                essays.classList.toggle("f", button.textContent === "Featured");
+            });
+        });
     </script>
 </body>
 
