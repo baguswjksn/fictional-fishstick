@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>URL Shortener</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="URL shortener pribadi dari PHP dan SQLite buat merapikan link kuliah, dari link tugas sampai folder Google Drive yang mau di-print." />
+    <meta property="og:title" content="URL Shortener" />
+    <meta property="og:description"
+        content="URL shortener pribadi dari PHP dan SQLite buat merapikan link kuliah, dari link tugas sampai folder Google Drive yang mau di-print." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>URL Shortener</h1>
+        <div class="article-meta">14 Juni, 2022 · 3 menit</div>
+
+        <div class="prose">
+            <p>
+                Kuliah itu isinya link. Tiap mata kuliah punya link sendiri, tiap tugas punya link sendiri, belum lagi
+                segala macam link lainnya.
+            </p>
+            <p>
+                Masalahnya, semua link itu panjang dan nggak ada yang gampang diingat. Yang paling parah folder Google
+                Drive berisi file yang mau di-print. Alamatnya kira-kira kayak gini:
+            </p>
+<pre><code>https://drive.google.com/drive/folders/1Zx8kQvT3mNpR7wYbL2cHfJ5sGdA9eUoK?usp=sharing</code></pre>
+            <p>
+                Mustahil dihafal, dan salah ketik satu huruf aja sudah nggak kebuka.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/psychic-system" target="_blank"
+                    rel="noopener">psychic-system</a>, URL shortener pribadi dari PHP dan SQLite, tanpa dependency. Link
+                panjang tadi jadi pendek, dan namanya bisa kupilih sendiri:
+            </p>
+<pre><code>example.com/print
+example.com/tugas-kalkulus</code></pre>
+            <p>
+                Butuh PHP dengan ekstensi <code>pdo_sqlite</code>, <code>mbstring</code>, dan <code>curl</code>. Pendaftaran
+                publiknya ditutup, jadi akun dibuat dari terminal:
+            </p>
+<pre><code><span class="code-cmd">git</span> clone https://github.com/baguswjksn/psychic-system.git
+<span class="code-cmd">cd</span> psychic-system
+<span class="code-cmd">bin/php</span> bin/user.php add kamu@example.com <span class="code-str">"Nama Kamu"</span>
+<span class="code-cmd">./run.sh</span></code></pre>
+            <p>
+                Database-nya dibuat otomatis di <code>data/app.sqlite</code>. Server bawaan PHP ini cukup buat coba-coba
+                di <code>127.0.0.1:8080</code>. Buat dipakai dari mana aja, README-nya punya panduan nginx dan HTTPS.
+            </p>
+            <p>
+                Setelah login, tinggal tempel URL panjang di dashboard dan isi kodenya. Kode boleh berisi 3 sampai 32
+                huruf, angka, strip, atau underscore. Kalau dikosongkan, aplikasinya bikin 7 karakter acak dari daftar
+                ini:
+            </p>
+<pre><code>abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789</code></pre>
+            <p>
+                Huruf i, l, o, dan angka 0, 1 nggak ada di daftar itu karena gampang ketukar pas dibaca.
+            </p>
+            <p>
+                Yang paling berguna buat kuliah: tujuan link bisa diganti tanpa mengganti kodenya. Minggu ini
+                <code>/print</code> mengarah ke satu folder Drive, minggu depan tinggal diarahkan ke folder lain. Yang
+                harus diingat tetap satu kata.
+            </p>
+            <p>
+                Supaya itu jalan, redirect-nya harus kayak gini:
+            </p>
+<pre><code><span class="code-cmd">header</span>(<span class="code-str">'Cache-Control: no-store'</span>);
+<span class="code-cmd">header</span>(<span class="code-str">'Location: '</span> . $target, true, 302);</code></pre>
+            <p>
+                Kode 302 artinya pindahnya sementara, dan <code>no-store</code> melarang browser mengingat tujuannya.
+                Kalau pakai 301, browser bisa terus membuka tujuan lama walaupun link-nya sudah diedit.
+            </p>
+            <p>
+                Tiap kunjungan menambah satu hitungan klik di dashboard, yang diperbarui tiap tiga detik. Request
+                <code>HEAD</code> nggak dihitung karena biasanya datang dari bot dan pengecek link, bukan orang.
+            </p>
+            <p>
+                Tiap link di dashboard juga punya ikon situs tujuannya, jadi daftarnya lebih gampang dipindai. Ikonnya
+                diambil lewat layanan DuckDuckGo lalu disimpan 30 hari, jadi situs tujuannya sendiri nggak pernah
+                dihubungi. Konsekuensinya, domain link kalian terkirim ke DuckDuckGo.
+            </p>
+            <p>
+                Semua datanya ada di satu file SQLite. <code>bin/php bin/backup.php</code> bikin salinannya dan menyimpan
+                14 yang terbaru. Salinan itu masih di disk yang sama, jadi tetap harus dipindah ke tempat lain.
+            </p>
+            <p>
+                Cara ini tentu ada batasnya. Link pendek itu bukan link rahasia. Siapa pun yang menebak
+                <code>/print</code> bakal sampai ke folder Drive-nya tanpa perlu login. Kalau isinya pribadi, pakai kode
+                acak dan atur izinnya di Drive.
+            </p>
+            <p>
+                Semua link juga bergantung ke satu server. Kalau server-nya mati atau domain-nya habis, semuanya ikut
+                mati.
+            </p>
+            <p>
+                Kodenya peka huruf besar-kecil, jadi <code>/Print</code> nggak sama dengan <code>/print</code>. Yang bisa
+                diedit cuma tujuannya. Kalau mau ganti kode, link-nya harus dihapus dan dibuat ulang, dan hitungan
+                kliknya ikut hilang.
+            </p>
+            <p>
+                Hitungan kliknya pun cuma angka, tanpa keterangan kapan dan dari mana. Daftarnya datar, belum ada folder,
+                tag, atau pencarian. Rapinya datang dari nama kode yang kita pilih sendiri.
+            </p>
+            <p>
+                Kalau butuh analitik, pakai layanan beneran. Kalau cuma pengen link kuliah yang rapi dan gampang diingat,
+                ini sudah cukup.
+            </p>
+            <p>
+                Kodenya ada di <a href="https://github.com/baguswjksn/psychic-system" target="_blank"
+                    rel="noopener">GitHub</a>, panduan deploy dan pengaturannya ada di README.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
