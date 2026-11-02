@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monitoring Pakai Bash</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Script Bash agentless yang memantau CPU, RAM, dan disk di server Linux, lalu mengirim alert ke Telegram saat melewati batas." />
+    <meta property="og:title" content="Monitoring Pakai Bash" />
+    <meta property="og:description"
+        content="Script Bash agentless yang memantau CPU, RAM, dan disk di server Linux, lalu mengirim alert ke Telegram saat melewati batas." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Monitoring Pakai Bash</h1>
+        <div class="article-meta">31 Januari, 2026 · 3 menit</div>
+
+        <div class="prose">
+            <p>
+                Aku pengen tahu kalau CPU, RAM, atau disk di server Linux mulai kepenuhan, tanpa harus ngurus sistem
+                monitoring yang ribet.
+            </p>
+            <p>
+                Prometheus dan Zabbix, misalnya, biasanya butuh agent di tiap server dan satu server pusat buat
+                nampung datanya. Semua itu harus dipasang, diperbarui, dan dijaga tetap hidup.
+            </p>
+            <p>
+                Padahal bahannya sudah ada di server. Bash terpasang di hampir semua distro server, kecuali yang
+                minimal kayak Alpine, dan angka yang kubutuhkan tinggal dibaca lewat <code>free</code>,
+                <code>df</code>, <code>ps</code>, dan <code>/proc/stat</code>.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/effective-couscous" target="_blank"
+                    rel="noopener">effective-couscous</a>, satu script Bash yang mengecek CPU, RAM, dan disk, lalu
+                mengirim alert ke Telegram kalau ada yang melewati batas.
+            </p>
+            <p>
+                Pasangnya cukup clone repo dan siapkan config:
+            </p>
+<pre><code><span class="code-cmd">git</span> clone https://github.com/baguswjksn/effective-couscous.git
+<span class="code-cmd">cd</span> effective-couscous
+<span class="code-cmd">mv</span> conf.example .conf
+<span class="code-cmd">chmod</span> <span class="code-flag">+x</span> script.sh</code></pre>
+            <p>
+                Semua pengaturan ada di <code>.conf</code>, file Bash biasa yang dibaca pakai <code>source</code>.
+                Isinya token bot Telegram, chat ID penerima, dan batas buat tiap metrik:
+            </p>
+<pre><code>BOT_TOKEN=<span class="code-str">"token-bot"</span>
+TELEGRAM_USERS=(<span class="code-str">"chat-id"</span>)
+
+CPU_MAJOR=85
+CPU_CRITICAL=90
+
+MEM_MAJOR=85
+MEM_CRITICAL=95
+
+DISK_RULES=(
+  <span class="code-str">"/:85:90:critical"</span>
+  <span class="code-str">"/var:70:85:critical"</span>
+  <span class="code-str">"/home:70:85:major"</span>
+)</code></pre>
+            <p>
+                Tiap mount point punya aturan sendiri dengan format <code>MOUNT:MAJOR:CRITICAL:LABEL</code>.
+                <code>LABEL</code> itu tingkat keparahan saat batas pertama terlewati, jadi <code>/</code> bisa langsung
+                dianggap critical di 85%, sementara <code>/home</code> baru major di 70%.
+            </p>
+            <p>
+                Kalau <code>/var</code> dan <code>/home</code> masih satu disk dengan <code>/</code>, hapus aja aturannya
+                biar alert-nya nggak dobel.
+            </p>
+            <p>
+                Terakhir, daftarkan ke cron. Contoh ini jalan tiap lima menit, tinggal sesuaikan path-nya:
+            </p>
+<pre><code>*/5 * * * * <span class="code-cmd">cd</span> /opt/effective-couscous &amp;&amp; <span class="code-cmd">./script.sh</span></code></pre>
+            <p>
+                Harus <code>cd</code> dulu, karena script-nya mencari <code>.conf</code> di folder tempat dia dijalankan.
+            </p>
+            <p>
+                Script ini agentless: nggak ada daemon yang harus dipasang dan dijaga tetap hidup, nggak ada port yang
+                dibuka, dan nggak ada server pusat.
+            </p>
+            <p>
+                Cron menjalankan script-nya, script-nya mengecek, lalu selesai. Di antara dua jadwal nggak ada proses
+                monitoring yang jalan dan makan RAM. Menghapusnya pun cukup buang baris cron dan foldernya.
+            </p>
+            <p>
+                Tiap jalan, RAM dihitung dari <code>free</code>, CPU dari <code>/proc/stat</code>, dan disk dari
+                <code>df</code>. Kalau CPU atau RAM melewati batas, <code>ps</code> mengambil proses yang paling boros
+                biar penyebabnya langsung kelihatan.
+            </p>
+            <p>
+                Pesannya dikirim ke API Telegram pakai <code>curl</code>, satu-satunya tool di sini yang kadang belum
+                terpasang. Bisa ke beberapa orang sekaligus, tinggal tambah chat ID. Hasilnya kayak gini:
+            </p>
+<pre><code>critical(2026-01-20 04:00:38)(hostname ip)
+Physical memory usage is now 23%, Top Processes
+(python3(29932)-(3.10%);multipathd(3587)-(2.70%);snapd(992)-(1.50%))
+
+critical(2026-01-20 04:00:38)(hostname ip)
+Disk free on / is now 95%, out of total size 58G</code></pre>
+            <p>
+                RAM 23% dianggap critical karena waktu itu batasnya kuturunkan buat ngetes. Kalau mau ngetes tanpa
+                mengirim apa-apa, ganti <code>MODE</code> di <code>.conf</code> jadi <code>debug</code>, dan semua
+                angkanya bakal tampil di terminal.
+            </p>
+            <p>
+                Cara ini tentu ada batasnya. Script-nya jalan di server yang dipantau, jadi kalau server-nya mati,
+                alert-nya ikut mati. Buat tahu server masih hidup atau nggak, tetap butuh pengecekan dari luar.
+            </p>
+            <p>
+                Script-nya juga nggak punya ingatan. Nggak ada riwayat atau grafik, dan selama angkanya masih di atas
+                batas, alert yang sama terkirim lagi di tiap jadwal cron.
+            </p>
+            <p>
+                Angka CPU-nya juga belum pas. <code>/proc/stat</code> cuma dibaca sekali, jadi hasilnya rata-rata sejak
+                boot, bukan beban saat ini. Makin lama server-nya hidup, makin kecil pengaruh lonjakan, jadi beban tinggi
+                yang sebentar bisa nggak kedeteksi.
+            </p>
+            <p>
+                Kalau butuh grafik dan riwayat, pakai stack monitoring beneran. Kalau cuma pengen dikabari saat server
+                mulai kepenuhan, satu script ini sudah cukup.
+            </p>
+            <p>
+                Kodenya ada di <a href="https://github.com/baguswjksn/effective-couscous" target="_blank"
+                    rel="noopener">GitHub</a>, sekitar 160 baris, jadi gampang dibaca dan diubah sendiri.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

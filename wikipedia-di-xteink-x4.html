@@ -75,11 +75,31 @@
         }
 
         pre {
-            background: #F2F0E5;
-            line-height: 1.5;
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
             margin: 1.5rem 0;
             overflow-x: auto;
             padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
         }
 
         /* ---------- MOBILE ---------- */
@@ -135,13 +155,13 @@
             <p>
                 Pakainya cukup kasih URL artikel:
             </p>
-<pre><code>python -m pip install -r requirements.txt
-python wiki2epub.py https://id.wikipedia.org/wiki/Borobudur</code></pre>
+<pre><code><span class="code-cmd">python</span> <span class="code-flag">-m</span> pip install <span class="code-flag">-r</span> requirements.txt
+<span class="code-cmd">python</span> wiki2epub.py https://id.wikipedia.org/wiki/Borobudur</code></pre>
             <p>
                 Bisa juga pakai judul artikel, atau beberapa URL sekaligus:
             </p>
-<pre><code>python wiki2epub.py "Alan Turing" --lang en -o turing.epub
-python wiki2epub.py URL1 URL2 URL3 --outdir buku/</code></pre>
+<pre><code><span class="code-cmd">python</span> wiki2epub.py <span class="code-str">"Alan Turing"</span> <span class="code-flag">--lang</span> en <span class="code-flag">-o</span> turing.epub
+<span class="code-cmd">python</span> wiki2epub.py URL1 URL2 URL3 <span class="code-flag">--outdir</span> buku/</code></pre>
             <p>
                 Script-nya mengambil HTML artikel lewat API Wikipedia, lalu sisanya kerjaan bersih-bersih.
             </p>

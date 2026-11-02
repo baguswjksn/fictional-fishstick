@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terlalu Rumit</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Sebagian kerumitan di dunia perangkat lunak memang disengaja. Tentang parit yang kita gali sendiri, dan kenapa kesederhanaan layak dibela." />
+    <meta property="og:title" content="Terlalu Rumit" />
+    <meta property="og:description"
+        content="Sebagian kerumitan di dunia perangkat lunak memang disengaja. Tentang parit yang kita gali sendiri, dan kenapa kesederhanaan layak dibela." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Terlalu Rumit</h1>
+        <div class="article-meta">5 November, 2024 · 4-5 menit</div>
+
+        <div class="prose">
+            <p>
+                Kalau kamu baru masuk dunia perangkat lunak dan kewalahan sama kerumitannya, itu bukan salahmu.
+            </p>
+            <p>
+                Kamu
+                nggak bodoh karena bingung. Sebagian kerumitan itu memang dibuat supaya kamu merasa begitu.
+            </p>
+            <p>
+                Dari hari pertama, tumpukan teknologinya lebih terasa kayak penggalian arkeologi daripada arsitektur.
+            </p>
+            <p>
+                Alat dan alur kerja saling tumpang tindih, ada skrip lama yang nggak ada yang berani sentuh, dan solusi
+                “sementara” yang entah gimana jadi permanen.
+            </p>
+            <p>
+                Gejalanya gampang dikenali. Buat menjalankan satu aplikasi di komputer sendiri, kamu harus nyalain lima
+                hal lain dulu. Dokumentasinya ketinggalan beberapa versi.
+            </p>
+            <p>
+                Nggak semua kerumitan itu masalah. Fred Brooks, lewat esainya <i>No Silver Bullet</i> tahun 1986,
+                membaginya jadi dua: kerumitan esensial yang datang dari masalahnya sendiri, dan kerumitan aksidental
+                yang datang dari cara kita mengerjakannya.
+            </p>
+            <p>
+                Pajak, zona waktu, dan pembayaran memang rumit dari sananya, jadi kodenya nggak bakal bisa sederhana
+                banget. Yang bikin capek itu jenis kedua, kerumitan yang kita tambahkan sendiri.
+            </p>
+            <p>
+                Sebagian lahir dari tenggat yang mepet dan orang yang keburu pindah. Wajar aja sebernarnya, semua sistem
+                tua pasti
+                punya.
+            </p>
+            <p>
+                Sebagian lagi beda ceritanya. Orang-orang bangga kalau sistem buatannya nggak bisa dipahami orang
+                lain, dan lama-lama aku curiga itu emang disengaja.
+            </p>
+            <p>
+                Tiap kuartal ada fitur baru, tapi nggak pernah ada yang ngomongin soal menghapus apa pun. Ada
+                kesepakatan diam-diam bahwa makin rumit berarti makin penting.
+            </p>
+            <p>
+                Insentifnya juga ke arah situ. Fitur baru masuk laporan dan gampang dipamerkan saat penilaian kinerja,
+                sedangkan kode yang dihapus nggak kelihatan di mana-mana.
+            </p>
+            <p>
+                Kalau berhasil, nggak ada yang sadar. Kalau
+                ada yang rusak, kamu yang disalahkan. Jadi sistemnya cuma bisa tumbuh.
+            </p>
+            <p>
+                Akhirnya aku sadar apa yang sebenarnya terjadi: ini cara menjaga posisi. Kalau kode kamu nggak bisa
+                dipahami siapa pun, kamu nggak tergantikan.
+            </p>
+            <p>
+                Sistem yang cuma bisa diurus satu orang itu kayak parit di sekeliling posisinya.
+            </p>
+            <p>
+                Makin dalam paritnya,
+                makin susah orang lain mengambil alih. Dengan logika yang bengkok, semua itu masuk akal.
+            </p>
+            <p>
+                Bentuknya macam-macam: kerangka kerja buatan sendiri padahal sudah ada yang umum dipakai, format
+                konfigurasi yang cuma dipahami satu orang, atau proses rilis yang cuma jalan dari komputer orang
+                tertentu.
+            </p>
+            <p>
+                Dokumentasinya nggak ada, karena dokumentasi berarti orang lain bisa ikut masuk.
+            </p>
+            <p>
+                Ngomongin soal parit tadi, parit itu juga mengurung yang menggalinya. Kamu nggak bisa cuti dengan
+                tenang,
+                nggak bisa pindah ke proyek yang lebih menarik, dan tiap ada masalah jam dua pagi, telepon kamu yang
+                bunyi.
+            </p>
+            <p>Kalau akhirnya kamu pergi juga, tim yang ditinggalkan yang menanggung.</p>
+            <p>
+                Ada satu kutipan yang terus kepikiran selama ini, yang sering dikaitkan ke almarhum Terry A. Davis.
+            </p>
+            <p>
+                Dia
+                sosok kontroversial, tapi jelas brilian: TempleOS ditulisnya sendirian, lengkap dengan bahasa
+                pemrogramannya, HolyC.
+            </p>
+            <p>
+                “Orang bodoh mengagumi kerumitan, orang jenius mengagumi kesederhanaan.”
+            </p>
+            <p>
+                Yang kulihat justru kebalikannya. Orang-orang bukan mengejar kesederhanaan, mereka malah lari darinya.
+                Sederhana berarti transparan. Sederhana berarti terdokumentasi.
+            </p>
+            <p>
+                Sederhana berarti posisimu bisa
+                digantikan.
+            </p>
+            <p>Dan nggak ada yang mau itu.</p>
+            <p>
+                Padahal bisa digantikan itu kabar baik.
+            </p>
+            <p>
+                Kalau sistemmu bisa diurus orang lain, kamu bebas pindah ke masalah berikutnya.
+            </p>
+            <p>
+                Menumpuk lapisan itu gampang. Yang susah itu membuang semua yang nggak perlu dan cuma menyisakan yang
+                penting.
+            </p>
+            <p>
+                Mulainya bisa dari pertanyaan kecil.
+            </p>
+            <p>
+                Masalah apa yang diselesaikan alat ini? Apa yang rusak kalau ini
+                dihapus? Siapa yang bakal ngurus ini dua tahun lagi? Bisa nggak orang baru paham dalam sehari?
+            </p>
+            <p>
+                Kalau harus milih, ambil teknologi yang membosankan dan sudah dipahami banyak orang.
+            </p>
+            <p>
+                Tulis apa yang kamu
+                pelajari, walaupun cuma satu halaman. Dan tiap nambah sesuatu, cari satu hal yang bisa dibuang.
+            </p>
+            <p>
+                Buat yang baru masuk, kebingunganmu itu berguna.
+            </p>
+            <p>
+                Orang lama sudah terbiasa dan berhenti melihat
+                kerumitannya, kamu belum. Kalau ada yang terasa nggak masuk akal, bisa jadi memang nggak masuk akal,
+                jadi tanyakan.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
