@@ -7,10 +7,10 @@
     <title>URL Shortener</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
     <meta name="description"
-        content="URL shortener pribadi dari PHP dan SQLite buat merapikan link kuliah, dari link tugas sampai folder Google Drive yang mau di-print." />
+        content="URL shortener pribadi biar link kuliah yang panjang jadi satu kata yang gampang diingat, dan tujuannya bisa diganti tanpa membagikan link baru." />
     <meta property="og:title" content="URL Shortener" />
     <meta property="og:description"
-        content="URL shortener pribadi dari PHP dan SQLite buat merapikan link kuliah, dari link tugas sampai folder Google Drive yang mau di-print." />
+        content="URL shortener pribadi biar link kuliah yang panjang jadi satu kata yang gampang diingat, dan tujuannya bisa diganti tanpa membagikan link baru." />
     <style>
         /* ---------- BASE ---------- */
         html,
@@ -141,96 +141,68 @@
         <div class="prose">
             <p>
                 Kuliah itu isinya link. Tiap mata kuliah punya link sendiri, tiap tugas punya link sendiri, belum lagi
-                segala macam link lainnya.
+                link grup, link form, dan link materi yang dikirim dosen jam sebelas malam.
             </p>
             <p>
-                Masalahnya, semua link itu panjang dan nggak ada yang gampang diingat. Yang paling parah folder Google
-                Drive berisi file yang mau di-print. Alamatnya kira-kira kayak gini:
+                Masalahnya, semua link itu panjang dan nggak ada yang gampang diingat. Yang paling bikin kesal folder
+                Google Drive berisi file yang mau di-print. Alamatnya kira-kira kayak gini:
             </p>
 <pre><code>https://drive.google.com/drive/folders/1Zx8kQvT3mNpR7wYbL2cHfJ5sGdA9eUoK?usp=sharing</code></pre>
             <p>
-                Mustahil dihafal, dan salah ketik satu huruf aja sudah nggak kebuka.
+                Coba bayangin harus ngetik itu di komputer tempat print, atau ngedikte ke teman lewat telepon. Salah
+                satu huruf aja sudah nggak kebuka. Ujung-ujungnya scroll chat lama buat nyari link-nya, atau kirim ulang
+                lewat WhatsApp ke komputer yang belum tentu bisa login.
+            </p>
+            <p>
+                Masalah kedua lebih nyebelin. Link itu cuma berlaku buat satu folder. Minggu depan file-nya beda, folder
+                beda, link-nya beda lagi, dan semua orang yang butuh harus dikirimi ulang. Link lama yang masih nyangkut
+                di catatan atau grup jadi nyasar ke tempat yang salah.
+            </p>
+            <p>
+                Ini bukan masalah mahasiswa doang. Guru yang bagiin materi tiap minggu, panitia acara yang link
+                pendaftarannya pindah-pindah, sampai orang yang sering bagiin link di slide presentasi, semuanya ketemu
+                masalah yang sama: link panjang susah dibagi, dan link yang sudah dibagi susah diganti.
+            </p>
+            <p>
+                URL shortener publik sebenarnya bisa bantu, tapi kodenya sering acak dan sama susahnya diingat. Nama
+                pendek yang enak sudah keburu diambil orang lain, dan semua link-ku jadi ikut aturan layanan orang.
             </p>
             <p>
                 Jadi aku bikin <a href="https://github.com/baguswjksn/psychic-system" target="_blank"
-                    rel="noopener">psychic-system</a>, URL shortener pribadi dari PHP dan SQLite, tanpa dependency. Link
-                panjang tadi jadi pendek, dan namanya bisa kupilih sendiri:
+                    rel="noopener">psychic-system</a>, URL shortener pribadi dari PHP dan SQLite. Link panjang tadi jadi
+                pendek, dan namanya bisa kupilih sendiri:
             </p>
 <pre><code>example.com/print
 example.com/tugas-kalkulus</code></pre>
             <p>
-                Butuh PHP dengan ekstensi <code>pdo_sqlite</code>, <code>mbstring</code>, dan <code>curl</code>. Pendaftaran
-                publiknya ditutup, jadi akun dibuat dari terminal:
-            </p>
-<pre><code><span class="code-cmd">git</span> clone https://github.com/baguswjksn/psychic-system.git
-<span class="code-cmd">cd</span> psychic-system
-<span class="code-cmd">bin/php</span> bin/user.php add kamu@example.com <span class="code-str">"Nama Kamu"</span>
-<span class="code-cmd">./run.sh</span></code></pre>
-            <p>
-                Database-nya dibuat otomatis di <code>data/app.sqlite</code>. Server bawaan PHP ini cukup buat coba-coba
-                di <code>127.0.0.1:8080</code>. Buat dipakai dari mana aja, README-nya punya panduan nginx dan HTTPS.
+                Satu kata kayak gitu gampang diketik di komputer mana pun, gampang diucapkan, dan gampang ditulis di
+                papan tulis. Nggak perlu lagi nyari di chat lama.
             </p>
             <p>
-                Setelah login, tinggal tempel URL panjang di dashboard dan isi kodenya. Kode boleh berisi 3 sampai 32
-                huruf, angka, strip, atau underscore. Kalau dikosongkan, aplikasinya bikin 7 karakter acak dari daftar
-                ini:
-            </p>
-<pre><code>abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789</code></pre>
-            <p>
-                Huruf i, l, o, dan angka 0, 1 nggak ada di daftar itu karena gampang ketukar pas dibaca.
+                Yang paling berguna justru ini: tujuan link bisa diganti tanpa mengganti namanya. Minggu ini
+                <code>/print</code> mengarah ke satu folder, minggu depan tinggal diarahkan ke folder lain. Yang harus
+                diingat tetap satu kata, dan link yang sudah terlanjur dibagi tetap benar.
             </p>
             <p>
-                Yang paling berguna buat kuliah: tujuan link bisa diganti tanpa mengganti kodenya. Minggu ini
-                <code>/print</code> mengarah ke satu folder Drive, minggu depan tinggal diarahkan ke folder lain. Yang
-                harus diingat tetap satu kata.
+                Kalau malas mikir nama, kodenya bisa dibikin acak. Huruf dan angka yang gampang ketukar, kayak l dengan
+                1 atau O dengan 0, sengaja nggak dipakai, jadi tetap aman dibaca dan diketik ulang.
             </p>
             <p>
-                Supaya itu jalan, redirect-nya harus kayak gini:
-            </p>
-<pre><code><span class="code-cmd">header</span>(<span class="code-str">'Cache-Control: no-store'</span>);
-<span class="code-cmd">header</span>(<span class="code-str">'Location: '</span> . $target, true, 302);</code></pre>
-            <p>
-                Kode 302 artinya pindahnya sementara, dan <code>no-store</code> melarang browser mengingat tujuannya.
-                Kalau pakai 301, browser bisa terus membuka tujuan lama walaupun link-nya sudah diedit.
-            </p>
-            <p>
-                Tiap kunjungan menambah satu hitungan klik di dashboard, yang diperbarui tiap tiga detik. Request
-                <code>HEAD</code> nggak dihitung karena biasanya datang dari bot dan pengecek link, bukan orang.
-            </p>
-            <p>
-                Tiap link di dashboard juga punya ikon situs tujuannya, jadi daftarnya lebih gampang dipindai. Ikonnya
-                diambil lewat layanan DuckDuckGo lalu disimpan 30 hari, jadi situs tujuannya sendiri nggak pernah
-                dihubungi. Konsekuensinya, domain link kalian terkirim ke DuckDuckGo.
-            </p>
-            <p>
-                Semua datanya ada di satu file SQLite. <code>bin/php bin/backup.php</code> bikin salinannya dan menyimpan
-                14 yang terbaru. Salinan itu masih di disk yang sama, jadi tetap harus dipindah ke tempat lain.
+                Di dashboard, tiap link punya hitungan klik dan ikon situs tujuannya. Sekilas langsung kelihatan mana
+                link Drive, mana link form, dan apakah link tugas yang kubagi sudah dibuka teman-teman atau belum.
             </p>
             <p>
                 Cara ini tentu ada batasnya. Link pendek itu bukan link rahasia. Siapa pun yang menebak
-                <code>/print</code> bakal sampai ke folder Drive-nya tanpa perlu login. Kalau isinya pribadi, pakai kode
+                <code>/print</code> bakal sampai ke folder-nya tanpa perlu login. Kalau isinya pribadi, pakai kode
                 acak dan atur izinnya di Drive.
             </p>
             <p>
                 Semua link juga bergantung ke satu server. Kalau server-nya mati atau domain-nya habis, semuanya ikut
-                mati.
+                mati. Hitungan kliknya pun cuma angka, tanpa keterangan kapan dan dari mana.
             </p>
             <p>
-                Kodenya peka huruf besar-kecil, jadi <code>/Print</code> nggak sama dengan <code>/print</code>. Yang bisa
-                diedit cuma tujuannya. Kalau mau ganti kode, link-nya harus dihapus dan dibuat ulang, dan hitungan
-                kliknya ikut hilang.
-            </p>
-            <p>
-                Hitungan kliknya pun cuma angka, tanpa keterangan kapan dan dari mana. Daftarnya datar, belum ada folder,
-                tag, atau pencarian. Rapinya datang dari nama kode yang kita pilih sendiri.
-            </p>
-            <p>
-                Kalau butuh analitik, pakai layanan beneran. Kalau cuma pengen link kuliah yang rapi dan gampang diingat,
-                ini sudah cukup.
-            </p>
-            <p>
-                Kodenya ada di <a href="https://github.com/baguswjksn/psychic-system" target="_blank"
-                    rel="noopener">GitHub</a>, panduan deploy dan pengaturannya ada di README.
+                Kalau butuh analitik, pakai layanan beneran. Kalau cuma pengen link kuliah yang rapi, gampang diingat,
+                dan bisa diganti kapan aja, ini sudah cukup.
             </p>
         </div>
     </div>
