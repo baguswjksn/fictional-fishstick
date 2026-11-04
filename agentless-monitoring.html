@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentless Monitoring</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Satu script Bash tanpa agent yang ngabarin lewat Telegram saat CPU, RAM, atau disk server mulai kepenuhan, sebelum ada yang keburu mati." />
+    <meta property="og:title" content="Agentless Monitoring" />
+    <meta property="og:description"
+        content="Satu script Bash tanpa agent yang ngabarin lewat Telegram saat CPU, RAM, atau disk server mulai kepenuhan, sebelum ada yang keburu mati." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Agentless Monitoring</h1>
+        <div class="article-meta">31 Januari, 2026 · 3 menit</div>
+
+        <div class="prose">
+            <p>
+                Server itu jarang mati mendadak. Biasanya ada tanda-tandanya dulu: disk pelan-pelan penuh karena log,
+                RAM naik sedikit demi sedikit, atau satu proses diam-diam makan CPU. Masalahnya, tanda-tanda itu nggak
+                ada yang ngasih tahu.
+            </p>
+            <p>
+                Yang sering terjadi, server baru ketahuan bermasalah setelah aplikasinya keburu down. Ada yang chat
+                "kok web-nya nggak bisa dibuka?", baru deh SSH, cek sana-sini, dan ternyata disk-nya sudah 100% dari
+                kemarin. Padahal kalau tahu dari dua hari sebelumnya, cukup hapus log lama dan semuanya aman.
+            </p>
+            <p>
+                Cara paling gampang ya ngecek manual. Login ke server tiap pagi, lihat angka-angkanya, logout. Seminggu
+                pertama rajin, minggu berikutnya mulai lupa, dan biasanya justru pas lupa itu servernya penuh.
+            </p>
+            <p>
+                Cara yang "benar" pakai sistem monitoring kayak Prometheus atau Zabbix. Masalahnya, yang kubutuhin cuma
+                satu hal: dikabari kalau ada yang mulai kepenuhan.
+            </p>
+            <p>
+                Sistem kayak gitu butuh agent di tiap server dan satu
+                server pusat buat nampung datanya, dan semuanya harus dipasang, diperbarui, dan dijaga tetap hidup. Buat
+                satu dua VPS kecil, ngurus monitoring-nya bisa lebih repot daripada ngurus server-nya sendiri.
+            </p>
+            <p>
+                Aku rasa banyak yang ada di posisi ini. Punya VPS buat project pribadi, server kantor kecil yang
+                diurus sendirian, atau beberapa mesin di kampus. Terlalu penting buat dibiarkan begitu aja, tapi
+                terlalu kecil buat dipasangi stack monitoring lengkap.
+            </p>
+            <p>
+                Padahal semua bahannya sudah ada di server. Linux sudah punya perintah buat ngecek CPU, RAM, dan disk,
+                dan Bash terpasang di hampir semua distro.
+            </p>
+            <p>
+                Yang kurang cuma sesuatu yang ngecek secara rutin dan ngomong
+                kalau ada yang nggak beres.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/effective-couscous" target="_blank"
+                    rel="noopener">effective-couscous</a>, satu script Bash yang mengecek CPU, RAM, dan disk, lalu
+                ngirim pesan ke Telegram kalau ada yang melewati batas.
+            </p>
+            <p>
+                Script ini agentless.
+            </p>
+            <p>
+                Nggak ada program yang terus jalan di belakang, nggak ada port yang dibuka, dan
+                nggak ada server pusat. Cron menjalankannya tiap beberapa menit, dia ngecek, lalu selesai. Kalau suatu
+                saat nggak dipakai lagi, cukup hapus foldernya dan baris cron-nya.
+            </p>
+            <p>
+                Pesannya masuk ke Telegram, aplikasi yang memang sudah kubuka tiap hari. Nggak perlu buka dashboard
+                atau ingat-ingat buat ngecek. Kalau nggak ada pesan, artinya aman. Kalau ada, isinya kira-kira kayak
+                gini:
+            </p>
+            <pre><code>critical(2026-01-20 04:00:38)(hostname ip)
+Physical memory usage is now 23%, Top Processes
+(python3(29932)-(3.10%);multipathd(3587)-(2.70%);snapd(992)-(1.50%))</code></pre>
+            <p>
+                Angka 23% itu dari waktu batasnya sengaja kuturunkan buat ngetes. Yang penting, pesannya nggak cuma
+                bilang RAM-nya tinggi, tapi juga proses mana yang paling boros. Jadi sebelum login ke server pun aku
+                sudah punya gambaran apa yang harus dicek.
+            </p>
+            <p>
+                Batasnya bisa diatur sesuai kebutuhan, termasuk beda-beda tiap folder. Disk utama yang kalau penuh bikin
+                server berhenti bisa langsung dianggap gawat, sementara folder data cukup jadi peringatan biasa.
+                Alert-nya
+                juga bisa dikirim ke beberapa orang sekaligus, jadi teman satu tim ikut tahu.
+            </p>
+            <p>
+                Hasilnya, kabar soal server yang mulai penuh datang duluan ke aku, bukan dari orang yang keburu nggak
+                bisa buka web-nya. Selama batasnya dipasang cukup jauh di bawah 100%, masih ada waktu buat beresin
+                sebelum ada yang sadar.
+            </p>
+            <p>
+                Cara ini tentu ada batasnya. Script-nya jalan di server yang dipantau, jadi kalau server-nya mati total,
+                nggak ada yang ngirim kabar. Buat tahu server masih hidup atau nggak, tetap butuh pengecekan dari luar.
+            </p>
+            <p>
+                Script-nya juga nggak punya ingatan. Nggak ada riwayat atau grafik, dan selama angkanya masih di atas
+                batas, pesan yang sama bakal terus datang tiap jadwal. Angka CPU-nya pun masih rata-rata sejak server
+                nyala, jadi lonjakan sebentar bisa kelewat.
+            </p>
+            <p>
+                Kalau butuh grafik dan riwayat, pakai stack monitoring beneran. Kalau cuma pengen dikabari sebelum
+                server keburu penuh, satu script ini sudah cukup.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fake REST API</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Fake REST API dari satu file PHP dan SQLite buat ngetes web app dan perangkat IoT sebelum backend aslinya ada." />
+    <meta property="og:title" content="Fake REST API" />
+    <meta property="og:description"
+        content="Fake REST API dari satu file PHP dan SQLite buat ngetes web app dan perangkat IoT sebelum backend aslinya ada." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Fake REST API</h1>
+        <div class="article-meta">7 Januari, 2022 · 3 menit</div>
+
+        <div class="prose">
+            <p>
+                Bikin aplikasi itu ada masalah ayam dan telur. UI butuh data biar bisa dibikin, tapi backend baru bisa
+                dibikin kalau sudah tahu UI-nya butuh data apa.
+            </p>
+            <p>
+                Dulu aku selalu mulai dari backend. Bikin tabel, bikin endpoint, baru mulai bikin tampilan. Hasilnya
+                hampir selalu sama. Begitu UI-nya jadi, ternyata butuh field lain, urutannya beda, atau satu halaman
+                ternyata butuh data dari dua tempat. Backend yang sudah capek-capek dibikin harus dibongkar lagi, dan
+                itu bisa kejadian tiga sampai empat kali dalam satu project. Waktu paling banyak habis buat bikin ulang
+                sesuatu yang dari awal belum jelas bentuknya.
+            </p>
+            <p>
+                Cara lainnya, data tiruan ditulis langsung di kode frontend. Ini juga ada jebakannya. Isinya biasanya
+                asal-asalan, kayak <code>"test"</code>, <code>"aaa"</code>, atau harga <code>123</code>, jadi UI-nya
+                kelihatan rapi terus. Giliran ketemu data asli, nama produk yang panjang bikin layout berantakan, harga
+                jutaan nggak muat di kartunya, dan daftar seratus item ternyata lambat di-scroll.
+            </p>
+            <p>
+                Data tiruan kayak gitu juga nggak bisa diajak ngapa-ngapain. Tambah item, refresh, hilang. Nggak ada
+                loading karena datanya langsung ada, dan nggak pernah gagal karena nggak ada server yang bisa mati. Dua
+                keadaan itu akhirnya baru ketahuan bermasalah pas aplikasinya sudah dipakai orang.
+            </p>
+            <p>
+                Di IoT masalahnya lebih parah. Alatnya ngirim data ke server, server menyimpan, dashboard menampilkan.
+                Tiga bagian itu saling tunggu. Mau ngetes firmware, server-nya harus ada. Mau ngetes dashboard, alatnya
+                harus nyala dan ngirim data. Satu bagian belum jadi, semuanya ikut mandek.
+            </p>
+            <p>
+                Aku yakin ini bukan cuma masalahku. Frontend developer yang nunggu tim backend, mahasiswa yang dikejar
+                deadline tugas, orang yang ngerjain project sendirian, sampai yang iseng main mikrokontroler di rumah,
+                semuanya pernah kejebak di sini.
+            </p>
+            <p>
+                Layanan fake API online sebenarnya sudah ada. Tapi datanya sudah ditentukan, jadi bentuknya jarang
+                cocok sama aplikasi yang lagi dibikin. Data yang ditambahkan juga cuma pura-pura disimpan, dan hilang
+                lagi di request berikutnya.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/bookish-succotash" target="_blank"
+                    rel="noopener">Jsons</a>, fake REST API kecil dari satu file PHP dan SQLite yang jalan di laptop
+                sendiri. Cara pakainya cuma satu: tempel JSON, kasih nama, simpan. JSON itu langsung bisa diambil dari
+                aplikasi kayak API beneran.
+            </p>
+            <p>
+                Bedanya dengan data tiruan di kode, datanya diingat. Item yang ditambahkan dari UI masih ada setelah
+                refresh, yang diedit tetap berubah, yang dihapus beneran hilang. Alur tambah, edit, dan hapus bisa dites
+                dari awal sampai akhir tanpa satu baris kode backend pun.
+            </p>
+            <p>
+                Isinya juga bebas. Aku biasanya ambil contoh respons dari dokumentasi API yang nanti bakal dipakai, atau
+                beberapa baris data asli yang namanya disamarkan. Cukup sekali, dan dari awal UI-nya sudah ketemu nama
+                yang panjang, harga yang besar, dan field yang kosong. Masalah layout ketahuan di hari pertama, bukan
+                minggu terakhir.
+            </p>
+            <p>
+                Kalau bentuk datanya ternyata salah, tinggal edit JSON-nya di browser. Nggak ada migrasi, nggak ada
+                endpoint yang harus diubah. Bongkar pasang yang dulu makan waktu berhari-hari sekarang cuma beberapa
+                detik.
+            </p>
+            <p>
+                Loading dan error juga bisa dipancing dengan nambah satu parameter di URL:
+            </p>
+<pre><code>/products?delay=2000
+/products?status=500</code></pre>
+            <p>
+                Yang pertama bikin respons datang dua detik kemudian, yang kedua bikin server pura-pura error. Skeleton,
+                spinner, dan pesan error yang biasanya nggak pernah kelihatan akhirnya bisa dicek.
+            </p>
+            <p>
+                Buat IoT, Jsons jadi titik tengah yang bisa dipakai duluan. Alatnya ngirim pembacaan sensor ke Jsons,
+                dashboard-nya membaca dari situ. Tombol di dashboard mengubah status relay, alatnya mengecek status itu
+                tiap beberapa detik. Firmware dan dashboard bisa dikerjakan terpisah, dan masing-masing bisa dites
+                tanpa nunggu yang lain jadi.
+            </p>
+            <p>
+                Setelah UI-nya jelas, barulah aku tahu backend-nya harus kayak gimana. Backend dibikin sekali, sesuai
+                kebutuhan yang sudah terbukti, dan aplikasinya tinggal diarahkan ke alamat yang baru.
+            </p>
+            <p>
+                Jsons tentu bukan pengganti backend. Nggak ada login, jadi siapa pun yang bisa menjangkaunya bisa
+                mengubah datanya. Pakai di laptop atau jaringan rumah sendiri aja, jangan dipasang di internet. Nggak
+                ada relasi dan validasi juga, karena memang cuma dimaksudkan jadi tempat sementara.
+            </p>
+            <p>
+                Tapi buat ngelewatin fase paling membingungkan dari bikin aplikasi, waktu belum tahu mau bikin apa, ini
+                sudah lebih dari cukup.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
