@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kanban ala Trello</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Project capstone Studi Independen: REST API Express.js buat aplikasi kanban ala Trello, dan logika swap lane yang sempat bikin kami mentok." />
+    <meta property="og:title" content="Kanban ala Trello" />
+    <meta property="og:description"
+        content="Project capstone Studi Independen: REST API Express.js buat aplikasi kanban ala Trello, dan logika swap lane yang sempat bikin kami mentok." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- FIGURE ---------- */
+        .prose figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Mobile: diagram tegak. Desktop: diagram melebar (lihat <picture>). */
+        .prose figure img {
+            display: block;
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .prose figure img {
+                max-width: 760px;
+            }
+        }
+
+        /* Mockup dari sprite: selebar kolom, dengan bingkai tipis karena latarnya putih. */
+        .prose figure .spr {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .prose figcaption {
+            color: #6b7280;
+            font-size: 0.8em;
+            line-height: 1.5;
+            margin-top: 0.75rem;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        .code-com {
+            color: #8b949e;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+
+        /* ---------- SPRITE ---------- */
+        .spr {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            background-repeat: no-repeat
+        }
+
+        .spr-1,
+        .spr-2,
+        .spr-3 {
+            background-image: url("kanban-ala-trello.webp")
+        }
+
+        .spr-1 {
+            width: 1600px;
+            aspect-ratio: 1600/1000;
+            background-size: 100% 300%;
+            background-position: 0 0%
+        }
+
+        .spr-2 {
+            width: 1600px;
+            aspect-ratio: 1600/1000;
+            background-size: 100% 300%;
+            background-position: 0 50%
+        }
+
+        .spr-3 {
+            width: 1600px;
+            aspect-ratio: 1600/1000;
+            background-size: 100% 300%;
+            background-position: 0 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Kanban ala Trello</h1>
+        <div class="article-meta">30 Juni, 2024 · 4 menit</div>
+
+        <div class="prose">
+            <p>
+                Trello kelihatannya sederhana. Ada kolom, ada kartu, dan semuanya tinggal digeser-geser pakai mouse.
+            </p>
+            <p>
+                Waktu ikut Studi Independen, program dari pemerintah, kelompokku bikin tiruannya buat project capstone.
+                Ini pertama kalinya aku ngerjain project bareng programmer dengan peran yang beda-beda. Kalau nggak
+                salah ingat, dari awal sampai selesai makan waktu sekitar tiga sampai empat bulan.
+            </p>
+            <p>
+                Aku daftar di kelas backend development, jadi bagianku bikin REST API-nya pakai Express.js. Kenapa backend?
+                Karena aku nggak jago frontend. Kalau suatu hari nyawaku dipertaruhkan dan satu-satunya cara selamat
+                adalah bikin frontend dengan UI yang bagus, kayaknya aku sudah berserah duluan.
+            </p>
+            <p>
+                Express juga framework JavaScript pertama yang kupakai. Di kampus aku belajarnya Laravel, yang dari awal
+                sudah bawa routing, migrasi database, login, sampai ORM. Express kebalikannya. Isinya minimalis banget,
+                jadi overhead-nya kecil, tapi hampir semua hal harus dibikin sendiri dari nol. Di repo-nya, pengecekan
+                token JWT, hak akses board, sampai script buat bikin tabel dan ngisi data awal semuanya ditulis sendiri.
+            </p>
+            <p>
+                Tim frontend nyaranin kami meniru konsep Trello: papan kanban dengan swimlane dan kartu. Satu workspace
+                bisa punya banyak board, tiap board berisi beberapa lane, dan tiap lane berisi kartu-kartu tugas. Di
+                kodenya, lane disebut list.
+            </p>
+            <figure>
+                <span class="spr spr-1" role="img"
+                    aria-label="Mockup board Tasklane bernama Website Kedai Kopi dengan empat lane: To Do, Doing, Review, dan Done. Tiap kartu menampilkan label, tenggat, jumlah komentar, progres checklist, dan avatar anggota."></span>
+                <figcaption>Mockup board, disusun dari kode frontend-nya dengan data contoh.</figcaption>
+            </figure>
+            <p>
+                Kartu itu bagian yang paling banyak makan tabel. Di dalamnya ada deskripsi, label, anggota, tenggat,
+                checklist, cover, link, komentar, dan riwayat aktivitas. Selain deskripsi, masing-masing punya tabel
+                sendiri di database, dan semuanya ikut terhapus begitu kartunya dihapus.
+            </p>
+            <figure>
+                <span class="spr spr-2" role="img"
+                    aria-label="Mockup detail kartu Halaman menu dan harga: deskripsi, checklist 3 dari 4, kolom komentar, serta anggota, label, tenggat, dan pilihan warna cover di sisi kanan."></span>
+                <figcaption>Detail kartu. Isinya di kiri, anggota sampai cover di kanan.</figcaption>
+            </figure>
+            <p>
+                Satu board juga bisa dibuka banyak orang dengan hak akses yang beda-beda. Ada yang cuma bisa lihat, ada
+                yang bisa edit, dan ada admin yang boleh ngatur siapa saja yang punya akses. Hak itu dicek di middleware
+                sebelum request sampai ke controller, jadi orang yang cuma bisa lihat tetap nggak bisa ngubah isi board
+                walaupun nembak API-nya langsung.
+            </p>
+            <p>
+                Bagian yang paling berat buat kami adalah logika swap lane, yaitu mindahin lane ke posisi lain lewat
+                drag and drop.
+            </p>
+            <p>
+                Urutan lane disimpan sebagai angka di kolom <code>position</code>. Kalau lane paling kanan dipindah ke
+                paling kiri, semua lane yang dilewatinya ikut bergeser satu tempat. Menukar angka dua lane cuma benar
+                kalau keduanya bersebelahan.
+            </p>
+            <p>
+                Angkanya juga harus tetap rapi. Kalau ada dua lane dengan angka yang sama, urutan yang muncul bisa beda
+                dari yang barusan disusun.
+            </p>
+            <figure>
+                <span class="spr spr-3" role="img"
+                    aria-label="Mockup saat lane Review ditarik ke antara To Do dan Doing. Lane aslinya memudar di tempat lama, dan kotak bergaris putus-putus menandai tempat barunya."></span>
+                <figcaption>Lane Review lagi ditarik. Kotak putus-putus menandai tempat dia bakal mendarat.</figcaption>
+            </figure>
+            <p>
+                Kami sempat mentok di sini. Akhirnya kami tanya konsep troubleshoot-nya ke beberapa dosen, dan dari situ
+                pelan-pelan ketemu caranya.
+            </p>
+            <p>
+                Di frontend, lane langsung pindah di layar begitu dilepas, tanpa nunggu balasan server. Yang dikirim ke
+                backend cuma id lane dan posisi barunya, misalnya <code>PUT /list/11/order</code> dengan body
+                <code>{ "position": 1 }</code>.
+            </p>
+            <figure>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="kanban-ala-trello_1-desktop.svg" width="700" height="330" />
+                    <img src="kanban-ala-trello_1.svg" width="380" height="510" loading="lazy"
+                    alt="Alur swap lane: lane ditarik lalu dilepas di slot baru. Tiap kali lane dipindah, lane langsung digeser di layar, id lane dan posisi barunya dikirim ke server, lalu server menomori ulang semua lane. Kalau berhasil, board dimuat ulang dengan urutan baru. Kalau gagal, urutan lama kembali." />
+                </picture>
+                <figcaption>Alur swap lane, dari lane dilepas sampai urutannya tersimpan.</figcaption>
+            </figure>
+            <p>
+                Di backend, logikanya akhirnya cukup pendek. Ambil semua id lane di board sesuai urutan sekarang, cabut
+                lane yang dipindah, lalu sisipkan lagi di posisi barunya. Kalau lane Review di gambar tadi punya id 11,
+                prosesnya kira-kira begini:
+            </p>
+<pre><code>[9, 10, 11, 12]  <span class="code-com">// urutan sekarang</span>
+[9, 10, 12]      <span class="code-com">// cabut 11</span>
+[9, 11, 10, 12]  <span class="code-com">// sisipkan 11 di 1</span></code></pre>
+            <p>
+                Setelah itu semua lane dinomori ulang dari nol, sekaligus dalam satu query:
+            </p>
+<pre><code><span class="code-cmd">UPDATE</span> tbl_lists
+<span class="code-cmd">SET</span> position = <span class="code-cmd">CASE</span> id
+    <span class="code-cmd">WHEN</span> <span class="code-flag">9</span> <span class="code-cmd">THEN</span> <span class="code-flag">0</span>
+    <span class="code-cmd">WHEN</span> <span class="code-flag">11</span> <span class="code-cmd">THEN</span> <span class="code-flag">1</span>
+    <span class="code-cmd">WHEN</span> <span class="code-flag">10</span> <span class="code-cmd">THEN</span> <span class="code-flag">2</span>
+    <span class="code-cmd">WHEN</span> <span class="code-flag">12</span> <span class="code-cmd">THEN</span> <span class="code-flag">3</span>
+<span class="code-cmd">END</span>
+<span class="code-cmd">WHERE</span> id <span class="code-cmd">IN</span> (<span class="code-flag">9</span>, <span class="code-flag">11</span>, <span class="code-flag">10</span>, <span class="code-flag">12</span>)</code></pre>
+            <p>
+                Karena cuma satu UPDATE, semua angka berubah bareng. Nggak ada momen di mana sebagian lane sudah dapat
+                nomor baru sementara sisanya belum.
+            </p>
+            <figure>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="kanban-ala-trello_2-desktop.svg" width="700" height="330" />
+                    <img src="kanban-ala-trello_2.svg" width="380" height="510" loading="lazy"
+                    alt="Alur teknis swap lane: request PUT /list/11/order dengan position 1. listEditAuth() memastikan pengguna minimal punya hak edit, changeOrder() mengambil id semua lane lewat conn.query(), mencabut lane 11, lalu menyisipkannya di indeks 1. writePositions() menulis posisi 0 sampai 3 dalam satu UPDATE dengan CASE id, lalu server membalas 200. Request yang tidak sah ditolak dengan 400, 403, atau 404." />
+                </picture>
+                <figcaption>Yang terjadi di backend tiap kali urutan lane diganti.</figcaption>
+            </figure>
+            <p>
+                Kartu yang dipindah antar-lane pakai cara yang sama. Bedanya, kartunya dipindah dulu ke lane tujuan,
+                baru kartu-kartu di lane itu yang dinomori ulang.
+            </p>
+            <p>
+                Setelah request selesai, frontend memuat ulang isi board dari server. Kalau berhasil, urutannya sama
+                dengan yang sudah tampil. Kalau gagal, muncul pesan error dan lane-nya balik ke urutan lama.
+            </p>
+            <p>
+                Cara ini tentu ada batasnya. Tiap kali satu lane atau kartu dipindah, posisi semua isi di tempat
+                tujuannya ditulis ulang. Buat lane berisi puluhan kartu ini nggak terasa, tapi kalau isinya ribuan,
+                query-nya ikut panjang.
+            </p>
+            <p>
+                Belum ada sinkronisasi realtime juga. Kalau dua orang buka board yang sama, perubahan urutan dari satu
+                orang baru kelihatan di layar orang lain setelah halamannya dimuat ulang.
+            </p>
+            <p>
+                Lane juga cuma bisa dipindah lewat drag and drop. Kartu masih punya jalan lain, yaitu pilih list tujuan
+                di detail kartu, tapi lane belum.
+            </p>
+            <p>
+                Kode backend-nya ada di <a href="https://github.com/baguswjksn/urban-sniffle" target="_blank"
+                    rel="noopener">urban-sniffle</a> dan frontend-nya di <a
+                    href="https://github.com/baguswjksn/refactored-broccoli" target="_blank"
+                    rel="noopener">refactored-broccoli</a>. Rancangan database dan dokumentasi API-nya bisa dibuka dari
+                README.
+            </p>
+            <p>
+                Untungnya waktu capstone frontend dipegang tim frontend, jadi aku nggak perlu berserah.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
