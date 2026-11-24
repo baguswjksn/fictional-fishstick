@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baca EPUB tanpa Aplikasi</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Pembaca EPUB dalam satu file HTML, biar buku bisa dibaca di perangkat apa pun yang punya browser." />
+    <meta property="og:title" content="EPUB di Browser" />
+    <meta property="og:description"
+        content="Pembaca EPUB dalam satu file HTML, biar buku bisa dibaca di perangkat apa pun yang punya browser." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- FIGURE ---------- */
+        .prose figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Mobile: diagram tegak. Desktop: diagram melebar (lihat <picture>). */
+        .prose figure img {
+            display: block;
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .prose figure img {
+                max-width: 760px;
+            }
+        }
+
+        /* Screenshot HP: dua kolom di mobile, empat sejajar di desktop. */
+        .prose .shots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .prose .shots {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .prose .shots .spr {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .prose figcaption {
+            color: #6b7280;
+            font-size: 0.8em;
+            line-height: 1.5;
+            margin-top: 0.75rem;
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+
+        /* ---------- SPRITE ---------- */
+        .spr {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            background-repeat: no-repeat
+        }
+
+        .spr-screen-shot-2026-11-23-at-20-55-07,
+        .spr-screen-shot-2026-11-23-at-20-55-25,
+        .spr-screen-shot-2026-11-23-at-20-55-40,
+        .spr-screen-shot-2026-11-23-at-20-55-47 {
+            background-image: url("baca-epub-tanpa-aplikasi.webp")
+        }
+
+        .spr-screen-shot-2026-11-23-at-20-55-07 {
+            width: 752px;
+            aspect-ratio: 752/1336;
+            background-size: 100% 400%;
+            background-position: 0 0%
+        }
+
+        .spr-screen-shot-2026-11-23-at-20-55-25 {
+            width: 752px;
+            aspect-ratio: 752/1336;
+            background-size: 100% 400%;
+            background-position: 0 33.3333%
+        }
+
+        .spr-screen-shot-2026-11-23-at-20-55-40 {
+            width: 752px;
+            aspect-ratio: 752/1336;
+            background-size: 100% 400%;
+            background-position: 0 66.6667%
+        }
+
+        .spr-screen-shot-2026-11-23-at-20-55-47 {
+            width: 752px;
+            aspect-ratio: 752/1336;
+            background-size: 100% 400%;
+            background-position: 0 100%
+        }
+
+        .shots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px
+        }
+
+        @media (min-width:768px) {
+            .shots {
+                grid-template-columns: repeat(4, 1fr)
+            }
+        }
+
+        .shots .spr {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-origin: border-box
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>Baca EPUB tanpa Aplikasi</h1>
+        <div class="article-meta">18 November, 2026 · 2 menit</div>
+
+        <div class="prose">
+            <p>
+                Buat baca EPUB, biasanya harus pasang aplikasi dulu. Masalahnya, tiap perangkat butuh aplikasinya
+                sendiri, dan pindah perangkat berarti cari aplikasi lagi.
+            </p>
+            <p>
+                Padahal hampir semua perangkat sudah punya browser. File EPUB sendiri itu ZIP biasa, isinya halaman
+                HTML, gambar, dan beberapa file yang menjelaskan urutan bab.
+            </p>
+            <p>
+                Jadi aku bikin <a href="https://github.com/baguswjksn/free-potato" target="_blank" rel="noopener">Plain
+                    EPUB Reader</a>, pembaca EPUB dalam satu file HTML. Ini sebenarnya cuma fun
+                project, biar aku bisa baca EPUB dengan gampang selama perangkatnya bisa buka browser.
+            </p>
+            <p>
+                Cara pakainya: buka <code>index.html</code> di browser, pilih file EPUB, lalu baca. Nggak perlu
+                install apa-apa dan nggak ada library tambahan. HTML, CSS, dan JavaScript-nya semua ada di satu file
+                itu.
+            </p>
+            <p>
+                Bukunya dibaca langsung di browser dan nggak dikirim ke mana-mana. Kalau file HTML-nya sudah ada di
+                perangkat, semuanya jalan tanpa internet. Mau bisa dibuka dari mana aja, tinggal taruh file-nya di
+                hosting statis kayak GitHub Pages.
+            </p>
+            <p>
+                Bacanya per halaman seukuran layar, kayak buku. Ketuk sisi kanan atau geser ke kiri buat halaman
+                berikutnya, ketuk sisi kiri atau geser ke kanan buat mundur. Di laptop,
+                pakai tombol panah, atau spasi buat maju.
+            </p>
+            <p>
+                Ketuk bagian tengah buat buka daftar bab dan ngatur ukuran huruf, dari 13 sampai 32 piksel. Garis tipis
+                di bawah layar nunjukin sudah sejauh mana bukunya dibaca.
+            </p>
+            <figure>
+                <div class="shots">
+                    <span class="spr spr-screen-shot-2026-11-23-at-20-55-07" role="img"
+                        aria-label="screen-shot-2026-11-23-at-20-55-07"></span>
+                    <span class="spr spr-screen-shot-2026-11-23-at-20-55-25" role="img"
+                        aria-label="screen-shot-2026-11-23-at-20-55-25"></span>
+                    <span class="spr spr-screen-shot-2026-11-23-at-20-55-40" role="img"
+                        aria-label="screen-shot-2026-11-23-at-20-55-40"></span>
+                    <span class="spr spr-screen-shot-2026-11-23-at-20-55-47" role="img"
+                        aria-label="screen-shot-2026-11-23-at-20-55-47"></span>
+                </div>
+                <figcaption>Layar awal, sampul, halaman bab, dan menu.</figcaption>
+            </figure>
+            <p>
+                Posisi baca tiap buku dan ukuran huruf disimpan di browser. Besoknya tinggal pilih file yang sama, dan
+                bukunya langsung kebuka di tempat terakhir dibaca.
+            </p>
+            <p>
+                Bikinnya juga nggak terlalu susah, soalnya EPUB itu cuma ZIP. Pembaca ZIP-nya kutulis sendiri,
+                panjangnya sekitar 20 baris, dan isi yang terkompres dibuka pakai fitur bawaan browser. Setelah itu tinggal
+                cari urutan babnya, lalu tampilkan satu per satu. Isi tiap bab itu halaman HTML biasa, dan nampilin HTML
+                memang kerjaan browser.
+            </p>
+            <p>
+                Cara ini tentu ada batasnya. EPUB yang pakai DRM nggak bisa dibuka karena isinya terenkripsi. Tampilan
+                bawaan buku juga dibuang, jadi semua buku pakai tipografi yang sama dan buku dengan tata letak khusus
+                bakal kelihatan polos.
+            </p>
+            <p>
+                Fitur bawaan browser yang dipakai buat buka isi ZIP itu belum ada di browser lama, jadi butuh browser
+                yang cukup baru. Satu lagi, file EPUB-nya sendiri nggak ikut disimpan, makanya harus dipilih lagi tiap
+                mau baca.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
