@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>McMaster-Carr Image Sprites</title>
+    <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
+    <meta name="description"
+        content="Script Python yang menggabungkan banyak gambar jadi satu sprite sheet ala McMaster-Carr, lalu membuat CSS untuk memecahnya lagi di halaman." />
+    <meta property="og:title" content="McMaster-Carr Image Sprites" />
+    <meta property="og:description"
+        content="Script Python yang menggabungkan banyak gambar jadi satu sprite sheet ala McMaster-Carr, lalu membuat CSS untuk memecahnya lagi di halaman." />
+    <style>
+        /* ---------- BASE ---------- */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                "Helvetica Neue", Arial, sans-serif;
+            color: #1f2937;
+            background: #FFFCF0;
+        }
+
+        /* ---------- PAGE ---------- */
+        .page {
+            max-width: 100ch;
+            margin: 0 auto;
+            padding: 3rem 1rem 1rem;
+        }
+
+        /* ---------- BREADCRUMB ---------- */
+        .breadcrumb {
+            color: #6b7280;
+            font-size: calc(1.5rem + .25vw);
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #100f0f;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.35rem;
+        }
+
+        /* ---------- ARTICLE ---------- */
+        h1 {
+            font-weight: 500;
+            font-size: calc(2.35em + .55vw);
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            color: #6b7280;
+            font-size: calc(1.25rem + .25vw);
+        }
+
+        .prose {
+            line-height: 1.75;
+            font-size: calc(1.35rem + .25vw);
+        }
+
+        .prose a {
+            color: #100f0f;
+        }
+
+        /* ---------- FIGURE ---------- */
+        .prose figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Mobile: diagram tegak. Desktop: diagram melebar (lihat <picture>). */
+        .prose figure img {
+            display: block;
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .prose figure img {
+                max-width: 760px;
+            }
+        }
+
+        .prose figcaption {
+            color: #6b7280;
+            font-size: 0.8em;
+            line-height: 1.5;
+            margin-top: 0.75rem;
+        }
+
+        /* Demo: lima potongan dari satu sheet. Tiga kolom di mobile, lima sejajar di desktop. */
+        .prose .demo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .prose .demo .spr {
+            display: block;
+            width: calc((100% - 24px) / 3);
+            box-sizing: border-box;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #F1EFE8;
+            background-origin: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .prose .demo .spr {
+                width: calc((100% - 48px) / 5);
+            }
+        }
+
+        /* ---------- CODE ---------- */
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: #151b23;
+            border-radius: 6px;
+            color: #f0f6fc;
+            color-scheme: dark;
+            line-height: 1.45;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                "Liberation Mono", monospace;
+        }
+
+        .code-cmd {
+            color: #d2a8ff;
+        }
+
+        .code-flag {
+            color: #79c0ff;
+        }
+
+        .code-str {
+            color: #a5d6ff;
+        }
+
+        .code-com {
+            color: #8b949e;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 480px) {
+            .page {
+                padding: 2rem 1.25rem 1rem;
+            }
+
+            .breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .article-meta {
+                font-size: 0.8rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+            }
+        }
+
+        /* ---------- SPRITE ---------- */
+        .spr {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            background-repeat: no-repeat
+        }
+
+        .spr-baut,
+        .spr-mur,
+        .spr-paku,
+        .spr-ring,
+        .spr-sekrup {
+            background-image: url("mcmaster-carr-image-sprites.webp")
+        }
+
+        .spr-baut {
+            width: 280px;
+            aspect-ratio: 280/280;
+            background-size: 100% 500%;
+            background-position: 0 0%
+        }
+
+        .spr-mur {
+            width: 280px;
+            aspect-ratio: 280/280;
+            background-size: 100% 500%;
+            background-position: 0 25%
+        }
+
+        .spr-paku {
+            width: 280px;
+            aspect-ratio: 280/280;
+            background-size: 100% 500%;
+            background-position: 0 50%
+        }
+
+        .spr-ring {
+            width: 280px;
+            aspect-ratio: 280/280;
+            background-size: 100% 500%;
+            background-position: 0 75%
+        }
+
+        .spr-sekrup {
+            width: 280px;
+            aspect-ratio: 280/280;
+            background-size: 100% 500%;
+            background-position: 0 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="breadcrumb">
+            <a href="/">bagusmw</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>essay</span>
+        </nav>
+        <h1>McMaster-Carr Image Sprites</h1>
+        <div class="article-meta">26 November, 2026 · 2 menit</div>
+
+        <div class="prose">
+            <p>
+                Wes Bos pernah <a href="https://wesbos.com/tip/why-is-this-website-so-fast" target="_blank"
+                    rel="noopener">membedah</a> kenapa situs McMaster-Carr itu bisa secepat itu. Triknya banyak, dan ada satu yang
+                bikin aku pengen niru sendiri, yaitu cara mereka nampilin gambar.
+            </p>
+            <p>
+                Bayangin kalian buka halaman yang isinya 100 gambar baut yang beda-beda.
+            </p>
+            <p>
+                Di website biasa, browser harus minta gambarnya satu per satu ke server, sampai 100 kali. Bolak-balik
+                ini makan waktu. Gambarnya muncul satu-satu, istilahnya pop-in, dan tulisan di sekitarnya kadang ikut
+                loncat tiap ada gambar yang baru selesai dimuat.
+            </p>
+            <p>
+                McMaster-Carr nyusun ke-100 gambar baut itu berjejer rapi di dalam satu file besar, mirip lembaran
+                stiker. Namanya sprite sheet. Browser cukup unduh satu file itu sekali jalan.
+            </p>
+            <p>
+                Terus gimana caranya tiap tempat di halaman cuma nampilin satu baut? Di sini CSS yang kerja. Tiap
+                gambar di halaman sebenarnya kotak kosong seukuran satu baut. Lembaran stikernya dipasang di belakang
+                kotak itu, lalu digeser sampai baut yang dimau pas di dalamnya. Semua kotak pakai lembaran yang sama,
+                cuma posisi gesernya yang beda.
+            </p>
+            <p>
+                Ukuran kotaknya juga sudah ditentukan dari awal, jadi tempatnya sudah siap sebelum gambarnya datang
+                dan halamannya nggak loncat. Ini juga salah satu trik McMaster-Carr.
+            </p>
+            <figure>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="mcmaster-carr-image-sprites_1-desktop.svg" width="700"
+                        height="330" />
+                    <img src="mcmaster-carr-image-sprites_1.svg" width="380" height="540" loading="lazy"
+                        alt="Lima gambar terpisah, yaitu baut, mur, paku, ring, dan sekrup, biasanya butuh lima request. sprite_builder.py menumpuk kelimanya dari atas ke bawah jadi satu file, sprite.webp. Di halaman, CSS menggeser file itu ke posisi 0%, 25%, 50%, 75%, dan 100%, jadi tiap kotak cuma menampilkan potongannya sendiri." />
+                </picture>
+                <figcaption>Gambarnya digabung jadi satu file, lalu dipecah lagi oleh CSS di halaman.</figcaption>
+            </figure>
+            <p>
+                Nyusun lembaran kayak gitu dan ngitung posisi tiap gambarnya bakal repot kalau dikerjain manual. Jadi
+                aku bikin <a href="https://github.com/baguswjksn/friendly-waffle" target="_blank"
+                    rel="noopener">sprite builder</a>, script Python kecil buat niru cara McMaster-Carr.
+            </p>
+            <p>
+                Pakainya cukup kasih folder gambar. Semua gambar disamain ukurannya lalu ditumpuk jadi satu file WebP,
+                dan CSS-nya dicetak di terminal, tinggal ditempel ke halaman. Nggak perlu JavaScript.
+            </p>
+            <p>
+                Buat esai ini, aku coba ke lima gambar perkakas, versi kecil dari contoh 100 baut tadi:
+            </p>
+            <pre><code><span class="code-cmd">pip</span> install pillow
+<span class="code-cmd">python</span> sprite_builder.py perkakas/ <span class="code-flag">--cell</span> 280
+<span class="code-com">OK: 5 gambar -&gt; 1 sprite sheet (18.1 KB, asli 67.3 KB), hemat 4 request</span></code></pre>
+            <p>
+                Kelima gambar di bawah ini datang dari satu file 18 KB, jadi browser cuma bikin satu request buat
+                semuanya.
+            </p>
+            <figure>
+                <div class="demo">
+                    <span class="spr spr-baut" role="img" aria-label="Baut"></span>
+                    <span class="spr spr-mur" role="img" aria-label="Mur"></span>
+                    <span class="spr spr-paku" role="img" aria-label="Paku"></span>
+                    <span class="spr spr-ring" role="img" aria-label="Ring"></span>
+                    <span class="spr spr-sekrup" role="img" aria-label="Sekrup"></span>
+                </div>
+                <figcaption>Baut, mur, paku, ring, dan sekrup, semuanya potongan dari satu file.</figcaption>
+            </figure>
+            <p>
+                Beberapa esai di blog ini juga sudah pakai script ini. Empat screenshot di
+                <a href="baca-epub-tanpa-aplikasi">Baca EPUB tanpa Aplikasi</a>, misalnya, sebenarnya satu file WebP
+                sekitar 211 KB.
+            </p>
+            <p>
+                Isi script-nya sendiri nggak panjang, sekitar 200 baris.
+            </p>
+            <figure>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="mcmaster-carr-image-sprites_2-desktop.svg" width="700"
+                        height="330" />
+                    <img src="mcmaster-carr-image-sprites_2.svg" width="380" height="674" loading="lazy"
+                        alt="Alur di dalam sprite_builder.py: collect() mengambil gambar dari folder dan mengurutkannya. Untuk tiap gambar, load_rgba() membukanya dan fit_image() menyamakan ukurannya. File yang rusak dilewati. build_sheet() menumpuk semua gambar jadi satu file, build_css() menghitung posisi tiap gambar, dan build_html() mencetak satu span per gambar." />
+                </picture>
+                <figcaption>Alur di dalam script, buat yang penasaran.</figcaption>
+            </figure>
+            <p>
+                Batas dari cara ini semua gambar dipaksa masuk ke ukuran yang sama, jadi gambar yang rasionya
+                beda bakal dapat ruang kosong atau terpotong. Satu sheet juga nggak bisa nampung gambar tanpa batas.
+                Dengan gambar 576×324 piksel, mentok di 50 gambar.
+            </p>
+            <p>
+                Kalau gambarnya ditambah atau urutannya berubah, CSS-nya harus ditempel ulang. Ganti satu gambar juga
+                berarti browser harus unduh ulang seluruh lembarannya.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -7,7 +7,7 @@
     <title>Bagus Muhammad Wijaksono</title>
     <link rel="icon" type="image/svg+xml" href="https://bagusmw.me/icon.svg" />
     <meta name="description"
-        content="Backend-focused software engineer with 3+ years of experience in multi-language development on Linux/Unix systems.">
+        content="Backend-focused software engineer with 3+ years of experience on Linux/Unix systems, based in Indonesia.">
     <meta property="og:description"
         content="Backend-focused software engineer specializing in automation and server-side solutions on Linux/Unix systems.">
     <style>
@@ -95,8 +95,44 @@
             margin: 2.5rem 0 1rem;
         }
 
-        .l-h p {
-            flex: 1;
+        .l-h .v {
+            position: relative;
+            margin-right: auto;
+            padding-right: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .l-h .v:hover,
+        .l-h .v:has(:focus-visible) {
+            color: #100f0f;
+        }
+
+        .l-h .v:has(:focus-visible) {
+            outline: 2px solid currentColor;
+            outline-offset: 4px;
+        }
+
+        .l-h .v::after {
+            content: "";
+            position: absolute;
+            right: 0.15em;
+            top: 50%;
+            width: 0.4em;
+            height: 0.4em;
+            border: solid currentColor;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translateY(-75%) rotate(45deg);
+            pointer-events: none;
+        }
+
+        /* The real select sits invisibly on top of the label, and 16px keeps iOS Safari from zooming in when it opens */
+        .l-h select {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            opacity: 0;
+            font-size: 16px;
+            cursor: pointer;
         }
 
         .l-h button {
@@ -145,6 +181,38 @@
             letter-spacing: 0.02em;
         }
 
+        .a h2 {
+            margin: 2.5rem 0 0.25rem;
+        }
+
+        .a h2:first-child {
+            margin-top: 0;
+        }
+
+        .a .p-d {
+            min-width: calc(10ch + 0.2em);
+        }
+
+        .a li > div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .a .o {
+            color: #6b7280;
+        }
+
+        .a p {
+            margin: 0.25rem 0 0;
+            font-size: calc(1rem + 0.15vw);
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .a p a {
+            white-space: nowrap;
+        }
+
         @media (max-width: 480px) {
             body {
                 padding: 2rem 1.25rem 4rem;
@@ -171,6 +239,15 @@
 
             .l {
                 font-size: 0.8rem;
+            }
+
+            .a p {
+                font-size: 0.9rem;
+            }
+
+            /* Date ranges sit on one line on phones, stacked on wider screens */
+            .a .p-d br {
+                display: none;
             }
 
             .n-i svg {
@@ -201,15 +278,25 @@
     </div>
     <main>
         <p>
-            Backend-focused software engineer with <span id="years">3+</span> years of experience in multi-language
-            development on Linux/Unix systems<span data-nosnippet></span>.
+            Backend-focused software engineer with <span id="years">3+</span> years of experience on Linux/Unix systems,
+            based in Indonesia<span data-nosnippet></span>.
         </p>
         <div class="l-h">
-            <p class="l">Essay</p>
+            <span class="l v">
+                <span aria-hidden="true">Essay</span>
+                <select aria-label="Section">
+                    <option value="essay">Essay</option>
+                    <option value="about">About</option>
+                </select>
+            </span>
             <button class="l" aria-pressed="true">Featured</button>
             <button class="l" aria-pressed="false">All</button>
         </div>
         <ul class="w-l f">
+            <li data-f>
+                <span class="p-d">2026-11-26</span>
+                <a href="mcmaster-carr-image-sprites" class="p-t">McMaster-Carr image sprites</a>
+            </li>
             <li>
                 <span class="p-d">2026-11-23</span>
                 <a href="mesias-terakhir" class="p-t">Mesias Terakhir</a>
@@ -287,6 +374,175 @@
                 <a href="confessions" class="p-t">Confessions</a>
             </li>
         </ul>
+        <div class="a" hidden>
+            <ul class="w-l">
+                <li>
+                    <span class="p-d">Oct 2026 –<br> Now</span>
+                    <div>
+                        Software Engineer <span class="o">· PT Morich Indo Fashion</span>
+                        <p>Working on a legacy Laravel WMS for the garment factory's raw-material warehouse, and building
+                            single sign-on across the company's internal Laravel apps.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">Oct 2024 –<br> Oct 2026</span>
+                    <div>
+                        L1 Support Engineer <span class="o">· PT Dua Empat Tujuh</span>
+                        <p>Ran daily server and database operations for a telco customer and billing platform covering
+                            PCRF, charging, reseller incentives and physical vouchers. Automated routine ops and reporting
+                            through email and Telegram, cut the daily log check from about 8 minutes to 7 to 9 seconds
+                            with SQLite caching, and built a post-incident reconciliation that removed human error from
+                            a manual process.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">Feb 2024 –<br> Jun 2024</span>
+                    <div>
+                        Backend Developer <span class="o">· Studi Independen, Kampus Merdeka</span>
+                        <p>Wrote the Express.js and MySQL REST API for a Trello-style kanban app as part of a cross-role
+                            capstone team, with JWT auth, per-board roles and drag-and-drop reordering.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">Sep 2023 –<br> Dec 2023</span>
+                    <div>
+                        Full Stack Web Developer Intern <span class="o">· Telkom Indonesia</span>
+                        <p>Implemented MQTT for real-time IoT data exchange, bringing transmission latency down compared
+                            with HTTP.</p>
+                    </div>
+                </li>
+            </ul>
+            <h2 class="l">Portfolio</h2>
+            <ul class="w-l">
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/glowing-broccoli" target="_blank"
+                            rel="noopener">glowing-broccoli</a>
+                        <p>Personal finance Telegram bot in Go, built on the standard library alone, down to its own
+                            SQLite file reader and writer. Budgets, recurring transactions, Excel reports and charts,
+                            all in one binary.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/effective-couscous" target="_blank"
+                            rel="noopener">effective-couscous</a>
+                        <p>Agentless server monitoring in one Bash script. Cron runs it every few minutes, and when CPU,
+                            RAM or disk crosses a limit it sends a Telegram alert naming the top processes.
+                            <a href="agentless-monitoring">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/automatic-pancake" target="_blank"
+                            rel="noopener">wiki2epub</a>
+                        <p>Python CLI that turns Wikipedia articles into light EPUB 3 files for the Xteink X4 e-reader,
+                            with one chapter per section, flattened infoboxes and grayscale images.
+                            <a href="wikipedia-di-xteink-x4">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/free-potato" target="_blank"
+                            rel="noopener">Plain EPUB Reader</a>
+                        <p>EPUB reader in a single HTML file with no libraries. It opens books with a small hand-written
+                            ZIP reader, works offline and remembers where you stopped.
+                            <a href="baca-epub-tanpa-aplikasi">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/shiny-spork" target="_blank"
+                            rel="noopener">shiny-spork</a>
+                        <p>PDF book library in Laravel and MySQL. Books with a PDF and cover sorted into categories,
+                            export to Excel or PDF, and users who only see and edit their own books while admins see
+                            everything.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/friendly-waffle" target="_blank"
+                            rel="noopener">sprite builder</a>
+                        <p>Python script that packs many images into one WebP sprite sheet and prints the CSS to show
+                            each one, so a page loads every image in one request and never shifts while they load.
+                            <a href="sprite-ala-mcmaster-carr">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2026</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/stunning-funicular" target="_blank"
+                            rel="noopener">stunning-funicular</a>
+                        <p>Company wiki in the spirit of Confluence, in one PHP file and SQLite with no dependencies.
+                            Nested folders, pasted screenshots and Excel tables, code highlighting, admin and editor
+                            roles, and server-side HTML cleaning backed by a strict CSP.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2024</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/urban-sniffle" target="_blank"
+                            rel="noopener">urban-sniffle</a>
+                        <p>Trello-style project management API in Express.js and MySQL. Workspaces, boards, lanes and
+                            cards with checklists, comments and activity history, plus view, edit and admin roles per
+                            board. <a href="kanban-ala-trello">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2022</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/bookish-succotash" target="_blank"
+                            rel="noopener">Jsons</a>
+                        <p>Fake REST API in one PHP file backed by SQLite. Paste JSON, give it a name and get an endpoint
+                            with real create, update and delete, plus ?delay and ?status to fake slow or failing
+                            responses. <a href="fake-rest-api">Read the essay</a></p>
+                    </div>
+                </li>
+                <li>
+                    <span class="p-d">2022</span>
+                    <div>
+                        <a href="https://github.com/baguswjksn/psychic-system" target="_blank"
+                            rel="noopener">psychic-system</a>
+                        <p>Personal URL shortener in PHP and SQLite. Pick your own short names, point them somewhere else
+                            later, and see click counts in a small dashboard.
+                            <a href="url-shortener">Read the essay</a></p>
+                    </div>
+                </li>
+            </ul>
+            <h2 class="l">Tech Stack</h2>
+            <ul class="w-l">
+                <li>
+                    <span class="p-d">Languages</span>
+                    <div>PHP, JavaScript, Go, Python, Bash, SQL</div>
+                </li>
+                <li>
+                    <span class="p-d">Backend</span>
+                    <div>Laravel, Express.js, REST APIs, JWT, MQTT</div>
+                </li>
+                <li>
+                    <span class="p-d">Frontend</span>
+                    <div>HTML/CSS, Bootstrap</div>
+                </li>
+                <li>
+                    <span class="p-d">Databases</span>
+                    <div>MySQL, Oracle Database, SQLite</div>
+                </li>
+                <li>
+                    <span class="p-d">Systems</span>
+                    <div>Linux, cron, automation, log monitoring, health checks, incident handling</div>
+                </li>
+                <li>
+                    <span class="p-d">Tools</span>
+                    <div>Git, Telegram Bot API</div>
+                </li>
+            </ul>
+        </div>
     </main>
     <script>
         // Full years since September 2023; getMonth() is zero-based, so 8 is September
@@ -298,7 +554,7 @@
         description.content = description.content.replace(/\d+\+ years/, `${years}+ years`);
 
         // Featured hides every row without data-f; All shows the whole list
-        const essays = document.querySelector(".w-l");
+        const essays = document.querySelector("main > .w-l");
         const filters = document.querySelectorAll(".l-h button");
 
         filters.forEach((button) => {
@@ -307,6 +563,28 @@
                 essays.classList.toggle("f", button.textContent === "Featured");
             });
         });
+
+        // The section select swaps the essay list for About, and #about in the URL opens About directly
+        const view = document.querySelector(".l-h select");
+        const viewLabel = document.querySelector(".v span");
+        const about = document.querySelector(".a");
+
+        function show(name) {
+            const isAbout = name === "about";
+            view.value = name;
+            viewLabel.textContent = view.selectedOptions[0].text;
+            essays.hidden = isAbout;
+            about.hidden = !isAbout;
+            filters.forEach((filter) => (filter.hidden = isAbout));
+        }
+
+        view.addEventListener("change", () => {
+            show(view.value);
+            history.replaceState(null, "", view.value === "about" ? "#about" : location.pathname + location.search);
+        });
+
+        window.addEventListener("hashchange", () => show(location.hash === "#about" ? "about" : "essay"));
+        show(location.hash === "#about" ? "about" : "essay");
     </script>
 </body>
 

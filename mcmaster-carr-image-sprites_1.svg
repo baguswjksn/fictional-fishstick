@@ -1,0 +1,95 @@
+<svg width="100%" viewBox="0 0 380 540" role="img" style="margin: 0px auto;" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+  <title>Gambar digabung lalu dipecah lagi, versi mobile</title>
+  <desc>Lima gambar terpisah, yaitu baut, mur, paku, ring, dan sekrup, biasanya butuh lima request. sprite_builder.py menumpuk kelimanya dari atas ke bawah jadi satu file, sprite.webp. Di halaman, CSS menggeser file itu ke posisi 0%, 25%, 50%, 75%, dan 100%, jadi tiap span cuma menampilkan potongannya sendiri. Lima gambar, satu file, satu request.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:#898781;stroke:context-stroke;"/>
+    </marker>
+    <symbol id="baut" viewBox="0 0 40 40">
+    <rect x="11" y="5" width="18" height="8" rx="1" fill="#5F5E5A"/>
+    <rect x="15" y="5" width="10" height="8" fill="#888780"/>
+    <rect x="16.5" y="13" width="7" height="18.5" fill="#5F5E5A"/>
+    <path d="M16.5 31.5H23.5L22 34H18Z" fill="#5F5E5A"/>
+    <path d="M16.5 21L23.5 19.8M16.5 24.5L23.5 23.3M16.5 28L23.5 26.8" stroke="#888780" stroke-width="0.9"/>
+    </symbol>
+    <symbol id="mur" viewBox="0 0 40 40">
+    <path fill-rule="evenodd" fill="#5F5E5A" d="M34 20L27 32.12H13L6 20L13 7.88H27Z M25.8 20A5.8 5.8 0 1 0 14.2 20A5.8 5.8 0 1 0 25.8 20Z"/>
+    <circle cx="20" cy="20" r="9.6" fill="none" stroke="#888780" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="paku" viewBox="0 0 40 40">
+    <rect x="12" y="6" width="16" height="3.5" rx="1.2" fill="#5F5E5A"/>
+    <path d="M18.6 9.5H21.4V29.5L20 35L18.6 29.5Z" fill="#5F5E5A"/>
+    <rect x="19.6" y="10.5" width="0.8" height="18" fill="#888780"/>
+    </symbol>
+    <symbol id="ring" viewBox="0 0 40 40">
+    <path fill-rule="evenodd" fill="#5F5E5A" d="M33 20A13 13 0 1 0 7 20A13 13 0 1 0 33 20Z M26 20A6 6 0 1 0 14 20A6 6 0 1 0 26 20Z"/>
+    <circle cx="20" cy="20" r="9.5" fill="none" stroke="#888780" stroke-width="1"/>
+    </symbol>
+    <symbol id="sekrup" viewBox="0 0 40 40">
+    <path d="M10.5 13A9.5 7 0 0 1 29.5 13Z" fill="#5F5E5A"/>
+    <rect x="19.2" y="7" width="1.6" height="6" fill="#B4B2A9"/>
+    <path d="M15.5 13H24.5L20.6 34.5H19.4Z" fill="#5F5E5A"/>
+    <path d="M16.3 17.5L24 15.9M17 21.5L23.3 19.9M17.8 25.5L22.5 23.9M18.5 29.5L21.8 27.9" stroke="#888780" stroke-width="0.9"/>
+    </symbol>
+  </defs>
+  <text x="190" y="22" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#52514E">Gambar terpisah</text>
+  <rect x="60" y="36" width="44" height="44" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#baut" x="64" y="40" width="36" height="36"/>
+  <rect x="114" y="36" width="44" height="44" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#mur" x="118" y="40" width="36" height="36"/>
+  <rect x="168" y="36" width="44" height="44" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#paku" x="172" y="40" width="36" height="36"/>
+  <rect x="222" y="36" width="44" height="44" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#ring" x="226" y="40" width="36" height="36"/>
+  <rect x="276" y="36" width="44" height="44" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#sekrup" x="280" y="40" width="36" height="36"/>
+  <text x="190" y="98" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">5 file, 5 request</text>
+  <path d="M190 110V134" fill="none" stroke="#898781" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+  <rect x="106" y="136" width="168" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text x="190" y="154" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">sprite_builder.py</text>
+  <text x="190" y="172" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">Gabung + tulis CSS</text>
+  <path d="M190 192V222" fill="none" stroke="#898781" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+  <text x="70" y="240" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#52514E">sprite.webp</text>
+  <text x="144" y="240" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#52514E">CSS</text>
+  <text x="272" y="240" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#52514E">Halaman</text>
+  <rect x="42" y="254" width="56" height="240" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.75"/>
+  <path d="M42 302H98M42 350H98M42 398H98M42 446H98" stroke="#534AB7" stroke-opacity="0.4" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <use href="#baut" x="50" y="258" width="40" height="40"/>
+  <use href="#mur" x="50" y="306" width="40" height="40"/>
+  <use href="#paku" x="50" y="354" width="40" height="40"/>
+  <use href="#ring" x="50" y="402" width="40" height="40"/>
+  <use href="#sekrup" x="50" y="450" width="40" height="40"/>
+  <rect x="180" y="248" width="184" height="252" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <rect x="190" y="258" width="40" height="40" rx="4" fill="#FFFFFF" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#baut" x="192" y="260" width="36" height="36"/>
+  <rect x="242" y="269" width="100" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.22"/>
+  <rect x="242" y="281" width="64" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.12"/>
+  <rect x="190" y="306" width="40" height="40" rx="4" fill="#FFFFFF" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#mur" x="192" y="308" width="36" height="36"/>
+  <rect x="242" y="317" width="100" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.22"/>
+  <rect x="242" y="329" width="64" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.12"/>
+  <rect x="190" y="354" width="40" height="40" rx="4" fill="#FFFFFF" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#paku" x="192" y="356" width="36" height="36"/>
+  <rect x="242" y="365" width="100" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.22"/>
+  <rect x="242" y="377" width="64" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.12"/>
+  <rect x="190" y="402" width="40" height="40" rx="4" fill="#FFFFFF" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#ring" x="192" y="404" width="36" height="36"/>
+  <rect x="242" y="413" width="100" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.22"/>
+  <rect x="242" y="425" width="64" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.12"/>
+  <rect x="190" y="450" width="40" height="40" rx="4" fill="#FFFFFF" stroke="#5F5E5A" stroke-width="0.5"/>
+  <use href="#sekrup" x="192" y="452" width="36" height="36"/>
+  <rect x="242" y="461" width="100" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.22"/>
+  <rect x="242" y="473" width="64" height="6" rx="3" fill="#5F5E5A" fill-opacity="0.12"/>
+  <path d="M102 278H186" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+  <text x="144" y="270" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534AB7">0%</text>
+  <path d="M102 326H186" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+  <text x="144" y="318" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534AB7">25%</text>
+  <path d="M102 374H186" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+  <text x="144" y="366" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534AB7">50%</text>
+  <path d="M102 422H186" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+  <text x="144" y="414" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534AB7">75%</text>
+  <path d="M102 470H186" fill="none" stroke="#534AB7" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+  <text x="144" y="462" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534AB7">100%</text>
+  <text x="70" y="520" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">1 file, 1 request</text>
+  <text x="272" y="520" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">Tiap span 1 potongan</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0YTdiMDdlZi0zNDY5LTQ4YmMtYTA1Ny1lZDQ1Mzc3ZmI5ZGQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFFrq88+Pfb/ILzkHVBPlYYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo2NzZiZmFmYy1jM2VkLTRiN2ItODg1MC1kNTVlZGMwNjU5OWNscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoxn8fwmTxHwWo0Gul8OiCHAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggdlLjG3JQMj0VDogwRm1mXbE6wChmTv0diXk9+ZdwsrukZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaHfhM75z7BC/aSG4CGTMyu0AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIFMJ4d43RiuQpPhfWdmglNZVgHc+QKN7u50K3gyq37q9ZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSFXZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjRhN2IwN2VmLTM0NjktNDhiYy1hMDU3LWVkNDUzNzdmYjlkZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjVjMjNjZmQ5LTZlMzAtNDQ1OS1hNWEzLThmMmU5MGE4ZmYwY3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCB2UuMbclAyPRUOiDBGbWZdsTrAKGZO/R2JeT35l3Cyu6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggqqM8plUEFiIpAWMvYDisO+x8HzIEr6aR9BIO9P2/q++iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggRKaAnhleDjiue4PSIv0K0HMS4pYIS5B/ltxMXNBGpLh0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQOPEmod/szc4oSIBX9ialQxqSsz/mkzd3z4DeYnMpRaI4bOsqjWU6omAy1YiOjdP0ifaVfXBxYW4WYJW370Yvt8=</c2pa:manifest></metadata></svg>
