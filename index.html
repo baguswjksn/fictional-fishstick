@@ -92,57 +92,54 @@
             display: flex;
             align-items: baseline;
             gap: 1rem;
-            margin: 2.5rem 0 1rem;
+            margin: 1rem 0 0.25rem;
         }
 
-        .l-h .v {
-            position: relative;
+        .l-h .s {
             margin-right: auto;
-            padding-right: 1.1em;
-            transition: color 0.2s;
         }
 
-        .l-h .v:hover,
-        .l-h .v:has(:focus-visible) {
-            color: #100f0f;
-        }
-
-        .l-h .v:has(:focus-visible) {
-            outline: 2px solid currentColor;
-            outline-offset: 4px;
-        }
-
-        .l-h .v::after {
-            content: "";
-            position: absolute;
-            right: 0.15em;
-            top: 50%;
-            width: 0.4em;
-            height: 0.4em;
-            border: solid currentColor;
-            border-width: 0 1.5px 1.5px 0;
-            transform: translateY(-75%) rotate(45deg);
-            pointer-events: none;
-        }
-
-        /* The real select sits invisibly on top of the label, and 16px keeps iOS Safari from zooming in when it opens */
-        .l-h select {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            opacity: 0;
-            font-size: 16px;
+        /* Floating Essay / About button, fixed to the bottom-right corner of the viewport while scrolling.
+           .l.t outranks the responsive .l font size, so the button is the same size on phones and desktops.
+           --vv is set by the script to however much of the viewport's bottom a phone toolbar or keyboard covers */
+        .l.t {
+            position: fixed;
+            right: max(1.25rem, env(safe-area-inset-right));
+            bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + var(--vv, 0px));
+            z-index: 10;
+            font-size: 0.8125rem;
+            padding: 0.6em 1.1em;
+            border: 0;
+            border-radius: 6px;
+            background: #100f0f;
+            color: #FFFCF0;
+            line-height: 1.5;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(16, 15, 15, 0.18);
+            transition: background-color 0.2s, transform 0.2s;
         }
 
-        .l-h button {
+        .t:hover {
+            background: #374151;
+        }
+
+        .t:active {
+            transform: translateY(1px);
+        }
+
+        .t:focus-visible {
+            outline: 2px solid #100f0f;
+            outline-offset: 3px;
+        }
+
+        .l-h > button {
             padding: 0;
             border: 0;
             background: none;
             cursor: pointer;
         }
 
-        .l-h button[aria-pressed="true"] {
+        .l-h > button[aria-pressed="true"] {
             color: #100f0f;
         }
 
@@ -182,7 +179,7 @@
         }
 
         .a h2 {
-            margin: 2.5rem 0 0.25rem;
+            margin: 1rem 0 0.25rem;
         }
 
         .a h2:first-child {
@@ -282,20 +279,14 @@
             based in Indonesia<span data-nosnippet></span>.
         </p>
         <div class="l-h">
-            <span class="l v">
-                <span aria-hidden="true">Essay</span>
-                <select aria-label="Section">
-                    <option value="essay">Essay</option>
-                    <option value="about">About</option>
-                </select>
-            </span>
+            <p class="l s">Essay</p>
             <button class="l" aria-pressed="true">Featured</button>
             <button class="l" aria-pressed="false">All</button>
         </div>
         <ul class="w-l f">
             <li data-f>
                 <span class="p-d">2026-11-26</span>
-                <a href="mcmaster-carr-image-sprites" class="p-t">McMaster-Carr image sprites</a>
+                <a href="mcmaster-carr-image-sprites" class="p-t">McMaster-Carr Image Sprites</a>
             </li>
             <li>
                 <span class="p-d">2026-11-23</span>
@@ -380,8 +371,7 @@
                     <span class="p-d">Oct 2026 –<br> Now</span>
                     <div>
                         Software Engineer <span class="o">· PT Morich Indo Fashion</span>
-                        <p>Working on a legacy Laravel WMS for the garment factory's raw-material warehouse, and building
-                            single sign-on across the company's internal Laravel apps.</p>
+                        <p>Currently helping handle the QA station, sample management and order management.</p>
                     </div>
                 </li>
                 <li>
@@ -438,7 +428,7 @@
                     <span class="p-d">2026</span>
                     <div>
                         <a href="https://github.com/baguswjksn/automatic-pancake" target="_blank"
-                            rel="noopener">wiki2epub</a>
+                            rel="noopener">automatic-pancake</a>
                         <p>Python CLI that turns Wikipedia articles into light EPUB 3 files for the Xteink X4 e-reader,
                             with one chapter per section, flattened infoboxes and grayscale images.
                             <a href="wikipedia-di-xteink-x4">Read the essay</a></p>
@@ -448,7 +438,7 @@
                     <span class="p-d">2026</span>
                     <div>
                         <a href="https://github.com/baguswjksn/free-potato" target="_blank"
-                            rel="noopener">Plain EPUB Reader</a>
+                            rel="noopener">free-potato</a>
                         <p>EPUB reader in a single HTML file with no libraries. It opens books with a small hand-written
                             ZIP reader, works offline and remembers where you stopped.
                             <a href="baca-epub-tanpa-aplikasi">Read the essay</a></p>
@@ -468,10 +458,10 @@
                     <span class="p-d">2026</span>
                     <div>
                         <a href="https://github.com/baguswjksn/friendly-waffle" target="_blank"
-                            rel="noopener">sprite builder</a>
+                            rel="noopener">friendly-waffle</a>
                         <p>Python script that packs many images into one WebP sprite sheet and prints the CSS to show
                             each one, so a page loads every image in one request and never shifts while they load.
-                            <a href="sprite-ala-mcmaster-carr">Read the essay</a></p>
+                            <a href="mcmaster-carr-image-sprites">Read the essay</a></p>
                     </div>
                 </li>
                 <li>
@@ -498,7 +488,7 @@
                     <span class="p-d">2022</span>
                     <div>
                         <a href="https://github.com/baguswjksn/bookish-succotash" target="_blank"
-                            rel="noopener">Jsons</a>
+                            rel="noopener">bookish-succotash</a>
                         <p>Fake REST API in one PHP file backed by SQLite. Paste JSON, give it a name and get an endpoint
                             with real create, update and delete, plus ?delay and ?status to fake slow or failing
                             responses. <a href="fake-rest-api">Read the essay</a></p>
@@ -544,6 +534,7 @@
             </ul>
         </div>
     </main>
+    <button class="l t" type="button">About</button>
     <script>
         // Full years since September 2023; getMonth() is zero-based, so 8 is September
         const now = new Date();
@@ -555,7 +546,7 @@
 
         // Featured hides every row without data-f; All shows the whole list
         const essays = document.querySelector("main > .w-l");
-        const filters = document.querySelectorAll(".l-h button");
+        const filters = document.querySelectorAll(".l-h > button");
 
         filters.forEach((button) => {
             button.addEventListener("click", () => {
@@ -564,23 +555,42 @@
             });
         });
 
-        // The section select swaps the essay list for About, and #about in the URL opens About directly
-        const view = document.querySelector(".l-h select");
-        const viewLabel = document.querySelector(".v span");
+        // The floating button swaps the essay list for About and is labelled with the section it opens;
+        // #about in the URL opens About directly
+        const toggle = document.querySelector(".t");
+        const sectionLabel = document.querySelector(".l-h .s");
         const about = document.querySelector(".a");
 
         function show(name) {
             const isAbout = name === "about";
-            view.value = name;
-            viewLabel.textContent = view.selectedOptions[0].text;
+            sectionLabel.textContent = isAbout ? "Professional Experience" : "Essay";
+            toggle.textContent = isAbout ? "Essay" : "About";
+            toggle.setAttribute("aria-label", isAbout ? "Show essays" : "Show about");
             essays.hidden = isAbout;
             about.hidden = !isAbout;
             filters.forEach((filter) => (filter.hidden = isAbout));
         }
 
-        view.addEventListener("change", () => {
-            show(view.value);
-            history.replaceState(null, "", view.value === "about" ? "#about" : location.pathname + location.search);
+        // Keep the button on the visible part of the screen: when a phone toolbar or the keyboard covers
+        // the bottom of the viewport, lift the button by that much, and drop it back once it's gone
+        const visible = window.visualViewport;
+
+        function keepInView() {
+            const covered = Math.max(0, window.innerHeight - visible.height - visible.offsetTop);
+            toggle.style.setProperty("--vv", `${Math.round(covered)}px`);
+        }
+
+        if (visible) {
+            visible.addEventListener("resize", keepInView);
+            visible.addEventListener("scroll", keepInView);
+            keepInView();
+        }
+
+        toggle.addEventListener("click", () => {
+            const next = about.hidden ? "about" : "essay";
+            show(next);
+            history.replaceState(null, "", next === "about" ? "#about" : location.pathname + location.search);
+            window.scrollTo(0, 0);
         });
 
         window.addEventListener("hashchange", () => show(location.hash === "#about" ? "about" : "essay"));
